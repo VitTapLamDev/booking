@@ -1,7 +1,7 @@
 <?php 
-    require('admin/inc/db_config.php');
-    require('admin/inc/essentials.php');
-    include 'db_config.php';
+    require('db_config.php');
+    // require('/admin/inc/essentials.php');
+
 ?>
 
 
@@ -47,7 +47,7 @@
 <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="">
+            <form method="POST" action="">
                 <div class="modal-header">
                     <h5 class="modal-title d-flex align-items-center"> 
                         <i class="bi bi-person-circle fs-3 me-2"></i> Đăng nhập
@@ -57,14 +57,14 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Email đăng nhập</label>
-                        <input type="email" class="form-control shadow-none">
+                        <input type="email" name="email_log" class="form-control shadow-none">
                     </div>
                     <div class="mb-4">
                         <label class="form-label">Mật Khẩu</label>
-                        <input type="password" class="form-control shadow-none">
+                        <input type="password" name="pass_log" class="form-control shadow-none">
                     </div>
                     <div class="d-flex align-items-center justify-content-between mb-2">
-                        <button type="submit" class='btn btn-dark shadow-none'>ĐĂNG NHẬP</button>
+                        <button type="submit" name="login_account" class='btn btn-dark shadow-none'>ĐĂNG NHẬP</button>
                         <a href="javascript: void(0)" class="text-secondary text-decoration-none">Quên mật khẩu?</a>
                     </div>
                 </div>     
@@ -108,7 +108,7 @@
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Số CCCD/Hộ chiếu</label>
-                                <input name="ID" type="password" class="form-control shadow-none" required>
+                                <input name="ID" type="number" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Ngày sinh</label>

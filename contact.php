@@ -9,7 +9,7 @@
 </head>
 <body class="bg-light">
     <?php require('inc/header.php')?>
-    <?php include 'db_config.php'; ?>
+    <?php include 'inc/db_config.php'; ?>
     <?php echo isset($alert) ? $alert : ''; ?>
     <div class="my-5 px-4">
         <h2 class="fw-bold h-font text-center">LIÊN HỆ VỚI CHÚNG TÔI</h2>
