@@ -3,7 +3,7 @@
     require('inc/essentials.php');
 
     session_start();
-    session_regenerate_id(true);
+    session_create_id(true);
     if(isset($_SESSION['adminLogin']) && $_SESSION['adminLogin']==true){
         redirect('dashboard.php');
     }
@@ -16,7 +16,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>ADMIN LOGIN PANEL</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <?php require('/Code/GitHub/booking/admin/inc/links.php'); ?>
+    <?php require('inc/links.php'); ?>
 </head>
 <body class="bg-light">
     <div class="login-form text-center rounded bg-white shadow overflow-none">
@@ -48,7 +48,7 @@
             if($res->num_rows==1){
                 $row = mysqli_fetch_assoc($res);
                 $_SESSION['adminLogin'] = true;
-                $_SESSION['adminID'] = $row['sr_no'];
+                $_SESSION['adminId'] = $row['sr_no'];
                 redirect('dashboard.php');
             }else{
                 alert('error', 'Login failed - Invalid Credentials');

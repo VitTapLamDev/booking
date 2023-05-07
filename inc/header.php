@@ -1,3 +1,11 @@
+<?php 
+    require('admin/inc/db_config.php');
+    require('admin/inc/essentials.php');
+    include 'db_config.php';
+?>
+
+
+
 <!-- Taskbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
     <div class="container-fluid">
@@ -69,7 +77,7 @@
 <div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="">
+            <form id="register-form" method="POST">
                 <div class="modal-header">
                     <h5 class="modal-title d-flex align-items-center"> 
                         <i class="bi bi-person-lines-fill fs-3 me-2"></i> ĐĂNG KÝ
@@ -84,45 +92,41 @@
                         <div class="row">
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Họ và tên</label>
-                                <input type="text" class="form-control shadow-none">
+                                <input name="name" type="text" class="form-control shadow-none" require>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="email" class="form-control shadow-none">
+                                <input name="email" type="email" class="form-control shadow-none" require>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Số điện thoại </label>
-                                <input type="number" class="form-control shadow-none">
-                            </div>
-                            <div class="col-md-6 ps-0 mb-3">
-                                <label class="form-label">Avatar</label>
-                                <input type="file" class="form-control shadow-none">
+                                <input name="phonenumber" type="number" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-12 ps-0 mb-3">
                                 <label class="form-label">Địa chỉ</label>
-                                <textarea class="form-control shadow-none" rows="1"></textarea>
+                                <textarea name="address" class="form-control shadow-none" required rows="1"></textarea>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Số CCCD/Hộ chiếu</label>
-                                <input type="password" class="form-control shadow-none">
+                                <input name="ID" type="password" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Ngày sinh</label>
-                                <input type="date" class="form-control shadow-none">
+                                <input name="dob" type="date" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Mật khẩu</label>
-                                <input type="password" class="form-control shadow-none">
+                                <input name="pass" type="password" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Xác nhận mật khẩu</label>
-                                <input type="password" class="form-control shadow-none">
+                                <input name="cpass" type="password" class="form-control shadow-none" required>
                             </div>
                         </div>
                     </div>
                     
                     <div class="text-center my-1">
-                        <button class="btn btn-dark shadow-none" type="submit">ĐĂNG KÍ NGAY</button>
+                        <button name="create_user" class="btn btn-dark shadow-none" data-bs-dismiss="modal" type="submit">ĐĂNG KÍ NGAY</button>
                     </div>
                 </div>
             </form>
@@ -132,3 +136,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 </div>
+
+<?php echo isset($alert) ? $alert : ''; ?>

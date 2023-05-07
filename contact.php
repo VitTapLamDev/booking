@@ -9,6 +9,8 @@
 </head>
 <body class="bg-light">
     <?php require('inc/header.php')?>
+    <?php include 'db_config.php'; ?>
+    <?php echo isset($alert) ? $alert : ''; ?>
     <div class="my-5 px-4">
         <h2 class="fw-bold h-font text-center">LIÊN HỆ VỚI CHÚNG TÔI</h2>
         <div class="h-line bg-dark"></div>
@@ -42,29 +44,29 @@
             </div>
             <div class="col-lg-6 col-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4">
-                    <form action="">
+                    <form method="POST">
                         <h5>Gửi hỗ trợ cho chúng tôi</h5>
                         <div class="mb-3">
                             <i class="bi bi-person-fill"></i>
                             <label for="" class="form-label" style="font-weight: 500;">Họ và Tên</label>
-                            <input type="text" class="form-control shadow-none">
+                            <input name="name" type="text" class="form-control shadow-none" require>
                         </div>
                         <div class="mb-3">
                             <i class="bi bi-envelope-at-fill"></i>
                             <label for="" class="form-label" style="font-weight: 500;">Email</label>
-                            <input type="email" class="form-control shadow-none">
+                            <input name="email" type="email" class="form-control shadow-none" require>
                         </div>
                         <div class="mb-3">
                             <i class="bi bi-card-heading"></i>
                             <label for="" class="form-label" style="font-weight: 500;">Tiêu đề</label>
-                            <input type="text" class="form-control shadow-none">
+                            <input name="subject" type="text" class="form-control shadow-none" require>
                         </div>
                         <div class="mb-3">
                             <i class="bi bi-body-text"></i>
                             <label for="" class="form-label" style="font-weight: 500;">Nội dung</label>
-                            <textarea name="" class="form-control shadow-none" rows="5" style="resize: none"></textarea>
+                            <textarea name="message" class="form-control shadow-none" rows="5" style="resize: none" require></textarea>
                         </div>
-                        <button type="submit" class="btn-sm text-white custom-bg mt-3">
+                        <button name="add_user_queries" type="submit" class="btn-sm text-white custom-bg mt-3">
                             <i class="bi bi-send-fill" style="padding-right: 5px;"></i>GỬI
                         </button>
                     </form>
@@ -72,6 +74,7 @@
             </div>
         </div>
     </div>
+    
     <?php require('inc/footer.php')?> 
 
 </body>

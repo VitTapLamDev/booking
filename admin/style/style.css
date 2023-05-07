@@ -35,19 +35,27 @@ div.login-form{
     border: 1px solid var(--teal_hover);
 }
 
-/* #dashboard-menu{
-    position: absolute;
-    z-index: 1;
+#dashboard-menu{
+    position: fixed;
     height: 100%;
+    z-index: 11;
 }
 
-#main-content{
-    position: relative;
-    z-index: 2;
-} */
 div.login-card{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50% -50%);
+}
+@media screen and (max-width: 1100px) {
+    #dashboard-menu{
+        height: auto;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+    }
+    #main-content{
+        position: absolute;
+        z-index: 1;
+    }
 }

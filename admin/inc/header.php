@@ -24,10 +24,13 @@
                         <a class="nav-link text-light" href="#">USERS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">HOTELS</a>
+                        <a class="nav-link text-light" href="#">ORDER</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="inc/settings.php">SETTINGS</a>
+                        <a class="nav-link text-light" href="#">USER QUERIES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="settings.php">SETTINGS</a>
                     </li>
                 </ul>
             </div>
