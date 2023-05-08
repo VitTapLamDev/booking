@@ -20,180 +20,112 @@
         <div class="row">
             <div class="col-lg-3 col-md-12 mb-lg-0 mb-4">
                 <nav class="navbar navbar-expand-lg navbar-light bg-white rounded shadow">
-                    <div class="container-fluid flex-lg-column align-items-stretch">
-                        <h4 class="mt-2">ĐẶT PHÒNG NGAY</h4>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#filterDropdown" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse flex-column align-items-stretch mt-2" id="filterDropdown">
-                            <div class="border bg-light p-3 rounded mb-3">
-                                <h5 class="mb-3" style="font-size: 18px;">Đặt phòng khách sạn</h5>
-                                <label for="" class="form-label">Địa điểm</label>
-                                <input type="text" class="form-control shadow-none mb-3">
-                            </div>
-                            <div class="border bg-light p-3 rounded mb-3">
-                                <h5 class="mb-3" style="font-size: 18px;">Ngày đến - Ngày Đi</h5>
-                                <label for="" class="form-label">Check-in</label>
-                                <input type="date" class="form-control shadow-none mb-3">
-                                <label for="" class="form-label">Check-out</label>
-                                <input type="date" class="form-control shadow-none">
-                            </div>
-                            <div class="border bg-light p-3 rounded mb-3">
-                                <h5 class="mb-3" style="font-size: 18px;">Dịch vụ - Tiện ích</h5>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="SV-Car" class="form-check-input shadow-none me-1">
-                                    <label class="form-check-label" for="SV-Car">Đưa Đón</label>
+                    <form method="POST" action="">
+                        <div class="container-fluid flex-lg-column align-items-stretch">
+                            <h4 class="mt-2">ĐẶT PHÒNG NGAY</h4>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#filterDropdown" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse flex-column align-items-stretch mt-2" id="filterDropdown">
+                                <div class="border bg-light p-3 rounded mb-3">
+                                    <h5 class="mb-3" style="font-size: 18px;">Đặt phòng khách sạn</h5>
+                                    <label for="" class="form-label">Địa điểm</label>
+                                    <input type="text" name="location_inp" class="form-control shadow-none mb-3">
                                 </div>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="SV-Laundry" class="form-check-input shadow-none me-1">
-                                    <label class="form-check-label" for="SV-Laundry">Giặt là</label>
+                                <div class="border bg-light p-3 rounded mb-3">
+                                    <h5 class="mb-3" style="font-size: 18px;">Ngày đến - Ngày Đi</h5>
+                                    <label for="" class="form-label">Check-in</label>
+                                    <input type="date" class="form-control shadow-none mb-3">
+                                    <label for="" class="form-label">Check-out</label>
+                                    <input type="date" class="form-control shadow-none">
                                 </div>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="SV-Gym" class="form-check-input shadow-none me-1">
-                                    <label class="form-check-label" for="SV-Gym">Phòng Gym</label>
+                                <div class="border bg-light p-3 rounded mb-3">
+                                    <h5 class="mb-3" style="font-size: 18px;">Hạng phòng</h5>
+                                    <div class="mb-2">
+                                        <input type="checkbox" id="SV-Car" class="form-check-input shadow-none me-1">
+                                        <label class="form-check-label" for="single_room">Phòng đơn</label>
+                                    </div>
+                                    <div class="mb-2">
+                                        <input type="checkbox" id="SV-Laundry" class="form-check-input shadow-none me-1">
+                                        <label class="form-check-label" for="double_room">Phòng đôi</label>
+                                    </div>
+                                    <div class="mb-2">
+                                        <input type="checkbox" id="SV-Gym" class="form-check-input shadow-none me-1">
+                                        <label class="form-check-label" for="suit_room">Phòng chủ tịch</label>
+                                    </div>
                                 </div>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="SV-Pool" class="form-check-input shadow-none me-1">
-                                    <label class="form-check-label" for="SV-Pool">Bể bơi</label>
+                                <div class="row"> 
+                                    <div class="col"></div>
+                                    <div class="col col-mb-6" >
+                                        <button type="submit" name="search_rooms" class='btn btn-dark shadow-none'>TÌM KIẾM</button>
+                                    </div>
                                 </div>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="SV-Restaurant" class="form-check-input shadow-none me-1">
-                                    <label class="form-check-label" for="SV-Restaurant">Nhà hàng</label>
-                                </div>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="SV-Spa" class="form-check-input shadow-none me-1">
-                                    <label class="form-check-label" for="SV-Spa">Spa</label>
-                                </div>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="SV-Bar" class="form-check-input shadow-none me-1">
-                                    <label class="form-check-label" for="SV-Bar">Quầy Bar</label>
-                                </div>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="SV-Casino" class="form-check-input shadow-none me-1">
-                                    <label class="form-check-label" for="SV-Casino">Casino</label>
-                                </div>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="SV-MeetingRoom" class="form-check-input shadow-none me-1">
-                                    <label class="form-check-label" for="SV-MeetingRoom">Phòng họp</label>
-                                </div> 
-                            </div>
-                            <div class="border bg-light p-3 rounded mb-3">
-                                <h5 class="mb-3" style="font-size: 18px;">Số lượng người</h5>
-                                <label for="" class="form-label">Số lượng người</label>
-                                <input type="number" class="form-control shadow-none mb-3">
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </nav>
             </div>
 
             <div class="col-lg-9 col-md-12 px-4">
-                <div class="card mb-4 border-0 shadow">
-                    <div class="row g-0 p-3 align-items-center">
-                        <div class="col-md-5 px-lg-3">
-                            <img src="/assets/images/room/single.jpg" class="img-fluid rounded">
-                        </div>
-                        <div class="col-md-6">
-                            <h5 class="mb-1">Khách Sạn 1</h5>
-                            <div class="features mb-4">
-                                <h6 class="mb-1">Dịch vụ</h6>
-                                <span class="badge bg-light text-dark text-wrap">
-                                    Xe đưa đón sân bay
-                                </span>
-                                <span class="badge bg-light text-dark text-wrap">
-                                    Nhà Hàng
-                                </span>
-                                <span class="badge bg-light text-dark text-wrap">
-                                    Bể Bơi
-                                </span>
-                            </div>
-                            <div class="col-md-12">
-                                <h6 class="mb-6">Địa chỉ: Chiến Thắng, Thanh Trì, Hà Đông, Hà Nội</h5>
-                            </div>
-                        </div>
-                    </div>  
-                </div>
-                <div class="card mb-4 border-0 shadow">
-                    <div class="row g-0 p-3 align-items-center">
-                        <div class="col-md-5 px-lg-3">
-                            <img src="/assets/images/room/single.jpg" class="img-fluid rounded">
-                        </div>
-                        <div class="col-md-6">
-                            <h5 class="mb-1">Khách Sạn 2</h5>
-                            <div class="features mb-4">
-                                <h6 class="mb-1">Dịch vụ</h6>
-                                <span class="badge bg-light text-dark text-wrap">
-                                    Xe đưa đón sân bay
-                                </span>
-                                <span class="badge bg-light text-dark text-wrap">
-                                    Nhà Hàng
-                                </span>
-                                <span class="badge bg-light text-dark text-wrap">
-                                    Bể Bơi
-                                </span>
-                            </div>
-                            <div class="col-md-12">
-                                <h6 class="mb-6">Địa chỉ: Chiến Thắng, Thanh Trì, Hà Đông, Hà Nội</h5>
-                            </div>
-                        </div>
-                    </div>  
-                </div>
-                <div class="card mb-4 border-0 shadow">
-                    <div class="row g-0 p-3 align-items-center">
-                        <div class="col-md-5 px-lg-3">
-                            <img src="/assets/images/room/single.jpg" class="img-fluid rounded">
-                        </div>
-                        <div class="col-md-6">
-                            <h5 class="mb-1">Khách Sạn 3</h5>
-                            <div class="features mb-4">
-                                <h6 class="mb-1">Dịch vụ</h6>
-                                <span class="badge bg-light text-dark text-wrap">
-                                    Xe đưa đón sân bay
-                                </span>
-                                <span class="badge bg-light text-dark text-wrap">
-                                    Nhà Hàng
-                                </span>
-                                <span class="badge bg-light text-dark text-wrap">
-                                    Bể Bơi
-                                </span>
-                            </div>
-                            <div class="col-md-12">
-                                <h6 class="mb-6">Địa chỉ: Chiến Thắng, Thanh Trì, Hà Đông, Hà Nội</h5>
-                            </div>
-                        </div>
-                    </div>  
-                </div>
-                <div class="card mb-4 border-0 shadow">
-                    <div class="row g-0 p-3 align-items-center">
-                        <div class="col-md-5 px-lg-3">
-                            <img src="/assets/images/room/single.jpg" class="img-fluid rounded">
-                        </div>
-                        <div class="col-md-6">
-                            <h5 class="mb-1">Khách Sạn 4</h5>
-                            <div class="features mb-4">
-                                <h6 class="mb-1">Dịch vụ</h6>
-                                <span class="badge bg-light text-dark text-wrap">
-                                    Xe đưa đón sân bay
-                                </span>
-                                <span class="badge bg-light text-dark text-wrap">
-                                    Nhà Hàng
-                                </span>
-                                <span class="badge bg-light text-dark text-wrap">
-                                    Bể Bơi
-                                </span>
-                            </div>
-                            <div class="col-md-12">
-                                <h6 class="mb-6">Địa chỉ: Chiến Thắng, Thanh Trì, Hà Đông, Hà Nội</h5>
-                            </div>
-                        </div>
-                    </div>  
-                </div>
+            <table class="table shadow table-bordered" >
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th class="col-md-3">Khách sạn</th>
+                        <th class="col-md-2">Hotline</th>
+                        <th class="col-md-2">Địa điểm</th>
+                        <th class="col-md-4">Chi tiết</th>
+                        <th class="col-md-3">Chỉ đường</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php   
+                        $id = 1;
+                        while ($row = mysqli_fetch_array($result)) { 
+                    ?>
+                        <tr>
+                            <td><?php echo $id++; ?></td>
+                            <td><?php echo $row['name']; ?></td>
+                            <td><?php echo $row['hotline']?></td>
+                            <td><?php echo $row['location']; ?></td>
+                            <td><?php echo $row['details']; ?></td>
+                            <td><iframe width="200" height="120" src="<?php echo $row['gmap']; ?>" frameborder="0"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+                            
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
             </div>
-
-
-        </div>
+        </div>   
     </div>
     <?php require('inc/footer.php')?> 
 
+
+    <script type="text/javascript">
+    var $table = $('#table');
+    $table.bootstrapTable({
+        url: 'list-user.php',
+        search: true,
+        pagination: true,
+        buttonsClass: 'primary',
+        showFooter: true,
+        minimumCountColumns: 2,
+        columns: [{
+            field: 'num',
+            title: '#',
+            sortable: true,
+        },{
+            field: 'first',
+            title: 'Firstname',
+            sortable: true,
+        },{
+            field: 'last',
+            title: 'Lastname',
+            sortable: true,
+            
+        },  ],
+
+    });
+</script>
 </body>
 </html>

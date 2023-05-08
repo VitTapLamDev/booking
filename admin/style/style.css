@@ -47,6 +47,16 @@ div.login-card{
     left: 50%;
     transform: translate(-50% -50%);
 }
+.table-bordered > tbody > tr > td,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > td,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > thead > tr > th {
+    border: 1px solid #dee2e6;
+    padding: 0.75rem;
+    vertical-align: middle;
+}
 @media screen and (max-width: 1100px) {
     #dashboard-menu{
         height: auto;

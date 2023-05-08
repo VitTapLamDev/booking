@@ -1,10 +1,6 @@
 <?php 
     require('db_config.php');
-    // require('/admin/inc/essentials.php');
-
 ?>
-
-
 
 <!-- Taskbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
@@ -104,7 +100,7 @@
                             </div>
                             <div class="col-md-12 ps-0 mb-3">
                                 <label class="form-label">Địa chỉ</label>
-                                <textarea name="address" class="form-control shadow-none" required rows="1"></textarea>
+                                <textarea name="address" class="form-control shadow-none" rows="1" required></textarea>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Số CCCD/Hộ chiếu</label>
@@ -123,8 +119,7 @@
                                 <input name="cpass" type="password" class="form-control shadow-none" required>
                             </div>
                         </div>
-                    </div>
-                    
+                    </div>              
                     <div class="text-center my-1">
                         <button name="create_user" class="btn btn-dark shadow-none" data-bs-dismiss="modal" type="submit">ĐĂNG KÍ NGAY</button>
                     </div>
@@ -136,5 +131,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 </div>
-
 <?php echo isset($alert) ? $alert : ''; ?>

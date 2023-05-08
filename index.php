@@ -428,9 +428,9 @@
             effect: "coverflow",
             grabCursor: true,
             centeredSlides: true,
-            slidesPerView: "auto",
+            // slidesPerView: "auto",
             loop: true,
-            slidesPerView: "3",
+            slidesPerView: 3,
     
             coverflowEffect: {
                 rotate: 50,
