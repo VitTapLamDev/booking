@@ -404,11 +404,8 @@
 
         </div>
     </div>
-
     <?php require('inc/footer.php')?>
-    
     <script src="https://unpkg.com./swiper@7/swiper-bundle.min.js"></script>
-    
     <script>
         var swiper = new Swiper(".swiper-container", {
             spaceBetween: 30,

@@ -54,6 +54,9 @@ input::-webkit-inner-spin-button {
     height: 1.7px;
 }
 
+#booking_room, #booking_room_btn{
+    display: block;
+}
 @media screen and(max-width: 575px) {
     .availability-form{
         margin-top: 0px;

@@ -2,12 +2,12 @@
 
     $conn = mysqli_connect("localhost", 'root', '');
     $db = mysqli_select_db($conn, 'booking_web');
+    
     if(isset($_POST['add_user_queries'])){
         $name = $_POST['name'];
         $email = $_POST['email'];
         $subject = $_POST['subject'];
         $message = $_POST['message'];
-
         $query = "INSERT INTO `user_queries`(`name`, `email`, `subject`, `message`) VALUES ('$name','$email','$subject','$message')";
         $query_run = mysqli_query($conn, $query);
         if($query_run){
@@ -27,15 +27,14 @@
         $pass = $_POST['pass'];
         $cpass = $_POST['cpass'];
         $hashpass = md5($pass);
-
-        $query = "INSERT INTO `user_cred`(`name`, `email`, `address`, `phonenumber`, `ID`, `dob`, `password`) VALUES ('$name','$email','$address','$phonenumber','$id','$dob','$hashpass')";
-        $q = "SELECT * FROM `user_cred` WHERE `email`='$email'";
+        $q = "SELECT * FROM `user_cred` WHERE `email` = '$email'";
         $result_regis = mysqli_query($conn, $q);
         if($pass != $cpass){
             $alert = '<div class="alert alert-danger" style"pos" role="alert">Mật khẩu không trùng khớp. Vui lòng kiểm tra lại!</div>';
         }elseif(mysqli_num_rows($result_regis)==1){
             $alert = '<div class="alert alert-danger" role="alert">Email đã tồn tại. Vui lòng thử lại!</div>';
         }else{
+            $query = "INSERT INTO `user_cred`(`user_name`, `email`, `address`, `phonenumber`, `ID`, `dob`, `password`) VALUES ('$name','$email','$address','$phonenumber','$id','$dob','$hashpass')";
             $query_run = mysqli_query($conn, $query);
             $alert = '<div class="alert alert-success" role="alert">Tạo tài khoản thành công!</div>';
         }
@@ -54,28 +53,29 @@
         }
     }
 
-
     if(!$conn){
         die("Connection failed: " + mysqli_connect_errno());
     }else{
-        $sql = "SELECT * FROM `hotel_cred` WHERE 1";
+        $sql = "SELECT * FROM `hotel_room` WHERE `room_code` LIKE 'double'";
         $result = mysqli_query($conn, $sql);
     }
 
     if(!$conn){
         die("Connection failed: " + mysqli_connect_errno());
     }else{
-        if(isset($_POST['search_rooms'])){
+        if(isset($_POST['search_hotels'])){
             $location = $_POST['location_inp'];
+            $room_code = $_POST['room_code'];
+            $check_in = $_POST['check_in'];
+            $check_out = $_POST['check_out']; 
+            $number = $_POST['number'];
 
-            $query = "SELECT * FROM `hotel_cred` WHERE `location` LIKE '$location'";     
+            $query = "SELECT * FROM `hotel_room` WHERE `location` LIKE '$location' AND `room_code` LIKE '$room_code'";     
             $result = mysqli_query($conn, $query);
             if(mysqli_num_rows($result)==0){
                 $alert = '<div class="alert alert-danger" role="alert">Không tìm thấy khách sạn phù hợp. Vui lòng thử lại!</div>';
-                // header('Location: ');
             }
-
         }
     }
-    
+
 ?>

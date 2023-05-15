@@ -15,7 +15,7 @@
                     <a class="nav-link active" aria-current="page" href="index.php">Trang chủ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="rooms.php">Phòng</a>
+                    <a class="nav-link" href="hotels.php">Khách sạn</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="service.php">Dịch vụ</a>
@@ -127,7 +127,6 @@
             </form>
         </div>  
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 </div>
