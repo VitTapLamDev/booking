@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 <div class="border bg-light p-3 rounded mb-3" style="margin: 10px;">
-                                    <h5 class="" style="font-size: 18px; padding: 5px 5px 10px 0;">Hạng phòng</h5>
+                                    <h5 class="" style="font-size: 18px; padding: 5px 5px 10px 0; display: inline-block;">Hạng phòng</h5>
                                     <label for="" class="form-label" style="padding-bottom: 5px">Hạng phòng cần tìm: </label> <br>
                                     <select name="room_code" id="" style="padding: 4px">
                                         <option value="standard">Cơ bản</option>
@@ -59,7 +59,7 @@
                                 <form class="d-flex">
                                     <div class="row justify-content-between align-items-center" style="margin: 10px;"> 
                                         <div class="col-lg-12 col-md-12 mb-4">
-                                            <button id="showTable" name="search_hotels" type="submit" class='btn btn-dark shadow-none mybtn'>TÌM KIẾM</button>  
+                                            <button name="search_hotels" type="submit" class='btn btn-dark shadow-none mybtn'>TÌM KIẾM</button>  
                                         </div>
                                     </div>
                                 </form>
