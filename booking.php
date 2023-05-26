@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,38 +11,14 @@
     <?php require('inc/db_config.php')?>
 </head>
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">Hotel Booking</a>
-            <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Trang chủ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="hotels.php">Khách sạn</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="service.php">Dịch vụ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Hỗ trợ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.php">Về chúng tôi</a>
-                    </li>
-                </ul>
-                <div class="d-flex">
-                    <button type="button" class="btn btn-outline-dark shadow-none me-lg-3 me-2" data-bs-toggle="modal" onclick="window.location.href = 'user.php';">
-                        <i class="bi bi-person-circle me-2"></i>Trang Cá Nhân
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <?php 
+        session_start();
+        if (isset($_SESSION['account'])){
+            require('inc/header_login.php');
+        }else{
+            require('inc/header.php');
+        }
+    ?>
     <?php echo isset($alert) ? $alert : ''; ?>
 
     <div class="my-5 px-4">
@@ -159,40 +137,40 @@
                             <div class="row">
                                 <div class="col-md-6 ps-0 mb-3">
                                     <label class="form-label">Họ và tên</label>
-                                    <input name="name" type="text" class="form-control shadow-none" require>
+                                    <input name="name" type="text" class="form-control shadow-none" value="<?php  ?>" readonly>
                                 </div>
                                 <div class="col-md-6 ps-0 mb-3">
                                     <label class="form-label">Số điện thoại </label>
-                                    <input name="phonenumber" type="number" class="form-control shadow-none" required>
+                                    <input name="phonenumber" type="number" class="form-control shadow-none" value="<?php  ?>" readonly>
                                 </div>
                                 <div class="col-md-6 ps-0 mb-3">
                                     <label class="form-label">Số CCCD/Hộ chiếu</label>
-                                    <input name="ID" type="number" class="form-control shadow-none" required>
+                                    <input name="ID" type="number" class="form-control shadow-none" value="<?php  ?>" readonly>
                                 </div>
                                 <div class="col-md-6 ps-0 mb-3">
                                     <label class="form-label">Khách sạn </label>
-                                    <input name="hotel_name" type="text" class="form-control shadow-none" required>
+                                    <input name="hotel_name" type="text" class="form-control shadow-none" value="<?php  ?>" readonly>
                                 </div>
                                 <div class="col-md-6 ps-0 mb-3">
                                     <label class="form-label">Hạng Phòng</label>
-                                    <input name="room_code" type="text" class="form-control shadow-none" required>
+                                    <input name="room_code" type="text" class="form-control shadow-none" value="<?php echo $_SESSION['roomtype'] ; ?>" readonly>
                                 </div>
                                 <div class="col-md-6 ps-0 mb-3">
                                     <label class="form-label">Số lượng phòng</label>
-                                    <input name="number" type="number" class="form-control shadow-none" required>
+                                    <input name="number" type="number" class="form-control shadow-none" value="<?php echo $_SESSION['numofroom'] ; ?>" readonly>
                                 </div>
                                 <div class="col-md-6 ps-0 mb-3">
                                     <label class="form-label">Check-in</label>
-                                    <input name="checkin_bill" type="date" class="form-control shadow-none" required>
+                                    <input name="checkin_bill" type="date" class="form-control shadow-none" value="<?php echo $_SESSION['checkin']; ?>" readonly>
                                 </div>
                                 <div class="col-md-6 ps-0 mb-3">
                                     <label class="form-label">Check-out</label>
-                                    <input name="checkout_bill" type="date" class="form-control shadow-none" required>
+                                    <input name="checkout_bill" type="date" class="form-control shadow-none" value="<?php echo $_SESSION['checkout']; ?>" readonly>
                                 </div>
                             </div>
                         </div>              
                         <div class="text-center my-1">
-                            <button name="booking_room" class="btn btn-dark shadow-none booking_room" data-bs-dismiss="modal" type="submit">ĐẶT PHÒNG NGAY</button>
+                            <button name="booked" class="btn btn-dark shadow-none booking_room" data-bs-dismiss="modal" type="submit">ĐẶT PHÒNG NGAY</button>
                         </div>
                     </div>
                 </form>
@@ -203,10 +181,4 @@
     </div>
     <?php require('inc/footer.php')?> 
 
-    <script>
-        $("#submit").click(function () {
-            var text = $("#textarea").val();
-            $("#modal_body").html(text);
-        });
-    </script>
 </html>

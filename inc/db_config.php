@@ -73,7 +73,14 @@
             $check_in = $_POST['check_in'];
             $check_out = $_POST['check_out']; 
             $number = $_POST['number'];
-            
+
+            session_start();
+            $_SESSION['location'] = $location;
+            $_SESSION['checkin'] = $check_in;
+            $_SESSION['checkout'] = $check_out;
+            $_SESSION['numofroom'] = $number;
+            $_SESSION['roomtype'] = $room_code;
+
             $sql1 = "SELECT `number` FROM `hotel_room` WHERE `location` LIKE '$location' AND `room_code` LIKE '$room_code'";
             $result1 = $conn->query($sql1);
             if ($result1) {
@@ -102,6 +109,18 @@
                     $alert = '<div class="alert alert-danger" role="alert">Không tìm thấy khách sạn phù hợp. Vui lòng thử lại!</div>';
                 }
             }
+        }
+    }
+
+
+    if(!$conn){
+        die("Connection failed: " + mysqli_connect_errno());
+    }else{
+        if(isset($_POST['user_details'])){
+            $email = $_SESSION['account'];
+            $query = "SELECT * FROM `user_cred` WHERE `email`='$email'";     
+            $result = mysqli_query($conn, $query);
+            echo $email;
         }
     }
 

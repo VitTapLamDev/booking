@@ -9,7 +9,14 @@
 </head>
 <body class="bg-light">
     
-    <?php require('inc/header.php')?>
+    <?php 
+        session_start();
+        if (isset($_SESSION['account'])){
+            require('inc/header_login.php');
+        }else{
+            require('inc/header.php');
+        }
+    ?>
     <!-- Swiper -->
     <div class="container-fluid px-lg-4 mt-4">
         <div class="swiper swiper-container">
@@ -78,7 +85,7 @@
     </div>
     
     <!-- Rooms -->
-    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">HỆ THỐNG PHÒNG NGỦ</h2>
+    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">HỆ THỐNG KHÁCH SẠN</h2>
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6 my-3">
@@ -124,10 +131,6 @@
                                 </span>
                             </h6>
                         </div>
-                        <div class="d-flex justify-content-evenly mb-2">
-                            <a href="" class="btn-sm text-white custom-bg shadow-none">Đặt Ngay</a>
-                            <a href="" class="btn btn-sm btn-outline-dark shadow-none">Chi tiết</a>
-                        </div>  
                     </div>
                 </div>
             </div>
@@ -175,10 +178,6 @@
                                 </span>
                             </h6>
                         </div>
-                        <div class="d-flex justify-content-evenly mb-2">
-                            <a href="" class="btn-sm text-white custom-bg shadow-none">Đặt Ngay</a>
-                            <a href="" class="btn btn-sm btn-outline-dark shadow-none">Chi tiết</a>
-                        </div>  
                     </div>
                 </div>
             </div>
@@ -225,11 +224,7 @@
                                     <i class="bi bi-star-fill text-warning"></i>
                                 </span>
                             </h6>
-                        </div>
-                        <div class="d-flex justify-content-evenly mb-2">
-                            <a href="" class="btn-sm text-white custom-bg shadow-none">Đặt Ngay</a>
-                            <a href="" class="btn btn-sm btn-outline-dark shadow-none">Chi tiết</a>
-                        </div>  
+                        </div> 
                     </div>
                 </div>
             </div>

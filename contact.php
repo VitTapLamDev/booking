@@ -8,7 +8,14 @@
     <?php require('inc/links.php')?>
 </head>
 <body class="bg-light">
-    <?php require('inc/header.php')?>
+    <?php 
+        session_start();
+        if (isset($_SESSION['account'])){
+            require('inc/header_login.php');
+        }else{
+            require('inc/header.php');
+        }
+    ?>
     <?php include 'inc/db_config.php'; ?>
 
     <div class="my-5 px-4">
