@@ -49,7 +49,7 @@
         $query = "SELECT * FROM `user_cred` WHERE `email`='$email_log' and `password`='$pass_log'";     
         $result_user = mysqli_query($conn, $query);
         if(mysqli_num_rows($result_user)==1){
-            header('Location: booking.php');
+            header('Location: index.php');
             echo $result_user;
             $alert = '<div class="alert alert-success" role="alert">Đăng nhập thành công!</div>';
         }else{
@@ -60,7 +60,7 @@
     if(!$conn){
         die("Connection failed: " + mysqli_connect_errno());
     }else{
-        $sql = "SELECT * FROM `hotel_room` WHERE `room_code` LIKE 'double'";
+        $sql = "SELECT * FROM `hotel_room` WHERE `room_code` LIKE 'null'";
         $result = mysqli_query($conn, $sql);
     }
 
@@ -74,7 +74,6 @@
             $check_out = $_POST['check_out']; 
             $number = $_POST['number'];
 
-            session_start();
             $_SESSION['location'] = $location;
             $_SESSION['checkin'] = $check_in;
             $_SESSION['checkout'] = $check_out;
@@ -90,7 +89,8 @@
             $sql2 = "SELECT SUM(number) FROM `booking` 
                         WHERE `location` LIKE '$location' AND `room_code` LIKE '$room_code' 
                             AND `check_in` BETWEEN '$check_in' AND '$check_out' OR `check_out` BETWEEN '$check_in' AND '$check_out'
-                        GROUP BY `id_hotel`, `room_code`";
+                            AND `status` = 0
+                        GROUP BY `hotel_id`, `room_code`";
             $result2 = $conn->query($sql2);
             if ($result2) {
                 $row2 = $result2->fetch_assoc();
@@ -107,11 +107,17 @@
                 $result = mysqli_query($conn, $query);
                 if(mysqli_num_rows($result)==0){
                     $alert = '<div class="alert alert-danger" role="alert">Không tìm thấy khách sạn phù hợp. Vui lòng thử lại!</div>';
+                }else{
+                    $alert= '<div class="alert alert-light " role="alert">   Điểm đến: '.$_SESSION['location'].
+                                                                            ' <i class="bi bi-diamond-fill"></i> Ngày nhận phòng: '.$_SESSION['checkin'].
+                                                                            ' <i class="bi bi-diamond-fill"></i> Ngày trả phòng: '.$_SESSION['checkout'].
+                                                                            ' <i class="bi bi-diamond-fill"></i> Loại phòng: '.$_SESSION['roomtype'].
+                                                                            ' <i class="bi bi-diamond-fill"></i> Số lượng phòng: '.$_SESSION['numofroom'].
+                            '</div>';
                 }
             }
         }
     }
-
 
     if(!$conn){
         die("Connection failed: " + mysqli_connect_errno());
@@ -120,8 +126,14 @@
             $email = $_SESSION['account'];
             $query = "SELECT * FROM `user_cred` WHERE `email`='$email'";     
             $result = mysqli_query($conn, $query);
-            echo $email;
         }
     }
+
+    if (isset($_POST['data'])) {
+        $rowData = json_decode($_POST['data'], true);
+        $_SESSION['hotel_booked'] = $rowData[0];
+        $_SESSION['price'] = $rowData[1];
+    }
+        
 
 ?>

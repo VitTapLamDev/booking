@@ -56,22 +56,22 @@
                         <div class="mb-3">
                             <i class="bi bi-person-fill"></i>
                             <label for="" class="form-label" style="font-weight: 500;">Họ và Tên</label>
-                            <input name="name" type="text" class="form-control shadow-none" require>
+                            <input name="name" type="text" class="form-control shadow-none" required>
                         </div>
                         <div class="mb-3">
                             <i class="bi bi-envelope-at-fill"></i>
                             <label for="" class="form-label" style="font-weight: 500;">Email</label>
-                            <input name="email" type="email" class="form-control shadow-none" require>
+                            <input name="email" type="email" class="form-control shadow-none" required>
                         </div>
                         <div class="mb-3">
                             <i class="bi bi-card-heading"></i>
                             <label for="" class="form-label" style="font-weight: 500;">Tiêu đề</label>
-                            <input name="subject" type="text" class="form-control shadow-none" require>
+                            <input name="subject" type="text" class="form-control shadow-none" required>
                         </div>
                         <div class="mb-3">
                             <i class="bi bi-body-text"></i>
                             <label for="" class="form-label" style="font-weight: 500;">Nội dung</label>
-                            <textarea name="message" class="form-control shadow-none" rows="5" style="resize: none" require></textarea>
+                            <textarea name="message" class="form-control shadow-none" rows="5" style="resize: none" required></textarea>
                         </div>
                         <button name="add_user_queries" type="submit" class="btn-sm text-white custom-bg mt-3">
                             <i class="bi bi-send-fill" style="padding-right: 5px;"></i>GỬI
@@ -83,6 +83,5 @@
     </div>
     
     <?php require('inc/footer.php')?> 
-
 </body>
 </html>

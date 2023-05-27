@@ -5,7 +5,10 @@
     $query_user = "SELECT * FROM `user_cred` WHERE `email`='$email_log'";     
     $result_user = mysqli_query($conn, $query_user);
 
-    $query_history = "SELECT * FROM `booking` WHERE `email`= '$email_log'";
+    $query_booking = "SELECT * FROM `booking` WHERE `email`= '$email_log' AND `status` = 0";
+    $result_booking = mysqli_query($conn, $query_booking);
+
+    $query_history = "SELECT * FROM `booking` WHERE `email`= '$email_log' AND `status` = 1";
     $result_hotel = mysqli_query($conn, $query_history);
 ?>
 
@@ -30,37 +33,70 @@
 
     <section class="bg-light">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 mb-4 mb-sm-5">
-                    <div class="card card-style1 border-0">
-                        <div class="card-body ">
-                            <div class="row align-items-center justify-content-center">
-                                <div class="col-lg-6 mb-4 mb-lg-0 align-items-center">
-                                    <img src="/assets/images/user.png" alt="...">
+            <div class="col-lg-12 mb-4 mb-sm-5">
+                <div class="card card-style1 border-0">
+                    <div class="card-body ">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-lg-6 mb-4 mb-lg-0 align-items-center justify-content-center">
+                                <img src="/assets/images/user.png" alt="...">
+                            </div>
+                            <div class="col-lg-6 px-xl-10">
+                                <?php  while ($row = mysqli_fetch_assoc($result_user)){
+                                    $dob = $row['dob']; 
+                                    $formattedDate = date('d-m-Y', strtotime($dob));
+                                ?>
+                                <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                                    <h3 class="h2 text-white mb-0"><?php echo $row['user_name']; ?></h3>
                                 </div>
-                                <div class="col-lg-6 px-xl-10">
-                                    <?php  while ($row = mysqli_fetch_assoc($result_user)){
-                                        $dob = $row['dob']; 
-                                        $formattedDate = date('d-m-Y', strtotime($dob));
-                                    ?>
-                                    <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
-                                        <h3 class="h2 text-white mb-0"><?php echo $row['user_name']; ?></h3>
-                                    </div>
-                                    <ul class="list-unstyled mb-1-9">
-                                        <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-telephone-fill me-4\"></i>". $row['phonenumber']. "</li>"; ?>
-                                        <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-envelope-fill me-4\"></i>". $row['email']. "</li>"; ?>
-                                        <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-geo-alt-fill me-4\"></i>". $row['address']. "</li>"; ?>
-                                        <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-person-vcard-fill me-4\"></i>". $row['id']. "</li>"; ?>
-                                        <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-calendar3-event me-4\"></i>". $formattedDate. "</li>"; }?>
-                                    </ul>
-                                </div>
+                                <ul class="list-unstyled mb-1-9">
+                                    <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-telephone-fill me-4\"></i>". $row['phonenumber']. "</li>"; ?>
+                                    <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-envelope-fill me-4\"></i>". $row['email']. "</li>"; ?>
+                                    <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-geo-alt-fill me-4\"></i>". $row['address']. "</li>"; ?>
+                                    <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-person-vcard-fill me-4\"></i>". $row['id']. "</li>"; ?>
+                                    <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-calendar3-event me-4\"></i>". $formattedDate. "</li>"; }?>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div>
+
+        <div class="col-lg-12 px-4">
+            <span class="section-title text-primary mb-3 mb-sm-4">Đơn đặt phòng: </span>
+        </div>
+        <div class="col-lg-12 px-4">
+            <table class="table shadow table-bordered" id="hotel_room">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Khách sạn</th>
+                        <th>Hotline</th>
+                        <th>Địa chỉ</th>
+                        <th>Hạng phòng</th>
+                        <th>Giá</th>
+                        <th>Trạng thái đơn hàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        $id = 1;
+                        while ($row = mysqli_fetch_assoc($result_booking)) : 
+                    ?>
+                    <tr class="align-items-center justify-content-center">
+                        <td><?php echo $id++ ?></td>
+                        <td><?php echo $row['hotel_name']; ?></td>             
+                        <td><?php echo $row['hotline']?></td>
+                        <td><?php echo $row['details']; ?></td>
+                        <td><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip"); ?></td>
+                        <td><?php echo $row['price'].'VND/Đêm'?></td>
+                        <td><span class="badge text-bg-success">Đã Thanh Toán</span></td>
+                    </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>  
+        </div>                            
+
         <div class="col-lg-12 px-4">
             <span class="section-title text-primary mb-3 mb-sm-4">Lịch sử đặt phòng: </span>
         </div>
@@ -74,7 +110,6 @@
                         <th>Địa chỉ</th>
                         <th>Hạng phòng</th>
                         <th>Giá</th>
-                        <th>Bản đồ</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -90,7 +125,6 @@
                         <td><?php echo $row['details']; ?></td>
                         <td><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip"); ?></td>
                         <td><?php echo $row['price'].'VND/Đêm'?></td>
-                        <td><iframe width="200" height="120" src="<?php echo $row['gmap']; ?>" frameborder="0"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
                         <td><button name="rating_btn" type="submit" class='btn btn-dark shadow-none mybtn' data-bs-toggle="modal" data-bs-target="#ratingModal">GỬI ĐÁNH GIÁ</button>  </td>
                     </tr>
                     <?php endwhile; ?>

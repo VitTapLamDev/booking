@@ -25,18 +25,18 @@
                                 <div class="border bg-light p-3 rounded mb-3" style="margin: 10px;">
                                     <h5 class="mb-3" style="font-size: 18px;">Bạn muốn đi đâu?</h5>
                                     <label for="" class="form-label">Điểm đến</label>
-                                    <input type="text" name="location_inp" class="form-control shadow-none mb-3">
+                                    <input type="text" name="location_inp" class="form-control shadow-none mb-3" required>
                                 </div>
                                 <div class="border bg-light p-3 rounded mb-3" style="margin: 10px;">
                                     <h5 class="mb-3" style="font-size: 18px;">Ngày đến - Ngày Đi</h5>
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <label for="" class="form-label">Check-in</label>
-                                            <input name="check_in" type="date" class="form-control shadow-none mb-3">
+                                            <input name="check_in" type="date" class="form-control shadow-none mb-3" required>
                                         </div>
                                         <div class="col-lg-6">
                                         <label for="" class="form-label">Check-out</label>
-                                            <input name="check_out" type="date" class="form-control shadow-none mb-3">
+                                            <input name="check_out" type="date" class="form-control shadow-none mb-3" required>
                                         </div>
                                     </div>
                                 </div>
@@ -44,13 +44,14 @@
                                     <h5 class="mb-3" style="font-size: 18px;">Số lượng phòng</h5>
                                     <div class="col-lg-12">
                                         <label for="" class="form-label">Số lượng phòng: </label>
-                                        <input name="number" type="number" class="form-control shadow-none mb-3">
+                                        <input name="number" type="number" class="form-control shadow-none mb-3" required>
                                     </div>
                                 </div>
                                 <div class="border bg-light p-3 rounded mb-3" style="margin: 10px;">
                                     <h5 class="" style="font-size: 18px; padding: 5px 5px 10px 0; display: inline-block;">Hạng phòng</h5>
                                     <label for="" class="form-label" style="padding-bottom: 5px">Hạng phòng cần tìm: </label> <br>
                                     <select name="room_code" id="" style="padding: 4px">
+                                        <option disabled selected value="">Hạng phòng cần tìm</option>
                                         <option value="standard">Cơ bản</option>
                                         <option value="double">Phòng đôi</option>
                                         <option value="vip">Vip</option>

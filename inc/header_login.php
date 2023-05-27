@@ -2,10 +2,9 @@
     require('db_config.php');
     
 ?>
-
 <!-- Taskbar -->
-<form action="" method="POST">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
+<form action="" method="POST" class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm">
         <div class="container-fluid">
             <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">Hotel Booking</a>
             <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,14 +29,15 @@
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <button name="user_details" type="button" class="btn btn-outline-dark shadow-none me-lg-3 me-2" data-bs-toggle="modal" onclick="window.location.href = 'user.php';">
-                        <i class="bi bi-person-circle me-2"></i>Trang Cá Nhân
+                    <button name="user_details" type="button" class="btn btn-outline-dark shadow-none me-lg-3 me-2" onclick="window.location.href = 'user.php';">
+                        <i class="bi bi-person-circle me-2"></i>Trang cá nhân
                     </button>
                     <button type="button" class="btn btn-outline-dark shadow-none me-lg-3 me-2" onclick="window.location.href = 'logout.php';">
-                        <i class="bi bi-box-arrow-right me-2"></i>ĐĂNG XUẤT
+                        <i class="bi bi-box-arrow-right me-2"></i>Đăng xuất
                     </button>
                 </div>
             </div>
         </div>
     </nav>
 </form>
+<?php echo isset($alert) ? $alert : ''; ?>

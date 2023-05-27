@@ -55,20 +55,20 @@
                     <div class="row align-items-end">
                         <div class="col-lg-3 mb-3">
                             <label for="" class="form-label check-in">Địa điểm</label>
-                            <input type="text" class="form-control shadow-none">
+                            <input type="text" class="form-control shadow-none" required>
                         </div>
                         <div class="col-lg-3 mb-3">
                             <label for="" class="form-label check-in">Check-in</label>
-                            <input type="date" class="form-control shadow-none">
+                            <input type="date" class="form-control shadow-none" required>
                         </div>
                         <div class="col-lg-3 mb-3">
                             <label for="" class="form-label check-in">Check-out</label>
-                            <input type="date" class="form-control shadow-none">
+                            <input type="date" class="form-control shadow-none" required>
                         </div>
                         <div class="col-lg-2 mb-3">
-                            <label for="" class="form-label check-in">Khách</label>
-                            <select class="form-select shadow-none">
-                                <option disabled selected>Số lượng người</option>
+                            <label for="" class="form-label check-in">Số lượng phòng ngủ</label>
+                            <select class="form-select shadow-none" required>
+                                <option disabled selected>Số lượng</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -400,8 +400,9 @@
         </div>
     </div>
     <?php require('inc/footer.php')?>
-    <script src="https://unpkg.com./swiper@7/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
+        
         var swiper = new Swiper(".swiper-container", {
             spaceBetween: 30,
             effect: "fade",
