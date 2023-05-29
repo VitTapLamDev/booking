@@ -81,10 +81,15 @@
             $_SESSION['roomtype'] = $room_code;
 
             $sql1 = "SELECT `number` FROM `hotel_room` WHERE `location` LIKE '$location' AND `room_code` LIKE '$room_code'";
-            $result1 = $conn->query($sql1);
-            if ($result1) {
-                $row1 = $result1->fetch_assoc();
-                $total_room = $row1["number"];
+            $result1 = mysqli_query($conn, $sql1);
+            if ($result) {
+                if (mysqli_num_rows($result1) > 0) {
+                    $row1 = mysqli_fetch_assoc($result1);
+                    $total_room = $row1["number"];
+                }else{
+                    $alert = '<div class="alert alert-danger" role="alert">Không tìm thấy khách sạn phù hợp. Vui lòng thử lại!</div>';
+                    $total_room = 0;
+                }
             }
             $sql2 = "SELECT SUM(number) FROM `booking` 
                         WHERE `location` LIKE '$location' AND `room_code` LIKE '$room_code' 
@@ -100,6 +105,7 @@
                     $booked_room = 0;
                 }
             }
+
             if ($number + $booked_room >= $total_room){
                 $alert = '<div class="alert alert-danger" role="alert">Không tìm thấy khách sạn phù hợp. Vui lòng thử lại!</div>';
             } else {
@@ -108,7 +114,7 @@
                 if(mysqli_num_rows($result)==0){
                     $alert = '<div class="alert alert-danger" role="alert">Không tìm thấy khách sạn phù hợp. Vui lòng thử lại!</div>';
                 }else{
-                    $alert= '<div class="alert alert-light " role="alert">   Điểm đến: '.$_SESSION['location'].
+                    $alert= '<div class="alert alert-light mx-auto" role="alert">   Điểm đến: '.$_SESSION['location'].
                                                                             ' <i class="bi bi-diamond-fill"></i> Ngày nhận phòng: '.$_SESSION['checkin'].
                                                                             ' <i class="bi bi-diamond-fill"></i> Ngày trả phòng: '.$_SESSION['checkout'].
                                                                             ' <i class="bi bi-diamond-fill"></i> Loại phòng: '.$_SESSION['roomtype'].
@@ -129,11 +135,5 @@
         }
     }
 
-    if (isset($_POST['data'])) {
-        $rowData = json_decode($_POST['data'], true);
-        $_SESSION['hotel_booked'] = $rowData[0];
-        $_SESSION['price'] = $rowData[1];
-    }
-        
 
 ?>

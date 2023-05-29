@@ -88,7 +88,7 @@
         <table class="table shadow table-bordered" id="hotel_room">
             <thead>
                 <tr>
-                    <th>STT</th>
+                    <th>ID Khách sạn</th>
                     <th>Khách sạn</th>
                     <th>Hotline</th>
                     <th>Địa chỉ</th>
@@ -105,7 +105,7 @@
                     while ($row = mysqli_fetch_assoc($result)) : 
                 ?>
                 <tr>
-                    <td><?php echo $id++ ?></td>
+                    <td><?php echo $row['id_hotel'] ?></td>
                     <td><?php echo $row['hotel_name']; ?></td>             
                     <td><?php echo $row['hotline']?></td>
                     <td><?php echo $row['details']; ?></td>
@@ -113,93 +113,35 @@
                     <td><?php echo $row['convenient']?></td>
                     <td><?php echo $row['price'].'VND/Đêm'?></td>
                     <td><iframe width="200" height="120" src="<?php echo $row['gmap']; ?>" frameborder="0"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
-                    <td><button name="booking_room" type="submit" class='btn btn-dark shadow-none mybtn' data-bs-toggle="modal" data-bs-target="#bookingModal" onclick="getData(this)">ĐẶT PHÒNG NGAY</button></td>
+                    <td><button name="booking_room" type="button" class='btn btn-dark shadow-none mybtn' onclick="getData(this); window.location.href='payment.php'">ĐẶT PHÒNG NGAY</button></td>
                 </tr>
                 <?php endwhile; ?>
             </tbody>
         </table>  
     </div>
 
-    <div class="modal fade" id="bookingModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <form id="booking-form" method="POST">
-                    <div class="modal-header">
-                        <h5 class="modal-title d-flex align-items-center"> 
-                            <i class="bi bi-person-lines-fill fs-3 me-2"></i> XÁC NHẬN THÔNG TIN ĐẶT PHÒNG 
-                        </h5>
-                        <button type="reset" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <span class="badge bg-light text-dark mb-3 text-wrap lh-base ">
-                            Lưu ý: Thông tin của bạn phải trùng khớp và sẽ được bảo mật trong suốt quá trình đặt phòng khách sạn.
-                        </span>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <?php while ($row = mysqli_fetch_assoc($result_user)): ?>
-                                <div class="col-md-6 ps-0 mb-3">
-                                    <label class="form-label">Họ và tên</label>
-                                    <input name="name" type="text" class="form-control shadow-none" value="<?php echo $row['user_name']; ?>">
-                                </div>
-                                <div class="col-md-6 ps-0 mb-3">
-                                    <label class="form-label">Số điện thoại </label>
-                                    <input name="phonenumber" type="number" class="form-control shadow-none" value="<?php echo $row['phonenumber']; ?>">
-                                </div>
-                                <div class="col-md-6 ps-0 mb-3">
-                                    <label class="form-label">Email</label>
-                                    <input name="email" type="text" class="form-control shadow-none" value="<?php echo $row['email']; ?>" readonly>
-                                    <?php endwhile; ?>
-                                </div>
-                                <div class="col-md-6 ps-0 mb-3">
-                                    <label class="form-label">Khách sạn </label>
-                                    <input name="hotel_name" type="text" class="form-control shadow-none" value="<?php echo $_SESSION['hotel_booked'];  ?>" readonly>
-                                </div>
-                                <div class="col-md-6 ps-0 mb-3">
-                                    <label class="form-label">Hạng Phòng</label>
-                                    <input name="room_code" type="text" class="form-control shadow-none" value="<?php echo $_SESSION['roomtype'] ; ?>" readonly>
-                                </div>
-                                <div class="col-md-6 ps-0 mb-3">
-                                    <label class="form-label">Số lượng phòng</label>
-                                    <input name="number" type="number" class="form-control shadow-none" value="<?php echo $_SESSION['numofroom'] ; ?>" readonly>
-                                </div>
-                                <div class="col-md-6 ps-0 mb-3">
-                                    <label class="form-label">Ngày nhận phòng:</label>
-                                    <input name="checkin_bill" type="date" class="form-control shadow-none" value="<?php echo $_SESSION['checkin']; ?>" readonly>
-                                </div>
-                                <div class="col-md-6 ps-0 mb-3">
-                                    <label class="form-label">Ngày trả phòng</label>
-                                    <input name="checkout_bill" type="date" class="form-control shadow-none" value="<?php echo $_SESSION['checkout']; ?>" readonly>
-                                </div>
-                            </div>
-                        </div>              
-                        <div class="text-center">
-                            <button class="btn btn-dark shadow-none" type="button" onclick="window.location.href = 'payment.php';">THANH TOÁN NGAY</button>
-                        </div>
-                    </div>
-                </form>
-            </div>  
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <?php require('inc/footer.php')?> 
     <script>
         function getData(button) {
-            var row = button.parentNode.parentNode; 
-            var rowData = []; 
-            var cells = row.getElementsByTagName('td');
-            rowData.push(cells[1].textContent);
-            rowData.push(cells[6].textContent);
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'inc/db_config.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                }
-            };
-            xhr.send('data=' + encodeURIComponent(JSON.stringify(rowData)));
-            console.log(rowData); 
+        var row = button.parentNode.parentNode;
+        var rowData = [];
+        var cells = row.getElementsByTagName('td');
+        rowData.push(cells[0].textContent);
+        rowData.push(cells[1].textContent);
+        rowData.push(cells[6].textContent);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'inc/save_data.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+            }
+        };
+        xhr.send('data=' + encodeURIComponent(JSON.stringify(rowData)));
         }
+        
+
     </script>
                                 
 </html>
