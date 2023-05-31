@@ -1,11 +1,6 @@
 <?php 
     session_start();
-    if (isset($_POST['data'])) {
-            
-        // if (isset($_SESSION['hotel_booked']) && $_SESSION['hotel_booked'] !== null){
-        //     unset($_SESSION['hotel_booked']);
-        //     unset($_SESSION['price']);
-        // }
+    if (isset($_POST['data'])) {    
         $rowData = json_decode($_POST['data'], true);
         $_SESSION['id_hotel'] = $rowData[0];
         $_SESSION['hotel_booked'] = $rowData[1];

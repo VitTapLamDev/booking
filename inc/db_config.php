@@ -74,6 +74,9 @@
             $check_out = $_POST['check_out']; 
             $number = $_POST['number'];
 
+            $check_in = date('d-m-Y', strtotime($check_in));
+            $check_out= date('d-m-Y', strtotime($check_out));
+
             $_SESSION['location'] = $location;
             $_SESSION['checkin'] = $check_in;
             $_SESSION['checkout'] = $check_out;
@@ -114,7 +117,7 @@
                 if(mysqli_num_rows($result)==0){
                     $alert = '<div class="alert alert-danger" role="alert">Không tìm thấy khách sạn phù hợp. Vui lòng thử lại!</div>';
                 }else{
-                    $alert= '<div class="alert alert-light mx-auto" role="alert">   Điểm đến: '.$_SESSION['location'].
+                    $alert= '<div class="alert alert-success mx-auto sticky-top" role="alert" style="top: 68px;">   Điểm đến: '.$_SESSION['location'].
                                                                             ' <i class="bi bi-diamond-fill"></i> Ngày nhận phòng: '.$_SESSION['checkin'].
                                                                             ' <i class="bi bi-diamond-fill"></i> Ngày trả phòng: '.$_SESSION['checkout'].
                                                                             ' <i class="bi bi-diamond-fill"></i> Loại phòng: '.$_SESSION['roomtype'].
