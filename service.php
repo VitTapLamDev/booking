@@ -41,7 +41,7 @@
                         <h5 class="m-0 ms-3">Đưa đón sân bay</h5>
                     </div>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim consectetur quasi at provident dolore ab aspernatur reiciendis
+                        Dịch vụ đưa đón sân bay tiện lợi đến và từ chỗ nghỉ
                     </p>
                 </div>
             </div>
