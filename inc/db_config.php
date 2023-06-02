@@ -42,7 +42,10 @@
     }
 
     if(isset($_POST['login_account'])){
+<<<<<<< HEAD
         // session_start();
+=======
+>>>>>>> 92277e845ea9365c365c5b2246d1f00894016a46
         $email_log = $_POST['email_log'];
         
         $pass_log = md5($_POST['pass_log']);

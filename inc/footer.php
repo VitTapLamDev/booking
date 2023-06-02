@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-4 p-4">
             <h3 class="h-font fw-bold fs-3 mb-2">Hotel Booking</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi obcaecati voluptates doloremque eveniet atque facere eos similique, fugiat laboriosam cumque suscipit illo eum harum nobis at dicta molestiae blanditiis possimus.</p>
+            <p>Tại SivivuTravel, chúng tôi tin rằng mọi chỗ nghỉ tuyệt vời đều xứng đáng được du khách biết tới. Đó là vì sao chúng tôi tạo điều kiện cho các nhà cung cấp chỗ nghỉ trên khắp thế giới tiếp thị chỗ nghỉ của họ, tiếp cận khách hàng mới và phát triển hoạt động kinh doanh thông qua các kênh của chúng tôi một cách nhanh chóng và dễ dàng.</p>
         </div>
         <div class="col-lg-4 p-4">
             <h5 class="mb-3">Link</h5>
