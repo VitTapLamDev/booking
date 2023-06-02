@@ -42,7 +42,6 @@
     }
 
     if(isset($_POST['login_account'])){
-        session_start();
         $email_log = $_POST['email_log'];
         $_SESSION['account'] = $email_log;
         $pass_log = md5($_POST['pass_log']);

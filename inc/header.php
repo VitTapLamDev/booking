@@ -53,11 +53,11 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Email đăng nhập</label>
-                        <input type="email" name="email_log" class="form-control shadow-none">
+                        <input type="email" name="email_log" class="form-control shadow-none" required>
                     </div>
                     <div class="mb-4">
                         <label class="form-label">Mật Khẩu</label>
-                        <input type="password" name="pass_log" class="form-control shadow-none">
+                        <input type="password" name="pass_log" class="form-control shadow-none" required>
                     </div>
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <button type="submit" name="login_account" class='btn btn-dark shadow-none'>ĐĂNG NHẬP</button>
