@@ -1,9 +1,6 @@
 <?php
     require('inc/db_config.php');
     session_start();
-    $email_log = $_SESSION['account'];
-    $query_user = "SELECT * FROM `user_cred` WHERE `email`='$email_log'";     
-    $result_user = mysqli_query($conn, $query_user);
 ?>
 
 <!DOCTYPE html>
@@ -30,44 +27,44 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 mb-lg-3 mb-0">
-                <nav class="navbar navbar-expand-lg navbar-light bg-white rounded shadow col-lg-12 col-md-12" style="justify-content: space-around;">
+                <nav class="navbar navbar-expand-lg navbar-light bg-white rounded shadow col-lg-12 col-md-12" style="justify-content: space-around; ">
                     <form method="POST" action="">
                         <h4 class="mt-2" style="margin-left: 20px;">ĐẶT PHÒNG NGAY</h4>
-                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <nav class="navbar navbar-expand-lg navbar-light">
                             <div class="container-fluid col-lg-12 col-md-12">
-                                <div class="border bg-light p-3 rounded mb-3" style="margin: 10px;">
+                                <div class="border p-3 rounded mb-3" style="margin: 10px;">
                                     <h5 class="mb-3" style="font-size: 18px;">Bạn muốn đi đâu?</h5>
                                     <label for="" class="form-label">Điểm đến</label>
-                                    <input type="text" name="location_inp" class="form-control shadow-none mb-3" required>
+                                    <input type="text" name="location_inp" class="form-control shadow-none mb-3" value="<?php echo $_SESSION['location']; ?>" required>
                                 </div>
-                                <div class="border bg-light p-3 rounded mb-3" style="margin: 10px;">
+                                <div class="border p-3 rounded mb-3" style="margin: 10px;">
                                     <h5 class="mb-3" style="font-size: 18px;">Ngày đến - Ngày Đi</h5>
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <label for="" class="form-label">Check-in</label>
-                                            <input name="check_in" type="date" class="form-control shadow-none mb-3" required>
+                                            <input name="check_in" type="date" class="form-control shadow-none mb-3" value="<?php echo $_SESSION['checkin']; ?>" required>
                                         </div>
                                         <div class="col-lg-6">
                                         <label for="" class="form-label">Check-out</label>
-                                            <input name="check_out" type="date" class="form-control shadow-none mb-3" required>
+                                            <input name="check_out" type="date" class="form-control shadow-none mb-3" value="<?php echo $_SESSION['checkout']; ?>" required>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="border bg-light p-3 rounded mb-3" style="margin: 10px;">
+                                <div class="border p-3 rounded mb-3" style="margin: 10px;">
                                     <h5 class="mb-3" style="font-size: 18px;">Số lượng phòng</h5>
                                     <div class="col-lg-12">
                                         <label for="" class="form-label">Số lượng phòng: </label>
-                                        <input name="number" type="number" class="form-control shadow-none mb-3" required>
+                                        <input name="number" type="number" class="form-control shadow-none mb-3" value="<?php echo $_SESSION['numofroom'] ?>" required>
                                     </div>
                                 </div>
-                                <div class="border bg-light p-3 rounded mb-3" style="margin: 10px;">
-                                    <h5 class="" style="font-size: 18px; padding: 5px 5px 10px 0; display: inline-block;">Hạng phòng</h5>
-                                    <label for="" class="form-label" style="padding-bottom: 5px">Hạng phòng cần tìm: </label> <br>
-                                    <select name="room_code" id="" style="padding: 4px" required>
-                                        <option disabled selected value="">Hạng phòng cần tìm</option>
-                                        <option value="standard">Cơ bản</option>
-                                        <option value="double">Phòng đôi</option>
-                                        <option value="vip">Vip</option>
+                                <div class="border p-3 rounded mb-3" style="margin: 10px; white-space:nowrap;">
+                                    <h5 class="mb-3" style="font-size: 18px;" >Hạng phòng</h5>
+                                    <label for="" class="form-label">Hạng phòng tìm kiếm: </label> <br>
+                                    <select name="room_code" class="form-control shadow-none mb-3" required>
+                                        <option disabled selected value="">Bạn muốn ở đâu?</option>
+                                        <option <?php if($_SESSION['roomtype']=="standard"){ ?> selected <?php } ?> value="standard">Cơ bản</option>
+                                        <option <?php if($_SESSION['roomtype']=="double"){ ?> selected <?php } ?> value="double">Phòng đôi</option>
+                                        <option <?php if($_SESSION['roomtype']=="vip"){ ?> selected <?php } ?> value="vip">Vip</option>
                                     </select>
                                 </div>
                                 <form class="d-flex">
@@ -88,20 +85,19 @@
         <table class="table shadow table-bordered" id="hotel_room">
             <thead>
                 <tr>
-                    <th>ID Khách sạn</th>
+                    <th>ID</th>
                     <th>Khách sạn</th>
                     <th>Hotline</th>
                     <th>Địa chỉ</th>
                     <th>Hạng phòng</th>
                     <th>TIện nghi</th>
-                    <th>Giá</th>
+                    <th class="col-lg-1">Giá <br>(VNĐ/Đêm)</th>
                     <th>Bản đồ</th>
-                    <th></th>
+                    <?php if($_SESSION['account']){ ?><th></th> <?php } ?>
                 </tr>
             </thead>
             <tbody>
                 <?php 
-                    $id = 1;
                     while ($row = mysqli_fetch_assoc($result)) : 
                 ?>
                 <tr>
@@ -111,9 +107,9 @@
                     <td><?php echo $row['details']; ?></td>
                     <td><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip"); ?></td>
                     <td><?php echo $row['convenient']?></td>
-                    <td><?php echo $row['price'].'VND/Đêm'?></td>
+                    <td><?php echo $row['price']?></td>
                     <td><iframe width="200" height="120" src="<?php echo $row['gmap']; ?>" frameborder="0"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
-                    <td><button name="booking_room" type="button" class='btn btn-dark shadow-none mybtn' onclick="getData(this); window.location.href='payment.php'">ĐẶT PHÒNG NGAY</button></td>
+                    <?php if($_SESSION['account']){ ?><td><button name="booking_room" type="button" class='btn btn-dark shadow-none mybtn' onclick="getData(this); window.location.href='payment.php'">ĐẶT PHÒNG NGAY</button></td> <?php } ?>
                 </tr>
                 <?php endwhile; ?>
             </tbody>

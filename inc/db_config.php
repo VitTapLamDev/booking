@@ -42,18 +42,39 @@
     }
 
     if(isset($_POST['login_account'])){
-        session_start();
+        // session_start();
         $email_log = $_POST['email_log'];
-        $_SESSION['account'] = $email_log;
+        
         $pass_log = md5($_POST['pass_log']);
         $query = "SELECT * FROM `user_cred` WHERE `email`='$email_log' and `password`='$pass_log'";     
         $result_user = mysqli_query($conn, $query);
         if(mysqli_num_rows($result_user)==1){
+            $_SESSION['account'] = $email_log;
             header('Location: index.php');
-            echo $result_user;
             $alert = '<div class="alert alert-success" role="alert">Đăng nhập thành công!</div>';
         }else{
             $alert = '<div class="alert alert-danger" role="alert">Tài khoản hoặc mật khẩu không đúng. Vui lòng thử lại!</div>';
+            $_SESSION['account'] = null;
+        }
+    }
+
+    if(!$conn){
+        die("Connection failed: " + mysqli_connect_errno());
+    }else{
+        if(isset($_POST['index_submitBtn'])){
+            $location = $_POST['index_location'];
+            $room_code = $_POST['index_roomcode'];
+            $check_in = $_POST['index_checkin'];
+            $check_out = $_POST['index_checkout']; 
+            $number = $_POST['index_number'];
+
+            $_SESSION['location'] = $location;
+            $_SESSION['roomtype'] = $room_code;
+            $_SESSION['checkin'] = $check_in;
+            $_SESSION['checkout'] = $check_out; 
+            $_SESSION['numofroom'] = $number;
+
+            header("Location: booking.php");
         }
     }
 
@@ -73,9 +94,6 @@
             $check_in = $_POST['check_in'];
             $check_out = $_POST['check_out']; 
             $number = $_POST['number'];
-
-            $check_in = date('d-m-Y', strtotime($check_in));
-            $check_out= date('d-m-Y', strtotime($check_out));
 
             $_SESSION['location'] = $location;
             $_SESSION['checkin'] = $check_in;

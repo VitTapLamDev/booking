@@ -51,32 +51,35 @@
         <div class="row">
             <div class="col-lg-12 bg-white shadow p-4 rounded">
                 <h5 class="mb-4">Tìm kiếm khách sạn</h5>
-                <form action="">
+                <form method="POST" action="">
                     <div class="row align-items-end">
                         <div class="col-lg-3 mb-3">
-                            <label for="" class="form-label check-in">Địa điểm</label>
-                            <input type="text" class="form-control shadow-none" required>
+                            <label for="" class="form-label check-in">Điểm đến:</label>
+                            <input name="index_location" type="text" class="form-control shadow-none" required>
                         </div>
-                        <div class="col-lg-3 mb-3">
+                        <div class="col-lg-2 mb-3">
                             <label for="" class="form-label check-in">Check-in</label>
-                            <input type="date" class="form-control shadow-none" required>
+                            <input name="index_checkin" type="date" class="form-control shadow-none" required>
                         </div>
-                        <div class="col-lg-3 mb-3">
+                        <div class="col-lg-2 mb-3">
                             <label for="" class="form-label check-in">Check-out</label>
-                            <input type="date" class="form-control shadow-none" required>
+                            <input name="index_checkout" type="date" class="form-control shadow-none" required>
+                        </div>
+                        <div class="col-lg-2 mb-3">
+                            <label for="" class="form-label check-in">Loại phòng:</label>
+                            <select name="index_roomcode" class="form-control shadow-none" required>
+                                <option disabled selected value="">Hạng phòng cần tìm</option>
+                                <option value="standard">Cơ bản</option>
+                                <option value="double">Phòng đôi</option>
+                                <option value="vip">Vip</option>
+                            </select>
                         </div>
                         <div class="col-lg-2 mb-3">
                             <label for="" class="form-label check-in">Số lượng phòng ngủ</label>
-                            <select class="form-select shadow-none" required>
-                                <option disabled selected>Số lượng</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="More">Khác</option>
-                            </select>
+                            <input name="index_number" type="number" class="form-control shadow-none" required>
                         </div>
                         <div class="col-lg-1 mb-lg-3 mt-2">
-                            <button type="submit" class=" btn-sm custom-bg text-white shadow-none">Submit</button>
+                            <button name="index_submitBtn" type="submit" class=" btn-sm custom-bg text-white shadow-none">Submit</button>
                         </div>
                     </div>
                 </form>
