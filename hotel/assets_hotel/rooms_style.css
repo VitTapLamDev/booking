@@ -1,0 +1,46 @@
+.wp-block.property.list {
+    border: 1px solid #e0eded;
+}
+  
+.wp-block {
+    margin: 0 0 15px 0;
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+    position: relative;
+    cursor: default;
+    border-radius: 2px;
+}
+  
+.wp-block .wp-block-body {
+    padding: 15px;
+}
+  
+.wp-block.property.list .wp-block-img {
+    display: table-cell;
+    width: 250px;
+}
+  
+.wp-block.property.list .wp-block-img img {
+    width: 100%;
+}
+  
+.wp-block.property.list .wp-block-content .content-title {
+    font-size: 20px;
+    color: #3498db;
+    margin-bottom: 5px;
+}
+  
+.wp-block.property.list .wp-block-body .wp-block-content {
+    display: table-cell;
+    vertical-align: top;
+    padding-left: 15px;
+}
+  
+.wp-block.property.list .wp-block-content .description {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0eded;
+}
+
+.room_btnEdit{
+    margin: 10px;
+}

@@ -27,7 +27,8 @@
         <h2 class="fw-bold h-font text-center">HỆ THỐNG KHÁCH SẠN</h2>
         <div class="h-line bg-dark"></div>
         <p class="text-center mt-3">
-        Dù bạn chu du đến phương trời nào hay muốn chinh phục thử thách gì, SivivuTravel sẽ tạo mọi điều kiện thuận lợi và bên bạn với bộ phận hỗ trợ khách hàng 24/7.        </p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil illum quia eaque sequi? Esse explicabo amet
+        </p>
     </div>
 
     <div class="container mt-5">
@@ -71,7 +72,10 @@
             <div class="col-lg-6 col-md-5 mb-4">
                 <h3 class="mb-3"> Hoàng Tuấn Sinh</h3>
                 <p>
-                    Sinh viên chuyên ngành An toàn thông tin tại Học viện Kỹ thuật Mật mã
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Dolore, quod suscipit? Eum cum voluptatem accusantium temporibus facilis? 
+                    Temporibus dolore, corporis repellendus architecto harum quam asperiores id? 
+                    Vel veniam veritatis animi.
                 </p>
             </div>
             <div class="col-lg-5 col-md-5 mb-4">
@@ -80,7 +84,10 @@
             <div class="col-lg-6 col-md-5 mb-4">
                 <h3 class="mb-3">Nguyễn Lý Minh Vũ</h3>
                 <p>
-                Sinh viên chuyên ngành An toàn thông tin tại Học viện Kỹ thuật Mật mã
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Dolore, quod suscipit? Eum cum voluptatem accusantium temporibus facilis? 
+                    Temporibus dolore, corporis repellendus architecto harum quam asperiores id? 
+                    Vel veniam veritatis animi.
                 </p>
             </div>
             <div class="col-lg-5 col-md-5 mb-4">
@@ -89,7 +96,10 @@
             <div class="col-lg-6 col-md-5 mb-4">
                 <h3 class="mb-3">Nguyễn Đức Việt</h3>
                 <p>
-                Sinh viên chuyên ngành An toàn thông tin tại Học viện Kỹ thuật Mật mã
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Dolore, quod suscipit? Eum cum voluptatem accusantium temporibus facilis? 
+                    Temporibus dolore, corporis repellendus architecto harum quam asperiores id? 
+                    Vel veniam veritatis animi.
                 </p>
             </div>
             <div class="col-lg-5 col-md-5 mb-4">

@@ -16,7 +16,7 @@
                         <a class="nav-link active" aria-current="page" href="index.php">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="booking.php">Khách sạn</a>
+                        <a class="nav-link" href="hotels.php">Khách sạn</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="service.php">Dịch vụ</a>

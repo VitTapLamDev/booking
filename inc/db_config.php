@@ -9,8 +9,7 @@
         $subject = $_POST['subject'];
         $message = $_POST['message'];
         $query = "INSERT INTO `user_queries`(`name`, `email`, `subject`, `message`) VALUES ('$name','$email','$subject','$message')";
-        $query_run = mysqli_query($conn, $query);
-        if($query_run){
+        if(mysqli_query($conn, $query)){
             $alert = '<div class="alert alert-success" style"pos" role="alert">Gửi Email thành công!</div>';
         } else {
             $alert = '<div class="alert alert-danger" role="alert">Hệ thống đang bận. Vui lòng thử lại!</div>';
@@ -23,7 +22,7 @@
         $phonenumber = $_POST['phonenumber'];
         $address = $_POST['address'];
         $dob = $_POST['dob'];
-
+        $id = $_POST['ID'];
         $pass = $_POST['pass'];
         $cpass = $_POST['cpass'];
         $hashpass = md5($pass);
@@ -34,14 +33,15 @@
         }elseif(mysqli_num_rows($result_regis)==1){
             $alert = '<div class="alert alert-danger" role="alert">Email đã tồn tại. Vui lòng thử lại!</div>';
         }else{
-            $query = "INSERT INTO `user_cred`(`user_name`, `email`, `address`, `phonenumber`, `dob`, `password`) 
-                        VALUES ('$name','$email','$address','$phonenumber','$dob','$hashpass')";
+            $query = "INSERT INTO `user_cred`(`user_name`, `email`, `address`, `phonenumber`, `ID`, `dob`, `password`) 
+                        VALUES ('$name','$email','$address','$phonenumber','$id','$dob','$hashpass')";
             $query_run = mysqli_query($conn, $query);
             $alert = '<div class="alert alert-success" role="alert">Tạo tài khoản thành công!</div>';
         }
     }
 
     if(isset($_POST['login_account'])){
+        // session_start();
         $email_log = $_POST['email_log'];
         
         $pass_log = md5($_POST['pass_log']);
@@ -61,6 +61,9 @@
         die("Connection failed: " + mysqli_connect_errno());
     }else{
         if(isset($_POST['index_submitBtn'])){
+            if(!$_SESSION['account']){
+                $_SESSION['account'] = null;
+            }
             $location = $_POST['index_location'];
             $room_code = $_POST['index_roomcode'];
             $check_in = $_POST['index_checkin'];
@@ -74,6 +77,7 @@
             $_SESSION['numofroom'] = $number;
 
             header("Location: booking.php");
+            
         }
     }
 

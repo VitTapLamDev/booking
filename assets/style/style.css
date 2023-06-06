@@ -1,66 +1,66 @@
 :root{
-    --teal: #1be687;
-    --teal_hover: #1cbb71;
+  --teal: #1be687;
+  --teal_hover: #1cbb71;
 
 }
 
 *{
-    font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 .h-font{
-    font-family: 'Merienda', cursive;
+  font-family: 'Merienda', cursive;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+-webkit-appearance: none;
+margin: 0;
 }
 
 .check-in {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .custom-bg{
-    background-color: var(--teal);
-    text-decoration: solid;
-    border: 1px solid var(--teal);
-    padding: 3px;
+  background-color: var(--teal);
+  text-decoration: solid;
+  border: 1px solid var(--teal);
+  padding: 3px;
 }
 .custom-bg:hover{
-    background-color: var(--teal_hover);
-    border: 1px solid var(--teal_hover);
+  background-color: var(--teal_hover);
+  border: 1px solid var(--teal_hover);
 }
 .custom-card{
-    max-width: 350px;
-    margin: auto;
+  max-width: 350px;
+  margin: auto;
 }
 
 .availability-form{
-    margin-top: -50px;
-    z-index: 2;
-    position: relative;
+  margin-top: -50px;
+  z-index: 2;
+  position: relative;
 }
 
 .custom-features{
-    width: 80px;
+  width: 80px;
 }
 
 .custom-rating{
-    width: 50px;
+  width: 50px;
 }
 
 .h-line{
-    width: 250px;
-    margin: 0 auto;
-    height: 1.7px;
+  width: 250px;
+  margin: 0 auto;
+  height: 1.7px;
 }
 
 #booking_room, #booking_room_btn{
-    display: block;
+  display: block;
 }
 @media screen and(max-width: 575px) {
-    .availability-form{
-        margin-top: 0px;
-        padding: 5px;
-    }
+  .availability-form{
+      margin-top: 0px;
+      padding: 5px;
+  }
 }

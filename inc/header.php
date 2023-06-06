@@ -15,7 +15,7 @@
                     <a class="nav-link active" aria-current="page" href="index.php">Trang chủ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="booking.php">Khách sạn</a>
+                    <a class="nav-link" href="hotels.php">Khách sạn</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="service.php">Dịch vụ</a>
@@ -53,15 +53,15 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Email đăng nhập</label>
-                        <input type="email" name="email_log" class="form-control shadow-none" required>
+                        <input type="email" name="email_log" class="form-control shadow-none">
                     </div>
                     <div class="mb-4">
                         <label class="form-label">Mật Khẩu</label>
-                        <input type="password" name="pass_log" class="form-control shadow-none" required>
+                        <input type="password" name="pass_log" class="form-control shadow-none">
                     </div>
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <button type="submit" name="login_account" class='btn btn-dark shadow-none'>ĐĂNG NHẬP</button>
-                        <a href="javascript: void(0)" class="text-secondary text-decoration-none">Quên mật khẩu?</a>
+                        <a href="hotel/login.php" class="text-secondary text-decoration-none">Dành cho khách sạn</a>
                     </div>
                 </div>     
             </form>
@@ -102,7 +102,10 @@
                                 <label class="form-label">Địa chỉ</label>
                                 <textarea name="address" class="form-control shadow-none" rows="1" required></textarea>
                             </div>
-                            
+                            <div class="col-md-6 ps-0 mb-3">
+                                <label class="form-label">Số CCCD/Hộ chiếu</label>
+                                <input name="ID" type="number" class="form-control shadow-none" required>
+                            </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Ngày sinh</label>
                                 <input name="dob" type="date" class="form-control shadow-none" required>

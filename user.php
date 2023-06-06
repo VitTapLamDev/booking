@@ -69,10 +69,10 @@
             <table class="table shadow table-bordered" id="hotel_room">
                 <thead>
                     <tr>
-                        <th>STT</th>
+                        <th>ID</th>
                         <th>Khách sạn</th>
                         <th>Hotline</th>
-                        <th>Địa chỉ</th>
+                        <th>Thời gian</th>
                         <th>Hạng phòng</th>
                         <th>Giá</th>
                         <th>Trạng thái đơn hàng</th>
@@ -80,14 +80,13 @@
                 </thead>
                 <tbody>
                     <?php 
-                        $id = 1;
                         while ($row = mysqli_fetch_assoc($result_booking)) : 
                     ?>
                     <tr class="align-items-center justify-content-center">
-                        <td><?php echo $id++ ?></td>
+                        <td><?php echo $row['hotel_id'] ?></td>
                         <td><?php echo $row['hotel_name']; ?></td>             
                         <td><?php echo $row['hotline']?></td>
-                        <td><?php echo $row['details']; ?></td>
+                        <td><?php echo 'Ngày nhận phòng: '. $row['check_in']. ' * Ngày trả phòng: '. $row['check_out']; ?></td>
                         <td><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip"); ?></td>
                         <td><?php echo $row['price'].'VND/Đêm'?></td>
                         <td><span class="badge text-bg-success">Đã Thanh Toán</span></td>
@@ -104,10 +103,10 @@
             <table class="table shadow table-bordered" id="hotel_room">
                 <thead>
                     <tr>
-                        <th>STT</th>
+                        <th>ID</th>
                         <th>Khách sạn</th>
                         <th>Hotline</th>
-                        <th>Địa chỉ</th>
+                        <th>Thời gian</th>
                         <th>Hạng phòng</th>
                         <th>Giá</th>
                         <th></th>
@@ -115,14 +114,13 @@
                 </thead>
                 <tbody>
                     <?php 
-                        $id = 1;
                         while ($row = mysqli_fetch_assoc($result_hotel)) : 
                     ?>
                     <tr>
-                        <td><?php echo $id++ ?></td>
+                        <td><?php echo $row['hotel_id'] ?></td>
                         <td><?php echo $row['hotel_name']; ?></td>             
                         <td><?php echo $row['hotline']?></td>
-                        <td><?php echo $row['details']; ?></td>
+                        <td><?php echo 'Ngày nhận phòng: '. $row['check_in']. ' * Ngày trả phòng: '. $row['check_out']; ?></td>
                         <td><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip"); ?></td>
                         <td><?php echo $row['price'].'VND/Đêm'?></td>
                         <td><button name="rating_btn" type="submit" class='btn btn-dark shadow-none mybtn' data-bs-toggle="modal" data-bs-target="#ratingModal">GỬI ĐÁNH GIÁ</button>  </td>

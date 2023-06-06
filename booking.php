@@ -89,7 +89,7 @@
                     <th>Khách sạn</th>
                     <th>Hotline</th>
                     <th>Địa chỉ</th>
-                    <th>Hạng phòng</th>
+                    <th style="white-space:nowrap;">Hạng phòng</th>
                     <th>TIện nghi</th>
                     <th class="col-lg-1">Giá <br>(VNĐ/Đêm)</th>
                     <th>Bản đồ</th>
@@ -97,9 +97,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php 
-                    while ($row = mysqli_fetch_assoc($result)) : 
-                ?>
+                <?php while ($row = mysqli_fetch_assoc($result)): ?>
                 <tr>
                     <td><?php echo $row['id_hotel'] ?></td>
                     <td><?php echo $row['hotel_name']; ?></td>             
