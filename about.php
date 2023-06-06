@@ -64,7 +64,8 @@
         <h2 class="fw-bold h-font text-center">ĐỘi NGŨ THÀNH LẬP</h2>
         <div class="h-line bg-dark"></div>
         <p class="text-center mt-3">
-        Với phương châm cống hiến hết mình, đội ngũ các thành viên tại SivivuTravel luôn mang tinh thần nhiệt huyết với công việc, luôn nỗ lực hết mình đạt được mục tiêu, từng bước đưa doanh nghiệp bứt phá, phát triển không ngừng.        </p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil illum quia eaque sequi? Esse explicabo amet
+        </p>
     </div>
 
     <div class="container">
