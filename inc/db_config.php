@@ -76,6 +76,7 @@
             $_SESSION['checkout'] = $check_out; 
             $_SESSION['numofroom'] = $number;
 
+            
             header("Location: booking.php");
             
         }
@@ -118,7 +119,7 @@
             $sql2 = "SELECT SUM(number) FROM `booking` 
                         WHERE `location` LIKE '$location' AND `room_code` LIKE '$room_code' 
                             AND `check_in` BETWEEN '$check_in' AND '$check_out' OR `check_out` BETWEEN '$check_in' AND '$check_out'
-                            AND `status` = 0
+                            AND `status` = 'payed'
                         GROUP BY `hotel_id`, `room_code`";
             $result2 = $conn->query($sql2);
             if ($result2) {
@@ -159,5 +160,11 @@
         }
     }
 
-
+    if(!$conn){
+        die("Connection failed: " + mysqli_connect_errno());
+    }else{
+        if(isset($_POST['rating_btn'])){
+            header('Location: rating.php');
+        }
+    }
 ?>

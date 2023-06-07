@@ -32,9 +32,9 @@
                         <form method="post">
                             <div class="col-12 mb-3 mb-lg-5">
                                 <div class="overflow-hidden card table-nowrap table-card">
-                                    <div class="card-header d-flex justify-content-between align-items-center">
-                                        <h5 class="mb-0">Danh sách đơn </h5>
-                                        <div class="input-group mb-3">
+                                    <div class="card-header d-flex justify-content-between align-items-center text-nowrap">
+                                        <h5 class="mb-0">Danh sách đơn:    </h5>
+                                        <div class="input-group mb-3" style="margin-left: 20px; margin-top: 5px;">
                                             <input name="hotel_id" type="text" class="form-control" value="<?php echo $_SESSION['hotel_account'] ?>" readonly>
                                             <input name="email_bill" type="email" class="form-control" placeholder="Email đặt phòng" required>
                                             <button name="search_bill" class="btn btn-outline-secondary" type="submit">Tìm kiếm</button>
@@ -49,6 +49,7 @@
                                                     <th>Mã đơn</th>
                                                     <th>Check-in</th>
                                                     <th>Check-out</th>
+                                                    <th>Trạng thái</th>
                                                     <th class="text-end">Action</th>
                                                 </tr>
                                             </thead>
@@ -62,18 +63,28 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td><?php echo $row['email'] ?></td>
+                                                    <td><?php echo $row['email_user'] ?></td>
                                                     <td><span class="d-inline-block align-middle"><?php echo $row['bill_code'] ?></span></td>
                                                     <td><span class="d-inline-block align-middle"><?php echo $row['check_in'] ?></span></td>
                                                     <td><span class="d-inline-block align-middle"><?php echo $row['check_out'] ?></span></td>
+                                                    <td>
+                                                        <?php if($row['status']=='cancel'){ ?>
+                                                            <p><span class="badge text-bg-danger">Đã hủy</span></p>
+                                                        <?php }else if($row['status']=='success'){ ?>
+                                                            <p><span class="badge text-bg-success">Đã trả phòng</span></p>
+                                                        <?php }else if($row['status']=='process'){ ?>
+                                                            <p><span class="badge text-bg-secondary">Đang xử lý</span></p>
+                                                        <?php }else if($row['status']=='payed'){ ?>
+                                                            <p><span class="badge text-bg-primary">Đã thanh toán</span></p>
+                                                        <?php } ?>
+                                                    </td>
                                                     <td class="text-end">
                                                         <div class="drodown">
                                                             <a data-bs-toggle="dropdown" href="#" class="btn p-1" aria-expanded="false">
                                                                 <i class="fa fa-bars" aria-hidden="true"></i>
                                                             </a>
-                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                <a href="inc_hotel/bill_details.php" class="dropdown-item">Chi tiết</a>
-                                                                <a href="inc_hotel/delete_bills.php" class="dropdown-item">Hủy đơn</a>
+                                                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                                                <a href="bill_details.php" class="dropdown-item" onclick="getData(this)">Chi tiết</a>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -91,5 +102,30 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <script>
+        function getData(element) {
+            var row = element.closest('tr');
+            var rowData = row.getElementsByTagName('td');
+            
+            var bill_code = rowData[2].textContent;
+            console.log(bill_code);
+            saveDataInSession(bill_code);
+        }
+
+        function saveDataInSession(bill_code) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'inc_hotel/bill_data.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log('Data saved in session successfully.');
+                }
+            };
+            xhr.send('bill_code=' + encodeURIComponent(bill_code));
+        }
+
+    </script>
+
 </body>
 </html>

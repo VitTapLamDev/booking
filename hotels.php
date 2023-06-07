@@ -1,3 +1,5 @@
+<?php require('inc/db_config.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,11 +17,6 @@
         }else{
             require('inc/header.php');
         }
-    ?>
-
-    <?php 
-        $currentURL = $_SERVER['REQUEST_URI'];
-        echo $currentURL;
     ?>
 
 

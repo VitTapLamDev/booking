@@ -5,10 +5,10 @@
     $query_user = "SELECT * FROM `user_cred` WHERE `email`='$email_log'";     
     $result_user = mysqli_query($conn, $query_user);
 
-    $query_booking = "SELECT * FROM `booking` WHERE `email`= '$email_log' AND `status` = 0";
+    $query_booking = "SELECT * FROM `booking` WHERE `email_user`= '$email_log' AND `status` = 'process' OR `status` = 'payed'";
     $result_booking = mysqli_query($conn, $query_booking);
 
-    $query_history = "SELECT * FROM `booking` WHERE `email`= '$email_log' AND `status` = 1";
+    $query_history = "SELECT * FROM `booking` WHERE `email_user`= '$email_log' AND `status` = 'success' OR `status` = 'cancel'";
     $result_hotel = mysqli_query($conn, $query_history);
 ?>
 
@@ -72,8 +72,9 @@
                         <th>ID</th>
                         <th>Khách sạn</th>
                         <th>Hotline</th>
-                        <th>Thời gian</th>
-                        <th>Hạng phòng</th>
+                        <th>Check-in</th>
+                        <th>Check-out</th>
+                        <th class="text-nowrap">Hạng phòng</th>
                         <th>Giá</th>
                         <th>Trạng thái đơn hàng</th>
                     </tr>
@@ -86,10 +87,16 @@
                         <td><?php echo $row['hotel_id'] ?></td>
                         <td><?php echo $row['hotel_name']; ?></td>             
                         <td><?php echo $row['hotline']?></td>
-                        <td><?php echo 'Ngày nhận phòng: '. $row['check_in']. ' * Ngày trả phòng: '. $row['check_out']; ?></td>
+                        <td><?php echo $row['check_in']; ?></td>
+                        <td><?php echo $row['check_out'] ?></td>
                         <td><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip"); ?></td>
                         <td><?php echo $row['price'].'VND/Đêm'?></td>
-                        <td><span class="badge text-bg-success">Đã Thanh Toán</span></td>
+
+                        <?php if($row['status']=='process'){ ?>
+                            <td><span class="badge text-bg-secondary">Chờ xử lý</span></td>
+                        <?php }else{ ?>
+                            <td><span class="badge text-bg-success">Đã Thanh Toán</span></td>
+                        <?php } ?>
                     </tr>
                     <?php endwhile; ?>
                 </tbody>
@@ -100,34 +107,44 @@
             <span class="section-title text-primary mb-3 mb-sm-4">Lịch sử đặt phòng: </span>
         </div>
         <div class="col-lg-12 px-4">
-            <table class="table shadow table-bordered" id="hotel_room">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Khách sạn</th>
-                        <th>Hotline</th>
-                        <th>Thời gian</th>
-                        <th>Hạng phòng</th>
-                        <th>Giá</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php 
-                        while ($row = mysqli_fetch_assoc($result_hotel)) : 
-                    ?>
-                    <tr>
-                        <td><?php echo $row['hotel_id'] ?></td>
-                        <td><?php echo $row['hotel_name']; ?></td>             
-                        <td><?php echo $row['hotline']?></td>
-                        <td><?php echo 'Ngày nhận phòng: '. $row['check_in']. ' * Ngày trả phòng: '. $row['check_out']; ?></td>
-                        <td><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip"); ?></td>
-                        <td><?php echo $row['price'].'VND/Đêm'?></td>
-                        <td><button name="rating_btn" type="submit" class='btn btn-dark shadow-none mybtn' data-bs-toggle="modal" data-bs-target="#ratingModal">GỬI ĐÁNH GIÁ</button>  </td>
-                    </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>  
+            <form action="" method="post">
+                <table class="table shadow table-bordered" id="hotel_room">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Khách sạn</th>
+                            <th class="text-nowrap">Mã đơn</th>
+                            <th>Check-in</th>
+                            <th>Check-out</th>
+                            <th class="text-nowrap">Hạng phòng</th>
+                            <th class="text-nowrap">Trạng thái đơn hàng</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            while ($row = mysqli_fetch_assoc($result_hotel)) : 
+                        ?>
+                        <tr>
+                            <td><?php echo $row['hotel_id'] ?></td>
+                            <td><?php echo $row['hotel_name']; ?></td>             
+                            <td><?php echo $row['bill_code']?></td>
+                            <td><?php echo $row['check_in']; ?></td>
+                            <td><?php echo $row['check_out'] ?></td>
+                            <td><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip"); ?></td>
+                            <?php if($row['status']=='cancel'){ ?>
+                                <td><span class="badge text-bg-danger">Đã hủy</span></td>
+                            <?php }else{ ?>
+                                <td><span class="badge text-bg-success">Đã trả phòng</span></td>
+                            <?php } ?>
+                            <?php if($row['status']=='success'){ ?>
+                                <td><button name="rating_btn" type="submit" class='btn btn-dark shadow-none mybtn'>Phản hồi</button>  </td>
+                            <?php } ?>
+                        </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>  
+            </form>
         </div>
     </div>
     </section>   

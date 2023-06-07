@@ -17,7 +17,7 @@
 </head>
 <body class="bg-light">
     <?php require('inc/header_login.php');?>
-    
+    <button class="btn btn-secondary" onclick="goBack()">< Quay lại</button>
     <!-- Thông tin khách sạn -->
 
 
@@ -81,5 +81,10 @@
         </form>
     </div>
     <?php require('inc/footer.php')?> 
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 
 </html>

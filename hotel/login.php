@@ -30,13 +30,6 @@
                             <input name="hotel_pass" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                             <label for="floatingPassword">Mật Khẩu</label>
                         </div>
-
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
-                            <label class="form-check-label" for="rememberPasswordCheck">
-                            Remember password
-                            </label>
-                        </div>
                         <div class="d-grid">
                             <button name="hotel_login" class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">đăng nhập</button>
                         </div>

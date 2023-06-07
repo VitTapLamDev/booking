@@ -84,14 +84,13 @@
     <div class="col-lg-12 px-4">
         <table class="table shadow table-bordered" id="hotel_room">
             <thead>
-                <tr>
+                <tr class="text-nowrap">
                     <th>ID</th>
                     <th>Khách sạn</th>
                     <th>Hotline</th>
                     <th>Địa chỉ</th>
-                    <th style="white-space:nowrap;">Hạng phòng</th>
-                    <th>TIện nghi</th>
-                    <th class="col-lg-1">Giá <br>(VNĐ/Đêm)</th>
+                    <th>Hạng phòng</th>
+                    <th>Giá (VNĐ/Đêm)</th>
                     <th>Bản đồ</th>
                     <?php if($_SESSION['account']){ ?><th></th> <?php } ?>
                 </tr>
@@ -104,7 +103,6 @@
                     <td><?php echo $row['hotline']?></td>
                     <td><?php echo $row['details']; ?></td>
                     <td><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip"); ?></td>
-                    <td><?php echo $row['convenient']?></td>
                     <td><?php echo $row['price']?></td>
                     <td><iframe width="200" height="120" src="<?php echo $row['gmap']; ?>" frameborder="0"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
                     <?php if($_SESSION['account']){ ?><td><button name="booking_room" type="button" class='btn btn-dark shadow-none mybtn' onclick="getData(this); window.location.href='payment.php'">ĐẶT PHÒNG NGAY</button></td> <?php } ?>
@@ -119,23 +117,21 @@
     <?php require('inc/footer.php')?> 
     <script>
         function getData(button) {
-        var row = button.parentNode.parentNode;
-        var rowData = [];
-        var cells = row.getElementsByTagName('td');
-        rowData.push(cells[0].textContent);
-        rowData.push(cells[1].textContent);
-        rowData.push(cells[6].textContent);
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'inc/save_data.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-            }
-        };
-        xhr.send('data=' + encodeURIComponent(JSON.stringify(rowData)));
+            var row = button.parentNode.parentNode;
+            var rowData = [];
+            var cells = row.getElementsByTagName('td');
+            rowData.push(cells[0].textContent);
+            rowData.push(cells[1].textContent);
+            rowData.push(cells[6].textContent);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'inc/save_data.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                }
+            };
+            xhr.send('data=' + encodeURIComponent(JSON.stringify(rowData)));
         }
-        
-
     </script>
                                 
 </html>
