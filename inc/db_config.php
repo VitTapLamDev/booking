@@ -10,7 +10,7 @@
         $message = $_POST['message'];
         $query = "INSERT INTO `user_queries`(`name`, `email`, `subject`, `message`) VALUES ('$name','$email','$subject','$message')";
         if(mysqli_query($conn, $query)){
-            $alert = '<div class="alert alert-success" style"pos" role="alert">Gửi Email thành công!</div>';
+            header('Location: success.php');
         } else {
             $alert = '<div class="alert alert-danger" role="alert">Hệ thống đang bận. Vui lòng thử lại!</div>';
         }
@@ -107,7 +107,7 @@
 
             $sql1 = "SELECT `number` FROM `hotel_room` WHERE `location` LIKE '$location' AND `room_code` LIKE '$room_code'";
             $result1 = mysqli_query($conn, $sql1);
-            if ($result) {
+            if ($result1) {
                 if (mysqli_num_rows($result1) > 0) {
                     $row1 = mysqli_fetch_assoc($result1);
                     $total_room = $row1["number"];
@@ -163,8 +163,20 @@
     if(!$conn){
         die("Connection failed: " + mysqli_connect_errno());
     }else{
-        if(isset($_POST['rating_btn'])){
-            header('Location: rating.php');
+        if(isset($_POST['send_feedbackBtn'])){
+            $hotel_id = $_POST['hotel_id'];
+            $bill_code = $_POST['bill_code'];
+            $subject = $_POST['subject'];
+            $message = $_POST['message'];
+            $score = $_POST['rating'];
+
+            $feedback = "INSERT INTO `rating_bill`(`hotel_id`, `bill_code`, `sore`, `subject`, `message`) 
+                        VALUES ('$hotel_id','$bill_code','$score','$subject','$message')";
+            if (!mysqli_query($conn, $feedback)){
+                die('Error: ' . mysqli_error($conn));
+            }else{
+                header('Location: success.php');
+            }
         }
     }
 ?>

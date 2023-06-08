@@ -152,4 +152,16 @@
             header('Location: bill_details.php');
         }
     }
+
+    if(!$conn){
+        die("Connection failed: " + mysqli_connect_errno());
+    }else{
+        if(isset($_POST['payedBtn'])){
+            session_start();
+            $bill_code = $_SESSION['bill_code'];
+            $sql = "UPDATE `booking_bill` SET `status` = 'payed' WHERE `bill_code` = '$bill_code'";     
+            mysqli_query($conn, $sql);
+            header('Location: bill_details.php');
+        }
+    }
 ?>

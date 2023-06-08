@@ -16,6 +16,10 @@ input::-webkit-inner-spin-button {
 margin: 0;
 }
 
+.card-img-top{
+  max-width: 400px;
+  max-height: 200px;
+}
 .check-in {
   font-weight: 500;
 }

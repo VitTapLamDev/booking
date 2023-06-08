@@ -107,7 +107,7 @@
             <span class="section-title text-primary mb-3 mb-sm-4">Lịch sử đặt phòng: </span>
         </div>
         <div class="col-lg-12 px-4">
-            <form action="" method="post">
+            <form action="" method="POST">
                 <table class="table shadow table-bordered" id="hotel_room">
                     <thead>
                         <tr>
@@ -138,7 +138,7 @@
                                 <td><span class="badge text-bg-success">Đã trả phòng</span></td>
                             <?php } ?>
                             <?php if($row['status']=='success'){ ?>
-                                <td><button name="rating_btn" type="submit" class='btn btn-dark shadow-none mybtn'>Phản hồi</button>  </td>
+                                <td><button onclick="getData(this); window.location.href='rating.php'" name="rating_btn" type="button" class="btn btn-dark shadow-none mybtn" >Phản hồi</button>  </td>
                             <?php } ?>
                         </tr>
                         <?php endwhile; ?>
@@ -148,6 +148,38 @@
         </div>
     </div>
     </section>   
+    <script>
+        function getData(button) {
+            var row = button.parentNode.parentNode; // Get the parent row of the button
+            var cells = row.getElementsByTagName('td'); // Get all cells in the row
+
+            // Access the data in each cell
+            var data1 = cells[0].textContent;
+            var data2 = cells[2].textContent;
+
+            // Create an AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'inc/save_data.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            // Prepare the data to be sent
+            var bill_code = 'data1=' + encodeURIComponent(data1) + '&data2=' + encodeURIComponent(data2);
+
+            // Send the AJAX request
+            xhr.send(bill_code);
+
+            // Optional: Handle the response from the server
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    console.log('Data saved in session successfully.');
+                } else {
+                    console.log('Failed to save data in session.');
+                }
+                }
+            };
+            }
+    </script>
     
     <?php require('inc/footer.php')?>
 </body>

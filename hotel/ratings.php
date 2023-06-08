@@ -5,7 +5,7 @@
     }else{
         session_start();
         $hotel_id = $_SESSION['hotel_account'];
-        $sql = "SELECT * FROM `user_rating` WHERE `hotel_id` LIKE '$hotel_id'";
+        $sql = "SELECT DISTINCT * FROM `user_rating` WHERE `hotel_id` LIKE '$hotel_id'";
         $result = mysqli_query($conn, $sql);
     }
     
@@ -37,7 +37,7 @@
                                 <div class="card row-hover pos-relative py-3 px-3 mb-3 border-secondary-subtle rounded">
                                     <div class="row align-items-center">
                                         <div class="col-md-8 mb-3 mb-sm-0">
-                                            <h4><?php echo $row['subject'] ?></h4>
+                                            <h4><?php echo '#'.$row['bill_code'].': '.$row['subject'] ?></h4>
                                             <p class="text-sm"><span class="op-6">Rating at: <?php echo $row['date'].' by '. $row['user_name'] ?> </span>  </p>
                                             <hr>
                                             <h5><?php echo $row['message'] ?></h5>

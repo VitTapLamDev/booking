@@ -1,3 +1,10 @@
+<?php 
+    require('inc/db_config.php');
+    $sql_detail = "SELECT * FROM `contact_details` WHERE '1'";
+    $result_detail = mysqli_query($conn, $sql_detail);
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,26 +34,27 @@
     </div>
     <div class="container">
         <div class="row">
+        <?php  while($row = mysqli_fetch_assoc($result_detail)): ?>
             <div class="col-lg-6 col-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4">
-                    <iframe class="w-100 rounded mb-4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59595.347641166954!2d105.77399541953127!3d21.00428974666735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab9bd9861ca1%3A0xe7887f7b72ca17a9!2zSMOgIE7hu5lpLCBIb8OgbiBLaeG6v20sIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1683270571454!5m2!1svi!2s" height="320"></iframe>
+                    <iframe class="w-100 rounded mb-4" src="<?php echo $row['iframe'] ?>" height="320"></iframe>
                     <h5>Địa Chỉ</h5>
-                    <a href="https://goo.gl/maps/isaXdJ5XGsFVhXri9" target="_blank" class="d-inline-block text-decoration-none text-dark mb-2">
-                        <i class="bi bi-geo-alt-fill">Hoàn Kiếm, Hà Nội, Việt Nam</i>
+                    <a href="<?php echo $row['gmap'] ?>" target="_blank" class="d-inline-block text-decoration-none text-dark mb-2">
+                        <i class="bi bi-geo-alt-fill"><?php echo $row['address'] ?></i>
                     </a>
                     <h5>LIÊN HỆ:</h5>
                     <i class="bi bi-telephone-fill"></i>
-                    <a href="tel; +841810293120" class="d-inline-block mb-2 text-decoration-none text-dark">+841810293120</a> 
+                    <a href="tel; <?php echo '+'.$row['pn1'] ?>" class="d-inline-block mb-2 text-decoration-none text-dark"><?php echo '+'.$row['pn1'] ?></a> 
                     <br>
                     <i class="bi bi-telephone-fill"></i>
-                    <a href="tel; +841810293120" class="d-inline-block mb-2 text-decoration-none text-dark">+841810293120</a> 
+                    <a href="tel; <?php echo '+'.$row['pn2'] ?>" class="d-inline-block mb-2 text-decoration-none text-dark"><?php echo '+'.$row['pn2'] ?></a> 
                     <h5>Email</h5>
                     <i class="bi bi-envelope-fill"></i>
-                    <a href="mailto: help.customer@gmail.com" class="d-inline-block mb-2 text-decoration-none text-dark">help.customer@gmail.com</a> 
+                    <a href="mailto: <?php echo $row['email'] ?>" class="d-inline-block mb-2 text-decoration-none text-dark"><?php echo $row['email'] ?></a> 
                     <h5>Follow us</h5>
-                    <i class="bi bi-twitter me-1"></i>
-                    <i class="bi bi-facebook me-1"></i>
-                    <i class="bi bi-instagram me-1"></i>
+                    <a href="<?php echo $row['tw'] ?>" style="color: black;"><i class="bi bi-twitter me-1"></i></a> 
+                    <a href="<?php echo $row['fb'] ?>" style="color: black;"><i class="bi bi-facebook me-1"></i></a> 
+                    <a href="<?php echo $row['insta'] ?>" style="color: black;"><i class="bi bi-instagram me-1"></i></a> 
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 mb-5 px-4">
@@ -80,6 +88,7 @@
                 </div>
             </div>
         </div>
+        <?php endwhile; ?>
     </div>
     
     <?php require('inc/footer.php')?> 

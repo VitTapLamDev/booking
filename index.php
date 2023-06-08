@@ -92,22 +92,23 @@
     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">HỆ THỐNG KHÁCH SẠN</h2>
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-6 my-3">
+            <div class="col-lg-3 col-md-6 my-3">
                 <div class="card border-0 shadow custom-card">
-                    <img src="/assets/images/room/single.jpg" class="card-img-top" alt="...">
+                    <img src="/assets/images/hotels/minhanhHP.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5>Phòng đơn</h5>
-                        <h6 class="mb-4">200.000 - 500.000VND/Night</h6>
+                        <h6>Minh Anh Hotel & Apartment</h6>
+                        <h6>Địa điểm: Hải Phòng</h6>
+                        <h6 class="mb-4">200.000 - 1.000.000VND/Night</h6>
                         <div class="features mb-4">
-                            <h6 class="mb-1">Tiện nghi</h6>
+                            <h6 class="mb-1">Dịch vụ</h6>
                             <span class="badge bg-light text-dark text-wrap">
-                                1 Bed
+                                Giặt là
                             </span>
                             <span class="badge bg-light text-dark text-wrap">
-                                1 Bathroom
+                                Nhà hàng
                             </span>
                             <span class="badge bg-light text-dark text-wrap">
-                                1 Sofa
+                                Đưa đón
                             </span>
                         </div>
                         <div class="facilities mb-4">
@@ -139,22 +140,23 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 my-3">
+            <div class="col-lg-3 col-md-6 my-3">
                 <div class="card border-0 shadow custom-card">
-                    <img src="/assets/images/room/double-bed.jpg" class="card-img-top" alt="...">
+                    <img src="/assets/images/hotels/Hanoi Prime Center Hotel.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5>Phòng đôi</h5>
+                        <h6>Hanoi Prime Center Hotel</h6>
+                        <h6>Địa điểm: Hà Nội</h6>
                         <h6 class="mb-4">500.000 - 1.000.000VND/Night</h6>
                         <div class="features mb-4">
                             <h6 class="mb-1">Tiện nghi</h6>
                             <span class="badge bg-light text-dark text-wrap">
-                                2 Bed
+                                Đưa đón
                             </span>
                             <span class="badge bg-light text-dark text-wrap">
-                                1 Bathroom
+                                Giặt là
                             </span>
                             <span class="badge bg-light text-dark text-wrap">
-                                1 Sofa
+                                Nhà Hàng
                             </span>
                         </div>
                         <div class="facilities mb-4">
@@ -185,22 +187,20 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 my-3">
+            <div class="col-lg-3 col-md-6 my-3">
                 <div class="card border-0 shadow custom-card">
-                    <img src="/assets/images/room/residential-suite-phong-khach-san.jpg" class="card-img-top">
+                    <img src="/assets/images/hotels/avenishotel.jpg" class="card-img-top">
                     <div class="card-body">
-                        <h5>Phòng chủ tịch</h5>
-                        <h6 class="mb-4">1.000.000 - 2.000.000VND/Night</h6>
+                        <h6>Khách sạn Avenis</h6>
+                        <h6>Địa điểm: Đà Nẵng</h6>
+                        <h6 class="mb-4">500.000 - 1.000.000VND/Night</h6>
                         <div class="features mb-4">
                             <h6 class="mb-1">Tiện nghi</h6>
                             <span class="badge bg-light text-dark text-wrap">
-                                2 Room
+                                Giặt là
                             </span>
                             <span class="badge bg-light text-dark text-wrap">
-                                2 Bathroom
-                            </span>
-                            <span class="badge bg-light text-dark text-wrap">
-                                1 Sofa
+                                Nhà Hàng
                             </span>
                         </div>
                         <div class="facilities mb-4">
@@ -217,6 +217,57 @@
                             <span class="badge bg-light text-dark text-wrap">
                                 AC
                             </span>
+                        </div>
+                        <div class="rating mb-4">
+                            <h6 class="mb-1">Đánh giá: 
+                                <span class="badge bg-light rounded-pill">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </span>
+                            </h6>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 my-3">
+                <div class="card border-0 shadow custom-card">
+                    <img src="/assets/images/hotels/muongthánhaigon.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h6>Khách sạn Mường Thanh Sài Gòn</h6>
+                        <h6>Địa điểm: Thành phố Hồ Chí Minh</h6>
+                        <h6 class="mb-4">500.000 - 2.000.000VND/Night</h6>
+                        <div class="features mb-4">
+                            <h6 class="mb-1">Tiện nghi</h6>
+                            <span class="badge bg-light text-dark text-wrap">
+                                Bar
+                            </span>
+                            <span class="badge bg-light text-dark text-wrap">
+                                Nhà Hàng
+                            </span>
+                            <span class="badge bg-light text-dark text-wrap">
+                                Giặt là
+                            </span>
+                            <span class="badge bg-light text-dark text-wrap">
+                                Bể bơi
+                            </span>
+                        </div>
+                        <div class="facilities mb-4">
+                            <h6 class="mb-1">Tiện ích</h6>
+                            <span class="badge bg-light text-dark text-wrap">
+                                Wifi
+                            </span>
+                            <span class="badge bg-light text-dark text-wrap">
+                                Television
+                            </span>
+                            <span class="badge bg-light text-dark text-wrap">
+                                Fridge
+                            </span>
+                            <span class="badge bg-light text-dark text-wrap">
+                                AC
+                            </span>
+                            
                         </div>
                         <div class="rating mb-4">
                             <h6 class="mb-1">Đánh giá: 
@@ -358,6 +409,7 @@
                         <i class="bi bi-star-fill text-warning"></i>
                     </div>
                 </div>
+                
             </div>
             <div class="swiper-pagination"></div>
         </div>

@@ -21,7 +21,7 @@
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-                <button class="btn btn-secondary" onclick="goBack()">< Quay lại</button>
+                <button class="btn btn-secondary" onclick="window.location.href='bills.php'">< Quay lại</button>
                 <?php while($row = mysqli_fetch_assoc($result)): ?>
                 <div class="col-lg-12">
                     <div class="card">
@@ -105,8 +105,11 @@
                                     <div class="d-print-none mt-4">
                                         <div class="float-end">
                                             <?php if($row['status']=='process' || $row['status']=='payed') {?>
-                                                <a data-bs-toggle="modal" data-bs-target="#checkoutConfirm" class="btn btn-success w-md">Trả phòng</a>
                                                 <a data-bs-toggle="modal" data-bs-target="#cancelConfirm" class="btn btn-danger w-md">Hủy đơn</a>
+                                                <a data-bs-toggle="modal" data-bs-target="#checkoutConfirm" class="btn btn-primary w-md">Trả phòng</a>
+                                            <?php } ?>
+                                            <?php if($row['status']=='process') {?>
+                                                <a data-bs-toggle="modal" data-bs-target="#payedConfirm" class="btn btn-success w-md">Thanh toán</a>
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -118,11 +121,11 @@
                 <?php endwhile; ?>
 
                 <div class="modal fade" id="checkoutConfirm" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <form method="post">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5">Trả phòng</h1>
+                                    <h1 class="modal-title fs-5">Xác nhận trả phòng</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -138,11 +141,11 @@
                 </div>
 
                 <div class="modal fade" id="cancelConfirm" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <form method="post">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5">Hủy đơn</h1>
+                                    <h1 class="modal-title fs-5">Xác nhận hủy đơn</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -157,14 +160,29 @@
                     </div>
                 </div>
 
+                <div class="modal fade" id="payedConfirm" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <form method="post">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5">Xác nhận thanh toán</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h4>Thanh toán hóa đơn số: <?php echo '#'.$_SESSION['bill_code'] ?></h4>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                    <button type="submit" name="payedBtn" class="btn btn-primary">Thanh toán</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>                                           
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
 </body>
 </html>
