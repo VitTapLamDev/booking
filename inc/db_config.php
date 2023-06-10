@@ -22,7 +22,6 @@
         $phonenumber = $_POST['phonenumber'];
         $address = $_POST['address'];
         $dob = $_POST['dob'];
-        $id = $_POST['ID'];
         $pass = $_POST['pass'];
         $cpass = $_POST['cpass'];
         $hashpass = md5($pass);
@@ -33,8 +32,8 @@
         }elseif(mysqli_num_rows($result_regis)==1){
             $alert = '<div class="alert alert-danger" role="alert">Email đã tồn tại. Vui lòng thử lại!</div>';
         }else{
-            $query = "INSERT INTO `user_cred`(`user_name`, `email`, `address`, `phonenumber`, `ID`, `dob`, `password`) 
-                        VALUES ('$name','$email','$address','$phonenumber','$id','$dob','$hashpass')";
+            $query = "INSERT INTO `user_cred`(`user_name`, `email`, `address`, `phonenumber`, `dob`, `password`) 
+                        VALUES ('$name','$email','$address','$phonenumber','$dob','$hashpass')";
             $query_run = mysqli_query($conn, $query);
             $alert = '<div class="alert alert-success" role="alert">Tạo tài khoản thành công!</div>';
         }

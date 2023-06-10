@@ -5,10 +5,10 @@
     $query_user = "SELECT * FROM `user_cred` WHERE `email`='$email_log'";     
     $result_user = mysqli_query($conn, $query_user);
 
-    $query_booking = "SELECT * FROM `booking` WHERE `email_user`= '$email_log' AND `status` = 'process' OR `status` = 'payed'";
+    $query_booking = "SELECT * FROM `booking` WHERE `email_user`= '$email_log' AND (`status` = 'process' OR `status` = 'payed')";
     $result_booking = mysqli_query($conn, $query_booking);
 
-    $query_history = "SELECT * FROM `booking` WHERE `email_user`= '$email_log' AND `status` = 'success' OR `status` = 'cancel'";
+    $query_history = "SELECT * FROM `booking` WHERE `email_user`= '$email_log' AND (`status` = 'success' OR `status` = 'cancel')";
     $result_hotel = mysqli_query($conn, $query_history);
 ?>
 
@@ -52,7 +52,7 @@
                                     <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-telephone-fill me-4\"></i>". $row['phonenumber']. "</li>"; ?>
                                     <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-envelope-fill me-4\"></i>". $row['email']. "</li>"; ?>
                                     <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-geo-alt-fill me-4\"></i>". $row['address']. "</li>"; ?>
-                                    <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-person-vcard-fill me-4\"></i>". $row['id']. "</li>"; ?>
+                                    
                                     <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-calendar3-event me-4\"></i>". $formattedDate. "</li>"; }?>
                                 </ul>
                             </div>

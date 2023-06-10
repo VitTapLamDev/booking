@@ -104,10 +104,6 @@
                                 <textarea name="address" class="form-control shadow-none" rows="1" required></textarea>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
-                                <label class="form-label">Số CCCD/Hộ chiếu</label>
-                                <input name="ID" type="number" class="form-control shadow-none" required>
-                            </div>
-                            <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Ngày sinh</label>
                                 <input name="dob" type="date" class="form-control shadow-none" required>
                             </div>
