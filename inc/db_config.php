@@ -175,6 +175,7 @@
                 die('Error: ' . mysqli_error($conn));
             }else{
                 header('Location: success.php');
+                exit();
             }
         }
     }
