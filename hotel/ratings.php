@@ -5,7 +5,7 @@
     }else{
         session_start();
         $hotel_id = $_SESSION['hotel_account'];
-        $sql = "SELECT DISTINCT * FROM `user_rating` WHERE `hotel_id` LIKE '$hotel_id'";
+        $sql = "SELECT * FROM `user_rating` WHERE `hotel_id` LIKE '$hotel_id'";
         $result = mysqli_query($conn, $sql);
     }
     

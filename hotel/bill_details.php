@@ -51,6 +51,19 @@
                                 <div class="col-sm-6">
                                     <div class="text-muted text-sm-end">
                                         <div>
+                                            <h5 class="font-size-15 mb-1">Thời gian tạo đơn:</h5>
+                                            <h5>
+                                                <span class="badge text-bg-primary">
+                                                    <?php 
+                                                        $dateString = $row['time_booked']; // Assuming 'date_column' is the name of your column
+                                                        $dateTime = new DateTime($dateString);
+                                                        $formattedDate = $dateTime->format('H:i:s d/m/Y');
+                                                        echo $formattedDate;
+                                                    ?>
+                                                </span>
+                                            </h5>
+                                        </div>
+                                        <div>
                                             <h5 class="font-size-15 mb-1">Trạng thái đơn hàng:</h5>
                                             <?php if($row['status']=='cancel'){ ?>
                                                 <h5><span class="badge text-bg-danger">Đã hủy</span></h5>

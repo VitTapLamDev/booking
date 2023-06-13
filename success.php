@@ -17,7 +17,7 @@
     
     <section class="mail-seccess section">
         <div class="container">
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-lg-6 offset-lg-3 col-12">
                     <!-- Error Inner -->
                     <div class="success-inner">

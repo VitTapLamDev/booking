@@ -46,17 +46,17 @@
                                                 <tr>
                                                     <th>Khách Hàng</th>
                                                     <th>Email</th>
-                                                    <th>Mã đơn</th>
-                                                    <th>Check-in</th>
-                                                    <th>Check-out</th>
-                                                    <th>Trạng thái</th>
+                                                    <th class="text-center">Mã đơn</th>
+                                                    <th class="text-center">Check-in</th>
+                                                    <th class="text-center">Check-out</th>
+                                                    <th class="text-center">Trạng thái</th>
                                                     <th class="text-end">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php while($row = mysqli_fetch_assoc($result)): ?>
                                                 <tr class="align-middle">
-                                                    <td>
+                                                    <td class="text-center">
                                                         <div class="d-flex align-items-center">
                                                             <div>
                                                                 <div class="h6 mb-0 lh-1"><?php echo $row['user_name'] ?></div>
@@ -64,10 +64,10 @@
                                                         </div>
                                                     </td>
                                                     <td><?php echo $row['email_user'] ?></td>
-                                                    <td><span class="d-inline-block align-middle"><?php echo $row['bill_code'] ?></span></td>
-                                                    <td><span class="d-inline-block align-middle"><?php echo $row['check_in'] ?></span></td>
-                                                    <td><span class="d-inline-block align-middle"><?php echo $row['check_out'] ?></span></td>
-                                                    <td>
+                                                    <td class="text-center"><span class="d-inline-block align-middle"><?php echo $row['bill_code'] ?></span></td>
+                                                    <td class="text-center"><span class="d-inline-block align-middle"><?php echo $row['check_in'] ?></span></td>
+                                                    <td class="text-center"><span class="d-inline-block align-middle"><?php echo $row['check_out'] ?></span></td>
+                                                    <td class="text-center">
                                                         <?php if($row['status']=='cancel'){ ?>
                                                             <p><span class="badge text-bg-danger">Đã hủy</span></p>
                                                         <?php }else if($row['status']=='success'){ ?>

@@ -15,19 +15,13 @@
                         <a class="nav-link text-light" href="dashboard.php">DASHBOARD</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">HOTELS</a>
+                        <a class="nav-link text-light" href="hotels.php">HOTELS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">ROOMS</a>
+                        <a class="nav-link text-light" href="users.php">USERS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">USERS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="#">ORDER</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="#">USER QUERIES</a>
+                        <a class="nav-link text-light" href="queries.php">USER QUERIES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" href="settings.php">SETTINGS</a>

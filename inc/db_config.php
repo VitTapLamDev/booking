@@ -11,6 +11,7 @@
         $query = "INSERT INTO `user_queries`(`name`, `email`, `subject`, `message`) VALUES ('$name','$email','$subject','$message')";
         if(mysqli_query($conn, $query)){
             header('Location: success.php');
+            exit();
         } else {
             $alert = '<div class="alert alert-danger" role="alert">Hệ thống đang bận. Vui lòng thử lại!</div>';
         }
