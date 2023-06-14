@@ -16,9 +16,6 @@
                     <a class="nav-link active" aria-current="page" href="index.php">Trang chủ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="hotels.php">Khách sạn</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="service.php">Dịch vụ</a>
                 </li>
                 <li class="nav-item">
@@ -99,13 +96,14 @@
                                 <label class="form-label">Số điện thoại </label>
                                 <input name="phonenumber" type="number" class="form-control shadow-none" required>
                             </div>
-                            <div class="col-md-12 ps-0 mb-3">
+                            <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Địa chỉ</label>
                                 <textarea name="address" class="form-control shadow-none" rows="1" required></textarea>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Ngày sinh</label>
                                 <input name="dob" type="date" class="form-control shadow-none" required>
+                                <br>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Mật khẩu</label>

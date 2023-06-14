@@ -283,10 +283,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-12 text-center mt-5">
-                <a href="hotels.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">Tìm hiểu thêm >>></a>
-            </div>
         </div>
     </div>
     
@@ -398,6 +394,21 @@
                     <div class="profile d-flex align-items-center mb-3">
                         <img src="/assets/images/profile.png" class="custom-rating">
                         <h6 class="m-0 ms-2">User 3</h6>
+                    </div>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis tempore explicabo voluptatem quisquam, 
+                    </p>
+                    <div class="rating">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                    </div>
+                </div>
+                <div class="swiper-slide bg-white p-4">
+                    <div class="profile d-flex align-items-center mb-3">
+                        <img src="/assets/images/profile.png" class="custom-rating">
+                        <h6 class="m-0 ms-2">User 4</h6>
                     </div>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis tempore explicabo voluptatem quisquam, 
                     </p>

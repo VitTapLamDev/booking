@@ -75,8 +75,8 @@
                         <th>Check-in</th>
                         <th>Check-out</th>
                         <th class="text-nowrap">Hạng phòng</th>
-                        <th>Giá</th>
-                        <th>Trạng thái đơn hàng</th>
+                        <th class="text-end">Thanh toán</th>
+                        <th class="text-end">Trạng thái đơn hàng</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -90,12 +90,12 @@
                         <td><?php echo $row['check_in']; ?></td>
                         <td><?php echo $row['check_out'] ?></td>
                         <td><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip"); ?></td>
-                        <td><?php echo $row['price'].'VND/Đêm'?></td>
+                        <td class="text-end"><?php echo $row['price'].' VND'?></td>
 
                         <?php if($row['status']=='process'){ ?>
-                            <td><span class="badge text-bg-secondary">Chờ xử lý</span></td>
+                            <td class="text-end"><span class="badge text-bg-secondary">Chờ xử lý</span></td>
                         <?php }else{ ?>
-                            <td><span class="badge text-bg-success">Đã Thanh Toán</span></td>
+                            <td class="text-end"><span class="badge text-bg-success">Đã Thanh Toán</span></td>
                         <?php } ?>
                     </tr>
                     <?php endwhile; ?>
@@ -117,7 +117,7 @@
                             <th>Check-in</th>
                             <th>Check-out</th>
                             <th class="text-nowrap">Hạng phòng</th>
-                            <th class="text-nowrap">Trạng thái đơn hàng</th>
+                            <th class="text-nowrap text-end">Trạng thái đơn hàng</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -133,12 +133,12 @@
                             <td><?php echo $row['check_out'] ?></td>
                             <td><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip"); ?></td>
                             <?php if($row['status']=='cancel'){ ?>
-                                <td><span class="badge text-bg-danger">Đã hủy</span></td>
+                                <td class="text-end"><span class="badge text-bg-danger">Đã hủy</span></td>
                             <?php }else{ ?>
-                                <td><span class="badge text-bg-success">Đã trả phòng</span></td>
+                                <td class="text-end"><span class="badge text-bg-success">Đã trả phòng</span></td>
                             <?php } ?>
                             <?php if($row['status']=='success'){ ?>
-                                <td><button onclick="getData(this); window.location.href='rating.php'" name="rating_btn" type="button" class="btn btn-dark shadow-none mybtn" >Phản hồi</button>  </td>
+                                <td class="text-center"><button onclick="getData(this); window.location.href='rating.php'" name="rating_btn" type="button" class="btn btn-dark shadow-none mybtn" >Phản hồi</button>  </td>
                             <?php } ?>
                         </tr>
                         <?php endwhile; ?>

@@ -119,7 +119,7 @@
             $sql2 = "SELECT SUM(number) FROM `booking` 
                         WHERE `location` LIKE '$location' AND `room_code` LIKE '$room_code' 
                             AND `check_in` BETWEEN '$check_in' AND '$check_out' OR `check_out` BETWEEN '$check_in' AND '$check_out'
-                            AND `status` = 'payed'
+                            AND (`status` = 'payed' OR `status` = 'process')
                         GROUP BY `hotel_id`, `room_code`";
             $result2 = $conn->query($sql2);
             if ($result2) {
@@ -180,4 +180,31 @@
             }
         }
     }
+
+    if(!$conn){
+        die("Connection failed: " + mysqli_connect_errno());
+    }else{
+        if(isset($_POST['payed'])){
+            session_start();
+            $hotel_id = $_SESSION['id_hotel'];
+            $bill_code = $_SESSION['bill_id'];
+            $check_in = $_SESSION['checkin'];
+            $check_out = $_SESSION['checkout'];
+            $number = $_SESSION['numofroom'];
+            $total = $_SESSION['total'];
+            $room_code = $_SESSION['roomtype'];
+            $user_email = $_SESSION['account'];
+
+
+            $booking = "INSERT INTO `booking_bill`(`bill_code`, `hotel_id`, `room_code`, `email_user`, `number`, `check_in`, `check_out`, `price`) 
+                        VALUES ('$bill_code','$hotel_id','$room_code','$user_email','$number','$check_in','$check_out','$total')";
+            if (!mysqli_query($conn, $booking)){
+                die('Error: ' . mysqli_error($conn));
+            }else{
+                header('Location: vnpay_php/vnpay_pay.php');
+                exit();
+            }
+        }
+    }
+
 ?>

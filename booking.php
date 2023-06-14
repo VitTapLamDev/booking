@@ -122,7 +122,7 @@
             var cells = row.getElementsByTagName('td');
             rowData.push(cells[0].textContent);
             rowData.push(cells[1].textContent);
-            rowData.push(cells[6].textContent);
+            rowData.push(cells[5].textContent);
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'inc/save_data.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

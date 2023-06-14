@@ -15,7 +15,6 @@
         <div class="col-lg-4 p-4">
             <h5 class="mb-3">Link</h5>
             <a href="index.php" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a> <br>
-            <a href="hotels.php" class="d-inline-block mb-2 text-dark text-decoration-none">Hotels</a> <br>
             <a href="service.php" class="d-inline-block mb-2 text-dark text-decoration-none">Service</a> <br>
             <a href="contact.php" class="d-inline-block mb-2 text-dark text-decoration-none">Contact us</a> <br>
             <a href="about.php" class="d-inline-block mb-2 text-dark text-decoration-none">About</a> <br>
