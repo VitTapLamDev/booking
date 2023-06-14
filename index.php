@@ -485,6 +485,7 @@
             slidesPerView: 3,
           });
         var swiper = new Swiper(".swiper-rating", {
+            watchSlidesProgress: true,
             effect: "coverflow",
             grabCursor: true,
             centeredSlides: true,

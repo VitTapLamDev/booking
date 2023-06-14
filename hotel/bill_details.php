@@ -1,6 +1,9 @@
 <?php
     require('inc_hotel/db_config.php');
     session_start();
+    if(!$_SESSION['hotel_account']){
+        header('Location: login.php');
+    }
     $bill_code = $_SESSION['bill_code'];
     $sql = "SELECT * FROM `booking` WHERE `bill_code` = '$bill_code'";
     $result = mysqli_query($conn, $sql);

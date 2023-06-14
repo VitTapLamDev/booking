@@ -1,12 +1,15 @@
 <?php
     require('inc_hotel/db_config.php');
+    session_start();
     if(!$conn){
         die("Connection failed: " + mysqli_connect_errno());
     }else{
-        session_start();
         $hotel_id = $_SESSION['hotel_account'];
         $sql = "SELECT * FROM `hotel_cred` WHERE `id_hotel` LIKE '$hotel_id'";
         $result = mysqli_query($conn, $sql);
+    }
+    if(!$_SESSION['hotel_account']){
+        header('Location: login.php');
     }
 ?>
 
