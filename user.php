@@ -1,6 +1,9 @@
 <?php
     require ('inc/db_config.php');
     session_start();
+    if(!$_SESSION['account']){
+        header('Location: index.php');
+    }
     $email_log = $_SESSION['account'];
     $query_user = "SELECT * FROM `user_cred` WHERE `email`='$email_log'";     
     $result_user = mysqli_query($conn, $query_user);

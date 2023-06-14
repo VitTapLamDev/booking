@@ -80,23 +80,6 @@
                         </form>
                     </div>
                 </div>
-                <!-- Shutdown section -->
-                <div class="card border-0 shadow mb-4">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <h5 class="card-title m-0">Đóng/Mở cửa khách sạn</h5>
-                            <div class="form-check form-switch">
-                                <form action="">
-                                    <input onclick="" class="form-check-input" type="checkbox" id="shutdown-toggle">
-                                </form>
-                            </div>
-                        </div>
-                        <p class="card-text">
-                            No customers will be allowed to find hotel room, when shutdown mode is turned on (Only for Hotel Maintenance).
-                        </p>
-                    </div>
-                </div>
-                <!-- Contact settings -->
                 <div class="card border-0 shadow mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">

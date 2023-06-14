@@ -101,7 +101,7 @@
                     </label>
                 </div> 
             </div>
-            <a href="http://hotelbooking.cdcs/" target="_blank">
+            <a href="http://hotelbooking.cdcs/">
                 <button>Quay lại trang chủ</button>
             </a>
 

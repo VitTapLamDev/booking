@@ -7,6 +7,9 @@
         $hotel_id = $_SESSION['hotel_account'];
         $sql = "SELECT * FROM `user_rating` WHERE `hotel_id` LIKE '$hotel_id'";
         $result = mysqli_query($conn, $sql);
+
+        $query_rating = "SELECT COUNT(bill_code) AS 'number', AVG(sore) AS 'avgscore' FROM `rating_bill` WHERE `hotel_id` = '$hotel_id'";
+        $result_rating =  mysqli_query($conn, $query_rating);
     }
     if(!$_SESSION['hotel_account']){
         header('Location: login.php');
@@ -67,19 +70,16 @@
                             <div class="col-lg-3 mb-4 mb-lg-0 px-lg-0 mt-lg-0">
                                 <div style="visibility: hidden; display: none; width: 285px; height: 801px; margin: 0px; float: none; position: static; inset: 85px auto auto;"></div><div data-settings="{&quot;parent&quot;:&quot;#content&quot;,&quot;mind&quot;:&quot;#header&quot;,&quot;top&quot;:10,&quot;breakpoint&quot;:992}" data-toggle="sticky" class="sticky" style="top: 85px;"><div class="sticky-inner">
                                     <div class="bg-white text-sm">
-                                        <!-- <h4 class="px-3 py-4 op-5 m-0 roboto-bold">
-                                            Stats
+                                        <h4 class="px-3 py-4 op-5 m-0 roboto-bold">
+                                            Thống kê
                                         </h4>
+                                        <?php while($row = mysqli_fetch_assoc($result_rating)): ?>
                                         <hr class="my-0">
                                         <div class="row text-center d-flex flex-row op-7 mx-0">
-                                            <div class="col-sm-6 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold">58</a> Đánh giá </div>
-                                                <div class="col-sm-6 col flex-ew text-center py-3 border-bottom mx-0"> <a class="d-block lead font-weight-bold">1.856</a> Posts </div>
-                                            </div>
-                                            <div class="row d-flex flex-row op-7">
-                                                <div class="col-sm-6 flex-ew text-center py-3 border-right mx-0"> <a class="d-block lead font-weight-bold">300</a> Members </div>
-                                                <div class="col-sm-6 flex-ew text-center py-3 mx-0"> <a class="d-block lead font-weight-bold">DanielD</a> Newest Member </div>
-                                            </div>
-                                        </div> -->
+                                            <div class="col-sm-6 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold"><?php echo $row['number'] ?></a> Đánh giá </div>
+                                            <div class="col-sm-6 col flex-ew text-center py-3 border-bottom mx-0"> <a class="d-block lead font-weight-bold"><?php if(!$row['avgscore']){echo '0';}else{echo $row['avgscore'];}  ?></a>Điểm Trung Bình</div>
+                                        </div>
+                                        <?php endwhile; ?>
                                     </div>
                                 </div>
                             </div>

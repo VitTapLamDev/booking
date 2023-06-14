@@ -7,6 +7,8 @@
         $hotel_id = $_SESSION['hotel_account'];
         $sql = "SELECT * FROM `booking` WHERE `hotel_id` LIKE '$hotel_id'";
         $result = mysqli_query($conn, $sql);
+
+        // $query_bill = "";
     }
     if(!$_SESSION['hotel_account']){
         header('Location: login.php');
@@ -29,6 +31,19 @@
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
+                <h3 class="mb-4">Thống kê hóa đơn</h3>
+                <div class="bg-white text-sm">
+                    <hr class="my-0">
+                    <div class="row text-center d-flex flex-row op-7 mx-0">
+                        <div class="col-sm-4 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold">123123123123</a>Đơn đặt phòng</div>
+                        <div class="col-sm-4 col flex-ew text-center py-3 border-bottom mx-0"> <a class="d-block lead font-weight-bold">3</a>Số đơn đã hủy</div>
+                        <div class="col-sm-4 col flex-ew text-center py-3 border-bottom mx-0"> <a class="d-block lead font-weight-bold">3</a>Thu nhập tạm tính</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10 ms-auto p-4 overflow-hidden">
+            <?php echo isset($alert) ? $alert : ''; ?>
+                <h3 class="mb-4">Danh sách đơn đặt phòng</h3>
                 <div class="container">
                     <div class="row">
                         <form method="post">
@@ -101,6 +116,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

@@ -82,9 +82,16 @@
             $room_price = $_POST['room_price'];
  
             $query = "UPDATE `rooms` SET `number`='$room_number',`convenient`='$room_conven',`price`='$room_price'
-                                        WHERE `hotel_id` = '$hotel_id' AND `room_code` = '$room_code' ";     
-            mysqli_query($conn, $query);
-            header('Location: rooms.php');
+                                        WHERE `hotel_id` = '$hotel_id' AND `room_code` = '$room_code' ";    
+            if(!mysqli_query($conn, $query)){
+                $alert = '<div class="alert alert-danger" role="alert">Cập nhật thông tin thất bại. Vui lòng thử lại!</div>';
+            }else{
+                header('Location: rooms.php');
+                $alert = '<div class="alert alert-success alert-dismissible" role="alert">Cập nhật thông tin thành công!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>';
+                exit();
+            }
         }
     }
 
@@ -101,7 +108,16 @@
  
             $insert_room = "INSERT INTO `rooms`( `hotel_id`, `room_code`, `number`, `convenient`, `price`, `img_room`) 
                         VALUES ('$hotel_id','$room_code','$room_number','$room_conven','$room_price','$room_img') ";     
-            mysqli_query($conn, $insert_room);
+            if(!mysqli_query($conn, $insert_room)){
+                $alert = '<div class="alert alert-danger alert-dismissible" role="alert">Cập nhật thông tin thất bại, Vui lòng thử lại!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>';
+            }else{
+                $alert = '<div class="alert alert-succes alert-dismissible" role="alert">Cập nhật thông tin thành công!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>';
+                exit();
+            }
         }
     }
 

@@ -1,6 +1,9 @@
 <?php
     require('inc/db_config.php');
     session_start();
+    if(!$_SESSION['account']){
+        header('Location: index.php');
+    }
 ?>
 
 <!DOCTYPE html>

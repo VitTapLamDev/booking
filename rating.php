@@ -1,6 +1,9 @@
 <?php
     require ('inc/db_config.php');
     session_start();
+    if(!$_SESSION['account']){
+        header('Location: index.php');
+    }
     $hotel_code = $_SESSION['hotel_id'];
     $bill_code = $_SESSION['bill_code'];
     $sql_hotel = "SELECT * FROM `hotel_cred` WHERE `id_hotel` = '$hotel_code'";
