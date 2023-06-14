@@ -8,7 +8,15 @@
         $sql = "SELECT * FROM `booking` WHERE `hotel_id` LIKE '$hotel_id'";
         $result = mysqli_query($conn, $sql);
 
-        // $query_bill = "";
+        $query_bill = "SELECT
+                    COUNT(bill_code) AS sl ,
+                    COUNT(CASE WHEN (Status = 'success' OR Status = 'payed') THEN bill_code END) AS sl_success,
+                    COUNT(CASE WHEN Status = 'cancel' THEN bill_code END) AS sl_cancel,
+                    SUM(CASE WHEN (Status = 'success' OR Status = 'payed' OR Status = 'process') THEN Price END) AS total
+                FROM
+                    booking_bill
+                WHERE booking_bill.hotel_id = '$hotel_id'";
+                    $result_bill = mysqli_query($conn, $query_bill);
     }
     if(!$_SESSION['hotel_account']){
         header('Location: login.php');
@@ -35,9 +43,12 @@
                 <div class="bg-white text-sm">
                     <hr class="my-0">
                     <div class="row text-center d-flex flex-row op-7 mx-0">
-                        <div class="col-sm-4 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold">123123123123</a>Đơn đặt phòng</div>
-                        <div class="col-sm-4 col flex-ew text-center py-3 border-bottom mx-0"> <a class="d-block lead font-weight-bold">3</a>Số đơn đã hủy</div>
-                        <div class="col-sm-4 col flex-ew text-center py-3 border-bottom mx-0"> <a class="d-block lead font-weight-bold">3</a>Thu nhập tạm tính</div>
+                    <?php while($row = mysqli_fetch_assoc($result_bill)): ?>
+                        <div class="col-sm-3 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold"><?php echo $row['sl'] ?></a>Tổng đơn đã đặt</div>
+                        <div class="col-sm-3 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold" style="color: darkgreen;"><?php echo $row['sl_success'] ?> </a>Số đơn thành công</div>
+                        <div class="col-sm-3 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold" style="color: red;"><?php echo $row['sl_cancel'] ?></a>Số đơn đã hủy</div>
+                        <div class="col-sm-3 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold" style="color: darkgreen;"><?php echo $row['total'] ?> VND</a>Thu nhập tạm tính</div>
+                    <?php endwhile; ?>
                     </div>
                 </div>
             </div>
@@ -51,11 +62,17 @@
                                 <div class="overflow-hidden card table-nowrap table-card">
                                     <div class="card-header d-flex justify-content-between align-items-center text-nowrap">
                                         <h5 class="mb-0">Danh sách đơn:    </h5>
-                                        <div class="input-group mb-3" style="margin-left: 20px; margin-top: 5px;">
-                                            <input name="hotel_id" type="text" class="form-control" value="<?php echo $_SESSION['hotel_account'] ?>" readonly>
-                                            <input name="email_bill" type="email" class="form-control" placeholder="Email đặt phòng" required>
-                                            <button name="search_bill" class="btn btn-outline-secondary" type="submit">Tìm kiếm</button>
-                                        </div>
+                                        <div class="row justify-content-end">
+                                            <div class="col-sm-2">
+                                                <input name="hotel_id" type="text" class="form-control text-center" value="<?php echo $_SESSION['hotel_account'] ?>" readonly>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <input name="email_bill" type="email" class="form-control" placeholder="Email đặt phòng" required>
+                                            </div>
+                                            <div class="col-auto">
+                                                <button name="search_bill" class="btn btn-outline-secondary" type="submit">Tìm kiếm</button>
+                                            </div>
+                                        </div> 
                                     </div>
                                     <div class="table-responsive">
                                         <table class="table mb-0">

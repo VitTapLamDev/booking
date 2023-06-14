@@ -136,18 +136,6 @@
     if(!$conn){
         die("Connection failed: " + mysqli_connect_errno());
     }else{
-        if(isset($_POST['search_bill'])){
-            $hotel_id = $_POST['hotel_id'];
-            $email = $_POST['email_bill'];
- 
-            $sql = "SELECT * FROM `booking` WHERE `hotel_id` = '$hotel_id' AND `email_user` = '$email' ";     
-            $result = mysqli_query($conn, $sql);
-        }
-    }
-
-    if(!$conn){
-        die("Connection failed: " + mysqli_connect_errno());
-    }else{
         if(isset($_POST['checkoutBtn'])){
             session_start();
             $bill_code = $_SESSION['bill_code'];
