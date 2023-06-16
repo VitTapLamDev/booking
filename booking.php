@@ -1,9 +1,6 @@
 <?php
-    require('inc/db_config.php');
-    session_start();
-    if(!$_SESSION['account']){
-        header('Location: index.php');
-    }
+    require('inc/booking_cred.php');
+    
 ?>
 
 <!DOCTYPE html>

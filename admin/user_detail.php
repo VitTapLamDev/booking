@@ -28,11 +28,12 @@
                             <h2 class="h5 mb-3 mb-lg-0"><a href="users.php" class="text-muted"><i class="bi bi-arrow-left-square me-2"></i></a>User Infomation</h2>
                             <div class="hstack gap-3">
                                 <button type="button" class="btn btn-danger btn-sm btn-icon-text btn-sm " data-bs-toggle="modal" data-bs-target="#deleteUser"><i class="bi bi-trash me-1"></i>Delete</button>
-                                <button name="save_btn" class="btn btn-primary btn-sm btn-icon-text"><i class="bi bi-save"></i> <span class="text">Save</span></button>
+                                <button name="save_user" class="btn btn-primary btn-sm btn-icon-text"><i class="bi bi-save"></i> <span class="text">Save</span></button>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-8">
+                                <form action="" method="post">
                                 <div class="card mb-4">
                                     <div class="card-body">
                                         <h3 class="h6 mb-4">User's contact</h3>
@@ -40,7 +41,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Name</label>
-                                                    <input name="user_name" type="text" class="form-control" value="<?php echo $user_name ?>" readonly>
+                                                    <input name="user_name" type="text" class="form-control" value="<?php echo $user_name ?>" required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -72,7 +73,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Address -->
+                                </form>
             
                                 </div>
                                 <!-- Right side -->

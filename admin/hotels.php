@@ -18,6 +18,7 @@
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
+            <?php echo isset($alert) ? $alert : ''; ?>
                 <div class="d-flex justify-content-between align-items-lg-center flex-column flex-lg-row mb-3">
                     <h4>HOTEL MANAGEMENT</h4>
                     <div class="hstack gap-3">

@@ -1,18 +1,5 @@
 <?php
-    require ('inc/db_config.php');
-    session_start();
-    if(!$_SESSION['account']){
-        header('Location: index.php');
-    }
-    $email_log = $_SESSION['account'];
-    $query_user = "SELECT * FROM `user_cred` WHERE `email`='$email_log'";     
-    $result_user = mysqli_query($conn, $query_user);
-
-    $query_booking = "SELECT * FROM `booking` WHERE `email_user`= '$email_log' AND (`status` = 'process' OR `status` = 'payed')";
-    $result_booking = mysqli_query($conn, $query_booking);
-
-    $query_history = "SELECT * FROM `booking` WHERE `email_user`= '$email_log' AND (`status` = 'success' OR `status` = 'cancel')";
-    $result_hotel = mysqli_query($conn, $query_history);
+    require('inc/user_cred.php')
 ?>
 
 <!DOCTYPE html>
@@ -44,19 +31,22 @@
                                 <img src="/assets/images/user.png" alt="...">
                             </div>
                             <div class="col-lg-6 px-xl-10">
-                                <?php  while ($row = mysqli_fetch_assoc($result_user)){
-                                    $dob = $row['dob']; 
-                                    $formattedDate = date('d-m-Y', strtotime($dob));
-                                ?>
-                                <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
-                                    <h3 class="h2 text-white mb-0"><?php echo $row['user_name']; ?></h3>
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                                            <h3 class="h2 text-white mb-0"><?php echo $user_name; ?></h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 text-end">
+                                        <button type="button" class="btn btn-danger shadow-none btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#change_pass">Change Password</button>  
+                                        <button type="button" class="btn btn-dark shadow-none btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#details_user">Edit Information</button>
+                                    </div>
                                 </div>
                                 <ul class="list-unstyled mb-1-9">
-                                    <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-telephone-fill me-4\"></i>". $row['phonenumber']. "</li>"; ?>
-                                    <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-envelope-fill me-4\"></i>". $row['email']. "</li>"; ?>
-                                    <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-geo-alt-fill me-4\"></i>". $row['address']. "</li>"; ?>
-                                    
-                                    <?php echo "<li class=\"mb-2 mb-xl-3\"><i class=\"bi bi-calendar3-event me-4\"></i>". $formattedDate. "</li>"; }?>
+                                    <li class="mb-2 mb-xl-3 "><i class="bi bi-telephone-fill me-4 "></i><?php echo $user_phonenumber ?> </li>
+                                    <li class="mb-2 mb-xl-3 "><i class="bi bi-envelope-fill me-4 "></i><?php echo $user_email ?></li>
+                                    <li class="mb-2 mb-xl-3 "><i class="bi bi-geo-alt-fill me-4 "></i><?php echo $user_address ?></li>
+                                    <li class="mb-2 mb-xl-3 "><i class="bi bi-calendar3-event me-4 "></i><?php echo $formattedDate ?></li>
                                 </ul>
                             </div>
                         </div>
@@ -96,12 +86,13 @@
                         <td class="text-end"><?php echo $row['price'].' VND'?></td>
 
                         <?php if($row['status']=='process'){ ?>
-                            <td class="text-end"><span class="badge text-bg-secondary">Chờ xử lý</span></td>
+                            <td class="text-center"><span class="badge text-bg-secondary">Chờ xử lý</span></td>
                         <?php }else{ ?>
-                            <td class="text-end"><span class="badge text-bg-success">Đã Thanh Toán</span></td>
+                            <td class="text-center"><span class="badge text-bg-success">Đã Thanh Toán</span></td>
                         <?php } ?>
                     </tr>
                     <?php endwhile; ?>
+
                 </tbody>
             </table>  
         </div>                            
@@ -120,7 +111,7 @@
                             <th>Check-in</th>
                             <th>Check-out</th>
                             <th class="text-nowrap">Hạng phòng</th>
-                            <th class="text-nowrap text-end">Trạng thái đơn hàng</th>
+                            <th class="text-nowrap text-center">Trạng thái đơn hàng</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -136,9 +127,9 @@
                             <td><?php echo $row['check_out'] ?></td>
                             <td><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip"); ?></td>
                             <?php if($row['status']=='cancel'){ ?>
-                                <td class="text-end"><span class="badge text-bg-danger">Đã hủy</span></td>
+                                <td class="text-center"><span class="badge text-bg-danger">Đã hủy</span></td>
                             <?php }else{ ?>
-                                <td class="text-end"><span class="badge text-bg-success">Đã trả phòng</span></td>
+                                <td class="text-center"><span class="badge text-bg-success">Đã trả phòng</span></td>
                             <?php } ?>
                             <?php if($row['status']=='success'){ ?>
                                 <td class="text-center"><button onclick="getData(this); window.location.href='rating.php'" name="rating_btn" type="button" class="btn btn-dark shadow-none mybtn" >Phản hồi</button>  </td>
@@ -148,6 +139,85 @@
                     </tbody>
                 </table>  
             </form>
+        </div>
+                                
+        <div class="modal fade" id="change_pass" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <form id="" method="POST">
+                        <div class="modal-header">
+                            <h5 class="modal-title d-flex align-items-center"> 
+                                <i class="bi bi-person-lines-fill fs-3 me-2"></i> Đổi mật khẩu
+                            </h5>
+                            <button type="reset" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12 ps-0 mb-3">
+                                        <label class="form-label">Mật khẩu cũ</label>
+                                        <input name="old_pass" type="password" class="form-control shadow-none" required>
+                                    </div>
+                                    <div class="col-md-12 ps-0 mb-3">
+                                        <label class="form-label">Mật khẩu mới </label>
+                                        <input name="new_pass" type="password" class="form-control shadow-none" required>
+                                    </div>
+                                    <div class="col-md-12 ps-0 mb-3">
+                                        <label class="form-label">Xác nhận mật khẩu</label>
+                                        <input name="cnew_pass" type="password" class="form-control shadow-none" rows="2" required>
+                                    </div>
+                                </div>
+                            </div>              
+                            <div class="text-center my-1">
+                                <button name="change_pass" class="btn btn-dark shadow-none" type="submit">SAVE</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>  
+            </div>
+        </div>
+
+        <div class="modal fade" id="details_user" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <form method="POST">
+                        <div class="modal-header">
+                            <h5 class="modal-title d-flex align-items-center"> 
+                                <i class="bi bi-person-lines-fill fs-3 me-2"></i> Chỉnh sửa thông tin cá nhân
+                            </h5>
+                            <button type="reset" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <span class="badge bg-light text-dark mb-3 text-wrap lh-base ">
+                                Lưu ý: Thông tin của bạn phải trùng khớp và sẽ được bảo mật trong suốt quá trình đặt phòng khách sạn.
+                            </span>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-6 ps-0 mb-3">
+                                        <label class="form-label">Họ và tên</label>
+                                        <input name="name" type="text" class="form-control shadow-none" value="<?php echo $user_name; ?>" required>
+                                    </div>
+                                    <div class="col-md-6 ps-0 mb-3">
+                                        <label class="form-label">Số điện thoại </label>
+                                        <input name="phonenumber" type="text" class="form-control shadow-none" value="<?php echo (int) $user_phonenumber ?> "required>
+                                    </div>
+                                    <div class="col-md-6 ps-0 mb-3">
+                                        <label class="form-label">Địa chỉ</label>
+                                        <textarea name="address" class="form-control shadow-none" rows="2" required><?php echo $user_address ?></textarea>
+                                    </div>
+                                    <div class="col-md-6 ps-0 mb-3">
+                                        <label class="form-label">Ngày sinh</label>
+                                        <input name="dob" type="date" class="form-control shadow-none" value="<?php echo $dob ?>" required>
+                                    </div>
+                                </div>
+                            </div>              
+                            <div class="text-center my-1">
+                                <button name="edit_user" class="btn btn-dark shadow-none" type="submit">SAVE</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>  
+            </div>
         </div>
     </div>
     </section>   
