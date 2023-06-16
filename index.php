@@ -522,6 +522,10 @@
         var checkInInput = document.getElementById("checkin");
         var checkOutInput = document.getElementById("checkout");
 
+        // Set minimum date for check-in input to current date
+        var currentDate = new Date();
+        var currentDateString = currentDate.toISOString().split("T")[0];
+        checkInInput.min = currentDateString;
         // Add event listener for check-in date change
         checkInInput.addEventListener("change", function() {
         // Get the selected check-in and check-out dates
