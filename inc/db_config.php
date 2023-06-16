@@ -35,7 +35,7 @@
         }else{
             $query = "INSERT INTO `user_cred`(`user_name`, `email`, `address`, `phonenumber`, `dob`, `password`) 
                         VALUES ('$name','$email','$address','$phonenumber','$dob','$hashpass')";
-            $query_run = mysqli_query($conn, $query);
+            mysqli_query($conn, $query);
             $alert = '<div class="alert alert-success" role="alert">Tạo tài khoản thành công!</div>';
         }
     }

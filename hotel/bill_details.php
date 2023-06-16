@@ -24,6 +24,7 @@
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
+                
                 <button class="btn btn-secondary" onclick="window.location.href='bills.php'">< Quay lại</button>
                 <?php while($row = mysqli_fetch_assoc($result)): ?>
                 <div class="col-lg-12">

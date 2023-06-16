@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Google Map Irame</label>
-                                        <input name="gmap" type="text" class="form-control" value="<?php echo $gmap ?>" required>
+                                        <textarea name="gmap" type="text" class="form-control" rows="3" required><?php echo $gmap ?></textarea>
                                     </div>
                                     <h3 class="h6 mb-4">Social Links</h3>
                                     <div class="row">
@@ -112,11 +112,22 @@
                                 <div class="card mb-4">
                                     <div class="card-body">
                                         <h3 class="h6">Status</h3>
-                                        <select class="form-select">
-                                            <option value="draft" selected="">Draft</option>
-                                            <option value="active">Active</option>
-                                            <option value="active">Inactive</option>
-                                        </select>
+                                        <?php while($row = mysqli_fetch_assoc($result_rating)): ?>
+                                        <hr class="my-0">
+                                        <div class="row text-center d-flex flex-row op-7 mx-0">
+                                            <div class="col-sm-6 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold"><?php echo $row['number'] ?></a>Ratings</div>
+                                            <div class="col-sm-6 col flex-ew text-center py-3 border-bottom mx-0"> <a class="d-block lead font-weight-bold"><?php if(!$row['avgscore']){echo '0';}else{echo $row['avgscore'];}  ?></a>Average rating</div>
+                                        </div>
+                                        <?php endwhile; ?>
+                                        <?php while($row = mysqli_fetch_assoc($result_bill)): ?>
+                                        <hr class="my-0">
+                                        <div class="row text-center d-flex flex-row op-7 mx-0">
+                                            <div class="col-sm-6 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold"><?php echo $row['sl'] ?></a>Order</div>
+                                            <div class="col-sm-6 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold" style="color: darkgreen;"><?php echo $row['sl_success'] ?> </a>Success</div>
+                                            <div class="col-sm-6 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold" style="color: red;"><?php echo $row['sl_cancel'] ?></a>Cancel</div>
+                                            <div class="col-sm-6 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold" style="color: darkgreen;"><?php echo $row['total'] ?> VND</a>Total</div>
+                                        </div>
+                                        <?php endwhile; ?>
                                     </div>
                                 </div>
                                 <!-- Avatar -->
@@ -149,20 +160,20 @@
                                                     <div class="col-8">
                                                         <div class="candidate-list-content mt-3 mt-lg-0">
                                                             <div class="row">
-                                                                <h5 class="col-lg-3"> Type of room: </h5>
+                                                                <h5 class="col-lg-4"> Type of room: </h5>
                                                                 <h5 class="col-lg-3 fs-19 mb-0">
                                                                     <p><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip");  ?></p>
                                                                 </h5>
                                                             </div>
                                                             <div class="row">
-                                                                <h5 class="col-lg-3 text-muted mb-2">Total of room:</h5>
+                                                                <h5 class="col-lg-4 text-muted mb-2">Total of room:</h5>
                                                                 <h5 class="col-lg-3">
                                                                     <p><?php echo $row['number']?></p>
                                                                 </h5>
                                                             </div>
                                                             <div class="row">
-                                                                <h5 class="col-auto text-muted mb-2">Convenient:</h5>
-                                                                <h5 class="col-lg-9">
+                                                                <h5 class="col-4 text-muted mb-2">Convenient:</h5>
+                                                                <h5 class="col-lg-8">
                                                                     <p><?php echo $row['convenient']?></p>
                                                                 </h5>
                                                             </div>
@@ -188,8 +199,8 @@
                                     <span class="me-1">Rating</span>
                                     <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i>
                                 </h5>
-                                <?php while($row = mysqli_fetch_assoc($result_rating)): ?>
-                                <div class="col-lg-6">
+                                <?php while($row = mysqli_fetch_assoc($result_rating_hotel)): ?>
+                                <div class="col-lg-12">
                                     <form method="post">
                                         <div class="candidate-list">
                                             <div class="candidate-list-box card mt-4">
@@ -197,10 +208,10 @@
                                                     <div class="">
                                                         <div class="candidate-list-content mt-3 mt-lg-0">
                                                             <div class="row">
-                                                                <div class="col-lg-8 d-flex align-items-center">
+                                                                <div class="col-lg-9 d-flex align-items-center">
                                                                     <h5 class="fs-19 mb-0">
                                                                         <a><?php echo $row['user_name'] ?></a>
-                                                                        <span class="badge bg-secondary ms-1 align-items-center">
+                                                                        <span class="badge bg-secondary ms-1 align-items-end">
                                                                             <?php 
                                                                                 $score = $row['score'];
                                                                                 for($i =1; $i<=$score; $i++):
@@ -210,7 +221,7 @@
                                                                         </span>
                                                                     </h5>
                                                                 </div>
-                                                                <div class="col-auto fs-19 mb-0 d-flex justify-content-end">
+                                                                <div class="col-lg-3 fs-19 mb-0 d-flex justify-content-end">
                                                                     <span class="badge bg-soft-secondary fs-5"><?php echo '#'.$row['bill_code'] ?></span>
                                                                 </div>
                                                             </div>

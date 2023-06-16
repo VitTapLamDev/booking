@@ -1,19 +1,4 @@
-<?php
-    require('inc_hotel/db_config.php');
-    session_start();
-    if(!$conn){
-        die("Connection failed: " + mysqli_connect_errno());
-    }else{
-        $hotel_id = $_SESSION['hotel_account'];
-        $sql = "SELECT DISTINCT * FROM `rooms` WHERE `hotel_id` LIKE '$hotel_id'";
-        $result = mysqli_query($conn, $sql);
-        $room = mysqli_num_rows($result);
-    }
-    if(!$_SESSION['hotel_account']){
-        header('Location: login.php');
-    }
-    
-?>
+<?php require('inc_hotel/rooms_crud.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">

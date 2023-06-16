@@ -1,8 +1,12 @@
 <?php
-    require('/Code/GitHub/booking/admin/inc/db_config.php');
-    require('/Code/GitHub/booking/admin/inc/essentials.php');
+    require('/xampp/htdocs/booking/admin/inc/db_config.php');
+    require('/xampp/htdocs/booking/admin/inc/essentials.php');
     
     adminLogin();
+
+    if(!isset($_SESSION['adminLogin'])){
+        header('Location: index.php');
+     }
 // Get data from DataBase
     if(isset($_POST['get_general'])){
         $q = "SELECT * FROM `settings` WHERE `sr_no`= ?";

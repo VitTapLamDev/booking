@@ -2,6 +2,10 @@
     require('inc/db_config.php');
     $sql = "SELECT * FROM `user_queries`";
     $result_queries = mysqli_query($con, $sql);
+    session_start();
+    if(!isset($_SESSION['adminLogin'])){
+        header('Location: index.php');
+    }
     
 ?>
 <!DOCTYPE html>

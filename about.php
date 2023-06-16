@@ -27,7 +27,7 @@
         <h2 class="fw-bold h-font text-center">HỆ THỐNG KHÁCH SẠN</h2>
         <div class="h-line bg-dark"></div>
         <p class="text-center mt-3">
-        chúng tôi tự hào mang đến một danh sách đa dạng và phong phú với hàng ngàn khách sạn trên toàn thế giới. Từ những khách sạn tiện nghi đến những kỳ quan nghỉ dưỡng xa hoa, chúng tôi cam kết cung cấp cho bạn lựa chọn tuyệt vời và trải nghiệm đáng nhớ.
+        Chúng tôi tự hào mang đến một danh sách đa dạng và phong phú với hàng ngàn khách sạn trên toàn thế giới. Từ những khách sạn tiện nghi đến những kỳ quan nghỉ dưỡng xa hoa, chúng tôi cam kết cung cấp cho bạn lựa chọn tuyệt vời và trải nghiệm đáng nhớ.
         </p>
     </div>
 

@@ -1,9 +1,5 @@
 <?php 
-    require('inc/essentials.php');
-    require('inc/db_config.php');
-    $sql = "SELECT * FROM `user_cred`";
-    $result = mysqli_query($con, $sql);
-    adminLogin();
+    require('ajax/user_crud.php');
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +21,7 @@
             <div class="d-flex justify-content-between align-items-lg-center flex-column flex-lg-row">
                 <h4>USER MANAGEMENT</h4>
                 <div class="hstack gap-3">
-                    <button name="save_btn" type="button" class="btn btn-primary btn-sm btn-icon-text fs-5" data-bs-toggle="modal" data-bs-target="#addUser"><i class="bi bi-building-add me-1"></i>New User</button>
+                    <button name="save_btn" type="button" class="btn btn-primary btn-sm btn-icon-text btn-sm" data-bs-toggle="modal" data-bs-target="#addUser"><i class="bi bi-building-add me-1"></i>New User</button>
                 </div>
             </div>
             <div class="container-fluid" id="main-content">
@@ -67,7 +63,7 @@
                                                                         <i class="fa fa-bars" aria-hidden="true"></i>
                                                                     </a>
                                                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                                                                        <a class="dropdown-item" onclick="getData(this); ">Chi tiết</a>
+                                                                        <a class="dropdown-item" onclick="getData(this); window.location.href ='user_detail.php' ">Chi tiết</a>
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -89,18 +85,57 @@
         <div class="modal fade" id="addUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
+                <form action="" method="post">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New User</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        <div class="container-fluid p-0">
+                            <div class="row">
+                                <div class="mb-3">
+                                    <label for="" class="form-label fw-bold">Email</label>
+                                    <input type="email" name="user_email" class="form-control shadow-none" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label fw-bold">User Name</label>
+                                        <input type="text" name="user_name" class="form-control shadow-none" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label fw-bold">Day of Birth</label>
+                                        <input type="date" name="user_dob" class="form-control shadow-none" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label fw-bold">Password</label>
+                                        <input type="password" name="user_pw" class="form-control shadow-none" required>
+                                    </div>  
+                                </div>
+                                <div class="col-md-6">
+                                    
+                                    <div class="mb-3">
+                                        <label for="" class="form-label fw-bold">Address</label>
+                                        <input type="text" name="user_address" class="form-control shadow-none" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label fw-bold">Phone Numbers</label>
+                                        <input type="number" name="user_pn" class="form-control shadow-none" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label fw-bold">Confirm Password</label>
+                                        <input type="password" name="user_pwc" class="form-control shadow-none" required>
+                                    </div>                            
+                                </div>
+                            </div>
+                            
+                        </div>                
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Understood</button>
+                        <button type="submit" name="add_newuser" class="btn btn-primary">Add New User</button>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
 
@@ -113,20 +148,20 @@
             
             var user_email = rowData[1].textContent;
             console.log(user_email);
-            // saveDataInSession(user_email);
+            saveDataInSession(user_email);
         }
 
-        // function saveDataInSession(user_email) {
-        //     var xhr = new XMLHttpRequest();
-        //     xhr.open('POST', 'inc/user_email.php', true);
-        //     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        //     xhr.onreadystatechange = function() {
-        //         if (xhr.readyState === 4 && xhr.status === 200) {
-        //         console.log('Data saved in session successfully.');
-        //         }
-        //     };
-        //     xhr.send('user_email=' + encodeURIComponent(user_email));
-        // }
+        function saveDataInSession(user_email) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'inc/user_email.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log('Data saved in session successfully.');
+                }
+            };
+            xhr.send('user_email_admin=' + encodeURIComponent(user_email));
+        }
 
     </script>                                                       
 </body>

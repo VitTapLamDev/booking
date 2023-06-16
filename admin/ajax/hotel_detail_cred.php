@@ -3,6 +3,10 @@
     require('inc/db_config.php');
     adminLogin();
 
+    if(!isset($_SESSION['adminLogin'])){
+        header('Location: index.php');
+     }
+
     $hotel_code = $_SESSION['hotel_code'];
     $sql = "SELECT * FROM `hotel_cred` WHERE `id_hotel` = '$hotel_code'";
     $result = mysqli_query($con, $sql);
@@ -20,11 +24,14 @@
         $note = $row['note'];
     }
     
-    $query_rooms = "SELECT DISTINCT * FROM `rooms` WHERE `hotel_id` = '$hotel_code'";
+    $query_rooms = "SELECT * FROM `rooms` WHERE `hotel_id` = '$hotel_code'";
     $result_room = mysqli_query($con, $query_rooms);
 
-    $query_rating = "SELECT DISTINCT * FROM `user_rating` WHERE `hotel_id` = '$hotel_code'";
-    $result_rating = mysqli_query($con, $query_rating);
+    $query_rating = "SELECT * FROM `user_rating` WHERE `hotel_id` = '$hotel_code'";
+    $result_rating_hotel = mysqli_query($con, $query_rating);
+
+    $query_rating = "SELECT COUNT(bill_code) AS 'number', AVG(sore) AS 'avgscore' FROM `rating_bill` WHERE `hotel_id` = '$hotel_id'";
+    $result_rating =  mysqli_query($con, $query_rating);
 
     if(isset($_POST['save_btn'])){
         $hotel_id = $_POST['hotel_code'];
@@ -57,4 +64,14 @@
                         </div>';
         }
     }
+
+    $query_bill = "SELECT
+                COUNT(bill_code) AS sl ,
+                COUNT(CASE WHEN (Status = 'success' OR Status = 'payed') THEN bill_code END) AS sl_success,
+                COUNT(CASE WHEN Status = 'cancel' THEN bill_code END) AS sl_cancel,
+                SUM(CASE WHEN (Status = 'success' OR Status = 'payed' OR Status = 'process') THEN Price END) AS total
+            FROM
+                booking_bill
+            WHERE booking_bill.hotel_id = '$hotel_code'";
+    $result_bill = mysqli_query($con, $query_bill);
 ?>

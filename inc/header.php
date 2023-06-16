@@ -51,11 +51,11 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Email đăng nhập</label>
-                        <input type="email" name="email_log" class="form-control shadow-none">
+                        <input type="email" name="email_log" class="form-control shadow-none" required>
                     </div>
                     <div class="mb-4">
                         <label class="form-label">Mật Khẩu</label>
-                        <input type="password" name="pass_log" class="form-control shadow-none">
+                        <input type="password" name="pass_log" class="form-control shadow-none" required>
                     </div>
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <button type="submit" name="login_account" class='btn btn-dark shadow-none'>ĐĂNG NHẬP</button>
@@ -84,13 +84,13 @@
                     </span>
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-6 ps-0 mb-3">
-                                <label class="form-label">Họ và tên</label>
-                                <input name="name" type="text" class="form-control shadow-none" require>
+                            <div class="col-md-12 ps-0 mb-3">
+                                <label class="form-label">Email</label>
+                                <input name="email" type="email" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
-                                <label class="form-label">Email</label>
-                                <input name="email" type="email" class="form-control shadow-none" require>
+                                <label class="form-label">Họ và tên</label>
+                                <input name="name" type="text" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Số điện thoại </label>
@@ -98,12 +98,11 @@
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Địa chỉ</label>
-                                <textarea name="address" class="form-control shadow-none" rows="1" required></textarea>
+                                <input name="address" class="form-control shadow-none" rows="1" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Ngày sinh</label>
                                 <input name="dob" type="date" class="form-control shadow-none" required>
-                                <br>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Mật khẩu</label>
@@ -116,7 +115,7 @@
                         </div>
                     </div>              
                     <div class="text-center my-1">
-                        <button name="create_user" class="btn btn-dark shadow-none" data-bs-dismiss="modal" type="submit">ĐĂNG KÍ NGAY</button>
+                        <button name="create_user" class="btn btn-dark shadow-none" type="submit">ĐĂNG KÍ NGAY</button>
                     </div>
                 </div>
             </form>

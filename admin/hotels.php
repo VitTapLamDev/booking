@@ -1,13 +1,5 @@
 <?php 
-    require('/Code/GitHub/booking/admin/inc/essentials.php');
-    require('/Code/GitHub/booking/admin/inc/db_config.php');
-    if(!$con){
-        die("Connection failed: " + mysqli_connect_errno());
-    }else{
-        session_start();
-        $sql = "SELECT * FROM `hotel_cred`";
-        $result = mysqli_query($con, $sql);
-    }
+    require('ajax/hotel_crud.php');
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +17,12 @@
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
+                <div class="d-flex justify-content-between align-items-lg-center flex-column flex-lg-row mb-3">
+                    <h4>HOTEL MANAGEMENT</h4>
+                    <div class="hstack gap-3">
+                        <button name="new_hotel" type="button" class="btn btn-primary btn-sm btn-icon-text btn-sm " data-bs-toggle="modal" data-bs-target="#addHotel"><i class="bi bi-building-add me-1"></i>New Hotel</button>
+                    </div>
+                </div>
                 <div class="container">
                     <div class="row">
                         <form method="post">
@@ -61,7 +59,7 @@
                                                                 <i class="fa fa-bars" aria-hidden="true"></i>
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                                                                <a class="dropdown-item" onclick="getData(this); window.location.href ='hotel_detail.php'">Chi tiết</a>
+                                                                <a class="dropdown-item" onclick="getData(this); window.location.href ='hotel_detail.php'">Details</a>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -75,6 +73,69 @@
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="modal fade" id="addHotel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <form action="" method="post">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New Hotel Account</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid p-0">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label fw-bold">Name</label>
+                                        <input type="text" name="hotel_name" class="form-control shadow-none" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label fw-bold">Email</label>
+                                        <input type="email" name="hotel_email" class="form-control shadow-none" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label fw-bold">Location</label>
+                                        <input type="text" name="hotel_location" class="form-control shadow-none" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label fw-bold">Password</label>
+                                        <input type="password" name="hotel_pw" class="form-control shadow-none" required>
+                                    </div>  
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label fw-bold">ID</label>
+                                        <input type="text" name="hotel_id" class="form-control shadow-none" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label fw-bold">Address</label>
+                                        <input type="text" name="hotel_address" class="form-control shadow-none" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label fw-bold">Hotline</label>
+                                        <input type="number" name="hotel_hotline" class="form-control shadow-none" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label fw-bold">Confirm Password</label>
+                                        <input type="password" name="hotel_pwc" class="form-control shadow-none" required>
+                                    </div>                            
+                                </div>
+                            </div>
+                            
+                        </div>                
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" name="add_newhotel" class="btn btn-primary">Add New Hotel</button>
+                    </div>
+                </div>
+                </form>
             </div>
         </div>
     </div>

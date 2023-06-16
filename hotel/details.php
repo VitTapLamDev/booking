@@ -1,16 +1,6 @@
 <?php
-    require('inc_hotel/db_config.php');
-    session_start();
-    if(!$conn){
-        die("Connection failed: " + mysqli_connect_errno());
-    }else{
-        $hotel_id = $_SESSION['hotel_account'];
-        $sql = "SELECT * FROM `hotel_cred` WHERE `id_hotel` LIKE '$hotel_id'";
-        $result = mysqli_query($conn, $sql);
-    }
-    if(!$_SESSION['hotel_account']){
-        header('Location: login.php');
-    }
+    require('inc_hotel/details_crud.php');
+    
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +18,12 @@
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
+
+            <?php 
+                echo isset($alert) ? $alert : ''; 
+            ?>
                 <h3 class="mb-4">SETTINGS</h3>
+                <button type="button" class="btn btn-dark shadow-none btn-sm d-flex" data-bs-toggle="modal" data-bs-target="#changePW">Change Password</button>
                 <!-- General setting  -->
                 <div class="card border-0 shadow mb-4">
                     <div class="card-body">
@@ -74,7 +69,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" name="details_btn" data-bs-dismiss="modal" class="btn btn-success text-white shadow-none">Submit</button>
+                                    <button type="submit" name="details_btn" class="btn btn-success text-white shadow-none">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -200,6 +195,50 @@
                         </form>
                     </div>
                 </div>
+            
+                <div class="modal fade" id="changePW" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <form method="post" action="">                        
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title">Change Password</h1>  
+                                </div>
+                                <form method="post">
+                                    <div class="modal-body">
+                                        <div class="container-fluid p-0">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <label for="" class="form-label">ID Hotel:</label> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <input type="text" name="hotel_id" class="form-control shadow-none" value="<?php echo $_SESSION['hotel_account'] ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <label for="" class="form-label">Mật khẩu hiện tại:</label>
+                                                <input type="password" name="old_pass" class="form-control shadow-none" required>
+                                            </div>  
+                                            <div class="col-lg-12">
+                                                <label for="" class="form-label">Mật khẩu mới:</label>
+                                                <input type="password" name="new_pass" class="form-control shadow-none" required>
+                                            </div>  
+                                            <div class="col-lg-12">
+                                                <label for="" class="form-label">Xác nhận mật khẩu:</label>
+                                                <input type="password" name="cnew_pass" class="form-control shadow-none" required>
+                                            </div>  
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="submit" name="changePass" class="btn btn-success text-white shadow-none">Confirm</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            
+            
             </div>
         </div>
     </div>

@@ -28,7 +28,7 @@
         <h2 class="fw-bold h-font text-center">DỊCH VỤ CỦA CHÚNG TÔI</h2>
         <div class="h-line bg-dark"></div>
         <p class="text-center mt-3">
-            Chúng tôi mang đến sự đa dạng và chất lượng với các dịch vụ hấp dẫn tạo nên một trải nghiệm đáng nhớ cho mỗi khách hàng.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil illum quia eaque sequi? Esse explicabo amet
         </p>
     </div>
 
@@ -41,7 +41,7 @@
                         <h5 class="m-0 ms-3">Đưa đón sân bay</h5>
                     </div>
                     <p>
-                    Giúp bạn khám phá thế giới mà không phải lo lắng về di chuyển. Tận hưởng sự thoải mái và tiện nghi với đội ngũ lái xe chuyên nghiệp, đảm bảo bạn đến và đi sân bay một cách dễ dàng và an toàn.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim consectetur quasi at provident dolore ab aspernatur reiciendis
                     </p>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                         <h5 class="m-0 ms-3">Giặt là</h5>
                     </div>
                     <p>
-                    Giúp bạn duy trì sự tươi mới trong chuyến đi. Với tiêu chuẩn cao, đội ngũ chuyên viên đảm bảo quần áo của bạn sẽ được giặt sạch, hấp hơi và trả lại nhanh chóng.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim consectetur quasi at provident dolore ab aspernatur reiciendis
                     </p>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                         <h5 class="m-0 ms-3">Phòng Gym</h5>
                     </div>
                     <p>
-                    Mang đến không gian hiện đại và trang thiết bị đa dạng, giúp bạn duy trì sức khỏe và thể hình tối ưu trong mỗi chuyến đi.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim consectetur quasi at provident dolore ab aspernatur reiciendis
                     </p>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                         <h5 class="m-0 ms-3">Bể bơi</h5>
                     </div>
                     <p>
-                    Mang đến không gian thư giãn, tươi mát và đẳng cấp, giúp bạn thư giãn và tận hưởng những giây phút thư thái.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim consectetur quasi at provident dolore ab aspernatur reiciendis
                     </p>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                         <h5 class="m-0 ms-3">Ăn uống</h5>
                     </div>
                     <p>
-                    Cung cấp hương vị đa dạng và chất lượng, từ món ăn tươi ngon đến thực đơn đa dạng, đảm bảo sẽ làm hài lòng vị giác của bạn.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim consectetur quasi at provident dolore ab aspernatur reiciendis
                     </p>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                         <h5 class="m-0 ms-3">Spa</h5>
                     </div>
                     <p>
-                    Tận hưởng sự thư giãn hoàn hảo, với các liệu pháp chăm sóc da và massage thảo dược, mang lại cảm giác thư thái và phục hồi sức khỏe.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim consectetur quasi at provident dolore ab aspernatur reiciendis
                     </p>
                 </div>
             </div>
@@ -107,7 +107,7 @@
                         <h5 class="m-0 ms-3">Bar</h5>
                     </div>
                     <p>
-                    Điểm đến lý tưởng để thưởng thức đồ uống đa dạng, phục vụ từ những cocktail tinh tế đến rượu vang hảo hạng, mang đến trải nghiệm giải trí độc đáo.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim consectetur quasi at provident dolore ab aspernatur reiciendis
                     </p>
                 </div>
             </div>
@@ -118,7 +118,7 @@
                         <h5 class="m-0 ms-3">Casino</h5>
                     </div>
                     <p>
-                    Mang đến không gian đầy sự hồi hộp và giải trí, với các trò chơi đa dạng và chuyên nghiệp, hứa hẹn những trải nghiệm đầy kích thích.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim consectetur quasi at provident dolore ab aspernatur reiciendis
                     </p>
                 </div>
             </div>
@@ -129,7 +129,7 @@
                         <h5 class="m-0 ms-3">Phòng Họp</h5>
                     </div>
                     <p>
-                    Cung cấp không gian chuyên nghiệp, trang thiết bị hiện đại và dịch vụ hỗ trợ, đáp ứng mọi nhu cầu tổ chức hội thảo, họp và sự kiện của bạn.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim consectetur quasi at provident dolore ab aspernatur reiciendis
                     </p>
                 </div>
             </div>

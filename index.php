@@ -437,13 +437,13 @@
                 <div class="bg-white p-4 rounded mb-4">
                     <h5>LIÊN HỆ:</h5>
                     <i class="bi bi-telephone-fill"></i>
-                    <a href="tel; 02466.888.888" class="d-inline-block mb-2 text-decoration-none text-dark">02466.888.888</a> 
+                    <a href="tel; +841810293120" class="d-inline-block mb-2 text-decoration-none text-dark">+841810293120</a> 
                     <br>
                     <i class="bi bi-telephone-fill"></i>
-                    <a href="tel; 02466.888.889" class="d-inline-block mb-2 text-decoration-none text-dark">02466.888.889</a> 
+                    <a href="tel; +841810293120" class="d-inline-block mb-2 text-decoration-none text-dark">+841810293120</a> 
                 </div>
                 <div class="bg-white p-4 rounded mb-4">
-                    <h5>Theo dõi chúng tôi</h5>
+                    <h5>Follow us</h5>
                     <a href="#" class="d-inline-block mb-3"> 
                         <span class="badge bg-light text-dark fs-6 ps-2">
                             <i class="bi bi-twitter me-1"></i> Twitter
