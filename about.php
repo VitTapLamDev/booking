@@ -27,7 +27,7 @@
         <h2 class="fw-bold h-font text-center">HỆ THỐNG KHÁCH SẠN</h2>
         <div class="h-line bg-dark"></div>
         <p class="text-center mt-3">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil illum quia eaque sequi? Esse explicabo amet
+        chúng tôi tự hào mang đến một danh sách đa dạng và phong phú với hàng ngàn khách sạn trên toàn thế giới. Từ những khách sạn tiện nghi đến những kỳ quan nghỉ dưỡng xa hoa, chúng tôi cam kết cung cấp cho bạn lựa chọn tuyệt vời và trải nghiệm đáng nhớ.
         </p>
     </div>
 
@@ -64,7 +64,7 @@
         <h2 class="fw-bold h-font text-center">ĐỘi NGŨ THÀNH LẬP</h2>
         <div class="h-line bg-dark"></div>
         <p class="text-center mt-3">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil illum quia eaque sequi? Esse explicabo amet
+        Những con người đầy nhiệt huyết và tận tâm với sứ mệnh mang đến trải nghiệm tuyệt vời cho khách hàng. Chúng tôi tận dụng công nghệ tiên tiến và thiết kế sáng tạo để đảm bảo tính tiện lợi, độ an toàn và sự chuyên nghiệp trong mỗi giao dịch đặt phòng của bạn.
         </p>
     </div>
 
@@ -73,10 +73,7 @@
             <div class="col-lg-6 col-md-5 mb-4">
                 <h3 class="mb-3"> Hoàng Tuấn Sinh</h3>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Dolore, quod suscipit? Eum cum voluptatem accusantium temporibus facilis? 
-                    Temporibus dolore, corporis repellendus architecto harum quam asperiores id? 
-                    Vel veniam veritatis animi.
+                    Chuyên ngành An toàn thông tin - Học viện Kỹ thuật Mật Mã
                 </p>
             </div>
             <div class="col-lg-5 col-md-5 mb-4">
@@ -85,10 +82,7 @@
             <div class="col-lg-6 col-md-5 mb-4">
                 <h3 class="mb-3">Nguyễn Lý Minh Vũ</h3>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Dolore, quod suscipit? Eum cum voluptatem accusantium temporibus facilis? 
-                    Temporibus dolore, corporis repellendus architecto harum quam asperiores id? 
-                    Vel veniam veritatis animi.
+                    Chuyên ngành An toàn thông tin - Học viện Kỹ thuật Mật Mã
                 </p>
             </div>
             <div class="col-lg-5 col-md-5 mb-4">
@@ -97,10 +91,7 @@
             <div class="col-lg-6 col-md-5 mb-4">
                 <h3 class="mb-3">Nguyễn Đức Việt</h3>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Dolore, quod suscipit? Eum cum voluptatem accusantium temporibus facilis? 
-                    Temporibus dolore, corporis repellendus architecto harum quam asperiores id? 
-                    Vel veniam veritatis animi.
+                    Chuyên ngành An toàn thông tin - Học viện Kỹ thuật Mật Mã  
                 </p>
             </div>
             <div class="col-lg-5 col-md-5 mb-4">
