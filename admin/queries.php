@@ -121,23 +121,24 @@
                                         <div class="candidate-list">
                                             <div class="candidate-list-box card mt-4">
                                                 <div class="p-4 card-body">
-                                                    <div class="">
-                                                        <div class="candidate-list-content mt-3 mt-lg-0">
-                                                            <div class="row">
-                                                                <div class="col-lg-6 d-flex align-items-center">
-                                                                    <h5 class="fs-19 mb-0">
-                                                                        <span class="badge bg-secondary ms-1 align-items-center"><?php echo $row['name'] ?></span>
-                                                                        <a class="primary-link"><?php echo $row['email'] ?></a>
-                                                                    </h5>
-                                                                </div>
+
+                                                    <div class="candidate-list-content mt-3 mt-lg-0">
+                                                        <div class="row">
+                                                            <div class="col-lg-8 d-flex align-items-center">
+                                                                <h5 class="fs-19 mb-0">
+                                                                    <span class="badge bg-secondary ms-1 align-items-center"><?php echo $row['name'] ?></span>
+                                                                </h5>
                                                             </div>
-                                                            <hr>
-                                                            <p class="text-muted mb-2"><?php echo $row['subject'] ?></p>
-                                                            <ul class="list-inline mb-0 text-muted">
-                                                                <li class="list-inline-item"><i class="mdi mdi-map-marker"></i> <?php echo $row['message'] ?></li>
-                                                            </ul>
-                                                        </div>                                                       
-                                                    </div>
+                                                            <div class="col-lg-4 d-flex">
+                                                                <a style="color: blue;"><?php echo $row['email'] ?></a>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <p class="text-muted mb-2 fs-5"><?php echo '- '.$row['subject'] ?></p>
+                                                        <ul class="list-inline mb-0 text-muted">
+                                                            <li class="list-inline-item"><i class="mdi mdi-map-marker"></i> <?php echo $row['message'] ?></li>
+                                                        </ul>
+                                                    </div>                                                       
                                                 </div>
                                             </div>
                                         

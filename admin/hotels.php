@@ -1,5 +1,6 @@
 <?php 
     require('ajax/hotel_crud.php');
+    
 ?>
 
 <!DOCTYPE html>

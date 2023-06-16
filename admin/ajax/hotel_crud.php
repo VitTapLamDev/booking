@@ -1,14 +1,14 @@
 <?php 
     require('/xampp/htdocs/booking/admin/inc/essentials.php');
     require('/xampp/htdocs/booking/admin/inc/db_config.php');
-
+    session_start();
     if(!isset($_SESSION['adminLogin'])){
         header('Location: index.php');
      }
     if(!$con){
         die("Connection failed: " + mysqli_connect_errno());
     }else{
-        session_start();
+        
         $sql = "SELECT * FROM `hotel_cred`";
         $result = mysqli_query($con, $sql);
     }
