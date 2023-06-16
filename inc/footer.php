@@ -10,17 +10,17 @@
     <div class="row">
         <div class="col-lg-4 p-4">
             <h3 class="h-font fw-bold fs-3 mb-2">Hotel Booking</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi obcaecati voluptates doloremque eveniet atque facere eos similique, fugiat laboriosam cumque suscipit illo eum harum nobis at dicta molestiae blanditiis possimus.</p>
+            <p>Nơi bạn có thể dễ dàng tìm kiếm và đặt phòng khách sạn một cách thuận tiện, tận hưởng dịch vụ chất lượng và khám phá những điểm đến tuyệt vời trên khắp thế giới.</p>
         </div>
         <div class="col-lg-4 p-4">
-            <h5 class="mb-3">Link</h5>
-            <a href="index.php" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a> <br>
-            <a href="service.php" class="d-inline-block mb-2 text-dark text-decoration-none">Service</a> <br>
-            <a href="contact.php" class="d-inline-block mb-2 text-dark text-decoration-none">Contact us</a> <br>
-            <a href="about.php" class="d-inline-block mb-2 text-dark text-decoration-none">About</a> <br>
+            <h5 class="mb-3">Liên Kết</h5>
+            <a href="index.php" class="d-inline-block mb-2 text-dark text-decoration-none">Trang chủ</a> <br>
+            <a href="service.php" class="d-inline-block mb-2 text-dark text-decoration-none">Dịch vụ</a> <br>
+            <a href="contact.php" class="d-inline-block mb-2 text-dark text-decoration-none">Hỗ trợ</a> <br>
+            <a href="about.php" class="d-inline-block mb-2 text-dark text-decoration-none">Về chúng tôi</a> <br>
         </div>
         <div class="col-lg-4 p-4">
-            <h5 class="mb-3">Follow us</h5>
+            <h5 class="mb-3">Theo dõi chúng tôi</h5>
             <a href="<?php echo $row['tw'] ?>" class="d-inline-block mb-2 text-dark text-decoration-none">
                 <i class="bi bi-twitter me-1"></i> <?php echo $row['tw'] ?>
             </a><br>

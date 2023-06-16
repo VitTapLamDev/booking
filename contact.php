@@ -29,7 +29,7 @@
         <h2 class="fw-bold h-font text-center">LIÊN HỆ VỚI CHÚNG TÔI</h2>
         <div class="h-line bg-dark"></div>
         <p class="text-center mt-3">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil illum quia eaque sequi? Esse explicabo amet
+            Nơi bạn có thể dễ dàng gửi yêu cầu tới đội ngũ chăm sóc khách hàng. Chúng tôi sẵn sàng lắng nghe và giúp bạn có trải nghiệm đáng nhớ.
         </p>
     </div>
     <div class="container">
@@ -42,7 +42,7 @@
                     <a href="<?php echo $row['gmap'] ?>" target="_blank" class="d-inline-block text-decoration-none text-dark mb-2">
                         <i class="bi bi-geo-alt-fill"><?php echo $row['address'] ?></i>
                     </a>
-                    <h5>LIÊN HỆ:</h5>
+                    <h5>Liên hệ</h5>
                     <i class="bi bi-telephone-fill"></i>
                     <a href="tel; <?php echo '+'.$row['pn1'] ?>" class="d-inline-block mb-2 text-decoration-none text-dark"><?php echo '+'.$row['pn1'] ?></a> 
                     <br>
@@ -51,7 +51,7 @@
                     <h5>Email</h5>
                     <i class="bi bi-envelope-fill"></i>
                     <a href="mailto: <?php echo $row['email'] ?>" class="d-inline-block mb-2 text-decoration-none text-dark"><?php echo $row['email'] ?></a> 
-                    <h5>Follow us</h5>
+                    <h5>Theo Dõi Chúng Tôi</h5>
                     <a href="<?php echo $row['tw'] ?>" style="color: black;"><i class="bi bi-twitter me-1"></i></a> 
                     <a href="<?php echo $row['fb'] ?>" style="color: black;"><i class="bi bi-facebook me-1"></i></a> 
                     <a href="<?php echo $row['insta'] ?>" style="color: black;"><i class="bi bi-instagram me-1"></i></a> 

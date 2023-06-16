@@ -60,11 +60,11 @@
                         </div>
                         <div class="col-lg-2 mb-3">
                             <label for="" class="form-label check-in">Check-in</label>
-                            <input name="index_checkin" type="date" class="form-control shadow-none" required>
+                            <input name="index_checkin" type="date" id="checkin" class="form-control shadow-none" required>
                         </div>
                         <div class="col-lg-2 mb-3">
                             <label for="" class="form-label check-in">Check-out</label>
-                            <input name="index_checkout" type="date" class="form-control shadow-none" required>
+                            <input name="index_checkout" type="date" id="checkout" class="form-control shadow-none" required>
                         </div>
                         <div class="col-lg-2 mb-3">
                             <label for="" class="form-label check-in">Loại phòng:</label>
@@ -77,7 +77,7 @@
                         </div>
                         <div class="col-lg-2 mb-3">
                             <label for="" class="form-label check-in">Số lượng phòng ngủ</label>
-                            <input name="index_number" type="number" class="form-control shadow-none" required>
+                            <input name="index_number" type="number" class="form-control shadow-none" min="1" required>
                         </div>
                         <div class="col-lg-1 mb-lg-3 mt-2">
                             <button name="index_submitBtn" type="submit" class=" btn-sm custom-bg text-white shadow-none">Submit</button>
@@ -517,6 +517,24 @@
                     slidesPerView: 3,
                 },
             }
+        });
+
+        var checkInInput = document.getElementById("checkin");
+        var checkOutInput = document.getElementById("checkout");
+
+        // Add event listener for check-in date change
+        checkInInput.addEventListener("change", function() {
+        // Get the selected check-in and check-out dates
+        var checkInDate = new Date(checkInInput.value);
+        var checkOutDate = new Date(checkOutInput.value);
+
+        // Disable days prior to check-in date in the check-out date picker
+        checkOutInput.min = checkInInput.value;
+
+        // If check-out date is before check-in date, reset the check-out date
+        if (checkOutDate < checkInDate) {
+            checkOutInput.value = "";
+        }
         });
       </script>
 </body>

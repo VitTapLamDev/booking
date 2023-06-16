@@ -86,9 +86,9 @@
                         <td class="text-end"><?php echo $row['price'].' VND'?></td>
 
                         <?php if($row['status']=='process'){ ?>
-                            <td class="text-center"><span class="badge text-bg-secondary">Chờ xử lý</span></td>
+                            <td class="text-end"><span class="badge text-bg-secondary">Chờ xử lý</span></td>
                         <?php }else{ ?>
-                            <td class="text-center"><span class="badge text-bg-success">Đã Thanh Toán</span></td>
+                            <td class="text-end"><span class="badge text-bg-success">Đã Thanh Toán</span></td>
                         <?php } ?>
                     </tr>
                     <?php endwhile; ?>

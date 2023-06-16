@@ -42,11 +42,11 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <label for="" class="form-label">Check-in</label>
-                                            <input name="check_in" type="date" class="form-control shadow-none mb-3" value="<?php echo $_SESSION['checkin']; ?>" required>
+                                            <input name="check_in" id="checkin" type="date" class="form-control shadow-none mb-3" value="<?php echo $_SESSION['checkin']; ?>" required>
                                         </div>
                                         <div class="col-lg-6">
                                         <label for="" class="form-label">Check-out</label>
-                                            <input name="check_out" type="date" class="form-control shadow-none mb-3" value="<?php echo $_SESSION['checkout']; ?>" required>
+                                            <input name="check_out" id="checkout" type="date" class="form-control shadow-none mb-3" value="<?php echo $_SESSION['checkout']; ?>" required>
                                         </div>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                                     <h5 class="mb-3" style="font-size: 18px;">Số lượng phòng</h5>
                                     <div class="col-lg-12">
                                         <label for="" class="form-label">Số lượng phòng: </label>
-                                        <input name="number" type="number" class="form-control shadow-none mb-3" value="<?php echo $_SESSION['numofroom'] ?>" required>
+                                        <input name="number" type="number" class="form-control shadow-none mb-3" min="1" value="<?php echo $_SESSION['numofroom'] ?>" required>
                                     </div>
                                 </div>
                                 <div class="border p-3 rounded mb-3" style="margin: 10px; white-space:nowrap;">
@@ -132,6 +132,24 @@
             };
             xhr.send('data=' + encodeURIComponent(JSON.stringify(rowData)));
         }
+
+        var checkInInput = document.getElementById("checkin");
+        var checkOutInput = document.getElementById("checkout");
+
+        // Add event listener for check-in date change
+        checkInInput.addEventListener("change", function() {
+        // Get the selected check-in and check-out dates
+        var checkInDate = new Date(checkInInput.value);
+        var checkOutDate = new Date(checkOutInput.value);
+
+        // Disable days prior to check-in date in the check-out date picker
+        checkOutInput.min = checkInInput.value;
+
+        // If check-out date is before check-in date, reset the check-out date
+        if (checkOutDate < checkInDate) {
+            checkOutInput.value = "";
+        }
+        });
     </script>
                                 
 </html>
