@@ -15,7 +15,6 @@
     <button class="btn btn-secondary mt-3" onclick="goBack()">< Quay lại</button>
     <hr>
     <!-- Thông tin khách sạn -->
-    
     <section class="section about-section gray-bg" id="about">
         <div class="container">
             <div class="row align-items-center flex-row-reverse">
@@ -27,7 +26,7 @@
                             <div class="col-md-6">
                                 <div class="media">
                                     <label>Địa chỉ</label>
-                                    <p>C<?php echo $address ?></p>
+                                    <p><?php echo $address ?></p>
                                 </div>
                                 <div class="media">
                                     <label>Email</label>
@@ -216,20 +215,12 @@
     <Script>
         var swiper = new Swiper(".swiper-rating", {
             watchSlidesProgress: true,
-            effect: "coverflow",
             grabCursor: true,
             centeredSlides: true,
             // slidesPerView: "auto",
             loop: true,
             slidesPerView: 3,
     
-            coverflowEffect: {
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: false,
-            },
             pagination: {
                 el: ".swiper-pagination",
             },

@@ -308,34 +308,6 @@
             </div>
         </div>
     </div>
-    
-    <!--Facilities  -->
-    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">TIỆN ÍCH</h2>
-    <div class="container">
-        <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
-            <div class="col-lg-2 col-md-12 text-center bg-white rounded shadow py-4 my-3">
-                <img src="/assets/images/feautures/wifi.png" class="custom-features">
-                <h5 class="mt-3">Wifi</h5>
-            </div>
-            <div class="col-lg-2 col-md-12 text-center bg-white rounded shadow py-4 my-3">
-                <img src="/assets/images/feautures/television.png" class="custom-features">
-                <h5 class="mt-3">Television</h5>
-            </div>
-            <div class="col-lg-2 col-md-12 text-center bg-white rounded shadow py-4 my-3">
-                <img src="/assets/images/feautures/sofa.png" class="custom-features">
-                <h5 class="mt-3">Sofa</h5>
-            </div>
-            <div class="col-lg-2 col-md-12 text-center bg-white rounded shadow py-4 my-3">
-                <img src="/assets/images/feautures/fridge.png" class="custom-features">
-                <h5 class="mt-3">Fridge</h5>
-            </div>
-            <div class="col-lg-2 col-md-12 text-center bg-white rounded shadow py-4 my-3">
-                <img src="/assets/images/feautures/air-conditioner.png" class="custom-features">
-                <h5 class="mt-3">AC</h5>
-            </div>
-            
-        </div>
-    </div>
 
     <!-- Service -->
     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">DỊCH VỤ</h2>
@@ -505,14 +477,15 @@
         var swiper = new Swiper(".swiper-service", {
             watchSlidesProgress: true,
             loop: true,
+            grabCursor:true,
             slidesPerView: 3,
           });
         var swiper = new Swiper(".swiper-rating", {
             watchSlidesProgress: true,
             effect: "coverflow",
             grabCursor: true,
-            centeredSlides: true,
-            // slidesPerView: "auto",
+  
+            slidesPerView: "auto",
             loop: true,
             slidesPerView: 3,
     

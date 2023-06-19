@@ -105,29 +105,29 @@
         
             <thead>
                 <tr class="text-nowrap">
-                    <th>ID</th>
-                    <th>Khách sạn</th>
-                    <th>Hotline</th>
-                    <th>Địa chỉ</th>
-                    <th>Hạng phòng</th>
-                    <th>Giá (VNĐ/Đêm)</th>
-                    <th>Bản đồ</th>
-                    <th></th>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Khách sạn</th>
+                    <th class="text-center">Hotline</th>
+                    <th class="text-center">Địa chỉ</th>
+                    <th class="text-center">Hạng phòng</th>
+                    <th class="text-center">Giá (VNĐ/Đêm)</th>
+                    <th class="text-center">Bản đồ</th>
+                    <th class="text-center"></th>
                 </tr>
             </thead>
             <?php if($status==1){ ?> <div class="alert alert-info fs-5 text-center" role="alert">Có thể bạn quan tâm</div> <?php } while ($row = mysqli_fetch_assoc($result)): ?>
                 
             <tbody>
                 <tr>
-                    <td><?php echo $row['id_hotel'] ?></td>
-                    <td><?php echo $row['hotel_name']; ?></td>             
-                    <td><?php echo $row['hotline']?></td>
-                    <td><?php echo $row['details']; ?></td>
-                    <td><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip"); ?></td>
-                    <td><?php echo $row['price']?></td>
-                    <td><iframe width="200" height="120" src="<?php echo $row['gmap']; ?>" frameborder="0"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
-                    <?php if($_SESSION['account']){ ?><td ><button name="booking_room" type="button" class='btn btn-dark shadow-none mybtn text-nowrap' onclick="getData(this); window.location.href='payment.php'">Chi Tiết</button></td> <?php }
-                        else{ ?> <td><button  type="button" class='btn btn-dark shadow-none mybtn' data-bs-toggle="modal" data-bs-target="#Loginrequied" >ĐẶT PHÒNG NGAY</button></td> <?php } ?>
+                    <td class="text-center"><?php echo $row['id_hotel'] ?></td>
+                    <td class="text-center"><?php echo $row['hotel_name']; ?></td>             
+                    <td class="text-center"><?php echo $row['hotline']?></td>
+                    <td class="text-center"><?php echo $row['details']; ?></td>
+                    <td class="text-center"><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip"); ?></td>
+                    <td class="text-center"><?php echo $row['price']?></td>
+                    <td class="text-center"><iframe width="200" height="120" src="<?php echo $row['gmap']; ?>" frameborder="0"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+                    <?php if($_SESSION['account']){ ?><td class="text-center"><button name="booking_room" type="button" class='btn btn-dark shadow-none mybtn text-nowrap' onclick="getData(this); window.location.href='payment.php'">Chi Tiết</button></td> <?php }
+                        else{ ?> <td class="text-center"><button  type="button" class='btn btn-dark shadow-none mybtn' data-bs-toggle="modal" data-bs-target="#Loginrequied" >ĐẶT PHÒNG NGAY</button></td> <?php } ?>
                 </tr>
             </tbody>
             <?php endwhile;  ?>

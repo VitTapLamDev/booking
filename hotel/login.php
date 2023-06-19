@@ -36,7 +36,7 @@
                         </div>
                         <hr class="my-4">
                         <div class="d-grid mb-2">
-                            <button class="btn btn-register text-uppercase fw-bold" style="background-color: #f32714;" type="submit">
+                            <button class="btn btn-register text-uppercase fw-bold" style="background-color: #f32714;" type="submit" onclick="window.location.href='register.php'">
                             <i class="fab fa-google me-2"></i>ĐĂNG KÝ TÀI KHOẢN DOANH NGHIỆP
                             </button>
                         </div>
