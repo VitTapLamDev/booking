@@ -102,7 +102,24 @@
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Ngày sinh</label>
-                                <input name="dob" type="date" class="form-control shadow-none" required>
+                                <input name="dob" type="date" class="form-control shadow-none" max="" required>
+                                <script>
+                                    var today = new Date();
+                                    var dd = today.getDate();
+                                    var mm = today.getMonth()+1; //Tháng bắt đầu từ 0
+                                    var yyyy = today.getFullYear();
+
+                                    if(dd<10) {
+                                        dd = '0'+dd
+                                    } 
+
+                                    if(mm<10) {
+                                        mm = '0'+mm
+                                    } 
+
+                                    today = yyyy + '-' + mm + '-' + dd;
+                                    document.getElementsByName("dob")[0].setAttribute("max", today);
+                                </script>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Mật khẩu</label>
@@ -124,4 +141,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 </div>
+
 <?php echo isset($alert) ? $alert : ''; ?>

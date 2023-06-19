@@ -2,21 +2,23 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Hotel Booking - TRANG CHỦ</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <?php require('inc/links.php')?>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <?php require('inc/links.php') ?>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <style>
-        #suggestionsList{
+        #suggestionsList {
             position: absolute;
             list-style-type: none;
             padding: 0;
             margin: 0;
         }
-        #suggestionsList >li{
+
+        #suggestionsList>li {
             position: relative;
             background-color: white;
             padding: 10px;
@@ -24,21 +26,23 @@
             z-index: 99;
             min-width: 300px;
         }
-        #suggestionsList >li:hover{
+
+        #suggestionsList>li:hover {
             background-color: #dddddd;
             cursor: pointer;
         }
     </style>
 </head>
+
 <body class="bg-light">
-    
-    <?php 
-        session_start();
-        if (isset($_SESSION['account'])){
-            require('inc/header_login.php');
-        }else{
-            require('inc/header.php');
-        }
+
+    <?php
+    session_start();
+    if (isset($_SESSION['account'])) {
+        require('inc/header_login.php');
+    } else {
+        require('inc/header.php');
+    }
     ?>
     <!-- Swiper -->
     <div class="container-fluid px-lg-4 mt-4">
@@ -48,27 +52,27 @@
                     <img src="/assets/images/swiper/du-lich-tinh-nguyen.jpg" class="w-100 d-100" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="/assets/images/swiper/dulichsinhthai.jpg" class="w-100 d-100"/>
+                    <img src="/assets/images/swiper/dulichsinhthai.jpg" class="w-100 d-100" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="/assets/images/swiper/dulichtamlinh.jpg" class="w-100 d-100"/>
+                    <img src="/assets/images/swiper/dulichtamlinh.jpg" class="w-100 d-100" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="/assets/images/swiper/hcmcity.jpg" class="w-100 d-100"/>
+                    <img src="/assets/images/swiper/hcmcity.jpg" class="w-100 d-100" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="/assets/images/swiper/lang-chu-tich-ho-chi-minh.jpg" class="w-100 d-100"/>
+                    <img src="/assets/images/swiper/lang-chu-tich-ho-chi-minh.jpg" class="w-100 d-100" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="/assets/images/swiper/mucangchai2.jpg" class="w-100 d-100"/>
+                    <img src="/assets/images/swiper/mucangchai2.jpg" class="w-100 d-100" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="/assets/images/swiper/sapa.jpg" class="w-100 d-100"/>
+                    <img src="/assets/images/swiper/sapa.jpg" class="w-100 d-100" />
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Booking Form -->
     <div class="container availability-form">
         <div class="row">
@@ -110,7 +114,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Rooms -->
     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">HỆ THỐNG KHÁCH SẠN</h2>
     <div class="container">
@@ -150,7 +154,7 @@
                             </span>
                         </div>
                         <div class="rating mb-4">
-                            <h6 class="mb-1">Đánh giá: 
+                            <h6 class="mb-1">Đánh giá:
                                 <span class="badge bg-light rounded-pill">
                                     <i class="bi bi-star-fill text-warning"></i>
                                     <i class="bi bi-star-fill text-warning"></i>
@@ -198,7 +202,7 @@
                             </span>
                         </div>
                         <div class="rating mb-4">
-                            <h6 class="mb-1">Đánh giá: 
+                            <h6 class="mb-1">Đánh giá:
                                 <span class="badge bg-light rounded-pill">
                                     <i class="bi bi-star-fill text-warning"></i>
                                     <i class="bi bi-star-fill text-warning"></i>
@@ -242,7 +246,7 @@
                             </span>
                         </div>
                         <div class="rating mb-4">
-                            <h6 class="mb-1">Đánh giá: 
+                            <h6 class="mb-1">Đánh giá:
                                 <span class="badge bg-light rounded-pill">
                                     <i class="bi bi-star-fill text-warning"></i>
                                     <i class="bi bi-star-fill text-warning"></i>
@@ -250,7 +254,7 @@
                                     <i class="bi bi-star-fill text-warning"></i>
                                 </span>
                             </h6>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -290,10 +294,10 @@
                             <span class="badge bg-light text-dark text-wrap">
                                 AC
                             </span>
-                            
+
                         </div>
                         <div class="rating mb-4">
-                            <h6 class="mb-1">Đánh giá: 
+                            <h6 class="mb-1">Đánh giá:
                                 <span class="badge bg-light rounded-pill">
                                     <i class="bi bi-star-fill text-warning"></i>
                                     <i class="bi bi-star-fill text-warning"></i>
@@ -302,7 +306,7 @@
                                     <i class="bi bi-star-fill text-warning"></i>
                                 </span>
                             </h6>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -320,11 +324,11 @@
                         <h5 class="mt-3">Bar</h5>
                     </div>
                     <div class="swiper-slide me-1 text-center bg-white rounded shadow">
-                        <img src="/assets/images/service/dua-don.jpg" alt=""> 
+                        <img src="/assets/images/service/dua-don.jpg" alt="">
                         <h5 class="mt-3">Đưa đón</h5>
                     </div>
                     <div class="swiper-slide me-1 text-center bg-white rounded shadow">
-                        <img src="/assets/images/service/giatla.jpg" alt=""> 
+                        <img src="/assets/images/service/giatla.jpg" alt="">
                         <h5 class="mt-3">Giặt là</h5>
                     </div>
                     <div class="swiper-slide me-1 text-center bg-white rounded shadow">
@@ -332,7 +336,7 @@
                         <h5 class="mt-3">Gym</h5>
                     </div>
                     <div class="swiper-slide me-1 text-center bg-white rounded shadow">
-                        <img src="/assets/images/service/pool.jpg" alt=""> 
+                        <img src="/assets/images/service/pool.jpg" alt="">
                         <h5 class="mt-3">Bể Bơi</h5>
                     </div>
                     <div class="swiper-slide me-1 text-center bg-white rounded shadow">
@@ -340,7 +344,7 @@
                         <h5 class="mt-3">Nhà hàng</h5>
                     </div>
                     <div class="swiper-slide me-1 text-center bg-white rounded shadow">
-                        <img src="/assets/images/service/spa.jpg" alt=""> 
+                        <img src="/assets/images/service/spa.jpg" alt="">
                         <h5 class="mt-3">Spa</h5>
                     </div>
                 </div>
@@ -361,7 +365,7 @@
                         <img src="/assets/images/profile.png" class="custom-rating">
                         <h6 class="m-0 ms-2">User 1</h6>
                     </div>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis tempore explicabo voluptatem quisquam, 
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis tempore explicabo voluptatem quisquam,
                     </p>
                     <div class="rating">
                         <i class="bi bi-star-fill text-warning"></i>
@@ -375,7 +379,7 @@
                         <img src="/assets/images/profile.png" class="custom-rating">
                         <h6 class="m-0 ms-2">User 2</h6>
                     </div>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis tempore explicabo voluptatem quisquam, 
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis tempore explicabo voluptatem quisquam,
                     </p>
                     <div class="rating">
                         <i class="bi bi-star-fill text-warning"></i>
@@ -390,7 +394,7 @@
                         <img src="/assets/images/profile.png" class="custom-rating">
                         <h6 class="m-0 ms-2">User 3</h6>
                     </div>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis tempore explicabo voluptatem quisquam, 
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis tempore explicabo voluptatem quisquam,
                     </p>
                     <div class="rating">
                         <i class="bi bi-star-fill text-warning"></i>
@@ -405,7 +409,7 @@
                         <img src="/assets/images/profile.png" class="custom-rating">
                         <h6 class="m-0 ms-2">User 4</h6>
                     </div>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis tempore explicabo voluptatem quisquam, 
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis tempore explicabo voluptatem quisquam,
                     </p>
                     <div class="rating">
                         <i class="bi bi-star-fill text-warning"></i>
@@ -415,7 +419,7 @@
                         <i class="bi bi-star-fill text-warning"></i>
                     </div>
                 </div>
-                
+
             </div>
             <div class="swiper-pagination"></div>
         </div>
@@ -432,26 +436,26 @@
                 <div class="bg-white p-4 rounded mb-4">
                     <h5>LIÊN HỆ:</h5>
                     <i class="bi bi-telephone-fill"></i>
-                    <a href="tel; +841810293120" class="d-inline-block mb-2 text-decoration-none text-dark">+841810293120</a> 
+                    <a href="tel; +841810293120" class="d-inline-block mb-2 text-decoration-none text-dark">+841810293120</a>
                     <br>
                     <i class="bi bi-telephone-fill"></i>
-                    <a href="tel; +841810293120" class="d-inline-block mb-2 text-decoration-none text-dark">+841810293120</a> 
+                    <a href="tel; +841810293120" class="d-inline-block mb-2 text-decoration-none text-dark">+841810293120</a>
                 </div>
                 <div class="bg-white p-4 rounded mb-4">
                     <h5>Follow us</h5>
-                    <a href="#" class="d-inline-block mb-3"> 
+                    <a href="#" class="d-inline-block mb-3">
                         <span class="badge bg-light text-dark fs-6 ps-2">
                             <i class="bi bi-twitter me-1"></i> Twitter
                         </span>
                     </a>
                     <br>
-                    <a href="#" class="d-inline-block mb-3"> 
+                    <a href="#" class="d-inline-block mb-3">
                         <span class="badge bg-light text-dark fs-6 ps-2">
                             <i class="bi bi-facebook me-1"></i> Facebook
                         </span>
                     </a>
                     <br>
-                    <a href="#" class="d-inline-block mb-3"> 
+                    <a href="#" class="d-inline-block mb-3">
                         <span class="badge bg-light text-dark fs-6 ps-2">
                             <i class="bi bi-instagram me-1"></i> Instagram
                         </span>
@@ -461,7 +465,7 @@
 
         </div>
     </div>
-    <?php require('inc/footer.php')?>
+    <?php require('inc/footer.php') ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
@@ -469,7 +473,7 @@
             spaceBetween: 30,
             effect: "fade",
             loop: true,
-            autoplay:{
+            autoplay: {
                 delay: 3500,
                 disableOnInteraction: false,
             }
@@ -477,18 +481,18 @@
         var swiper = new Swiper(".swiper-service", {
             watchSlidesProgress: true,
             loop: true,
-            grabCursor:true,
+            grabCursor: true,
             slidesPerView: 3,
-          });
+        });
         var swiper = new Swiper(".swiper-rating", {
             watchSlidesProgress: true,
             effect: "coverflow",
             grabCursor: true,
-  
+
             slidesPerView: "auto",
             loop: true,
             slidesPerView: 3,
-    
+
             coverflowEffect: {
                 rotate: 50,
                 stretch: 0,
@@ -499,7 +503,7 @@
             pagination: {
                 el: ".swiper-pagination",
             },
-            breakpoints:{
+            breakpoints: {
                 320: {
                     slidesPerView: 1,
                 },
@@ -515,62 +519,71 @@
             }
         });
 
+        // Lấy ngày hôm nay
+        var today = new Date().toISOString().split('T')[0];
+
+        // Đặt giá trị min của trường check-in thành ngày hôm nay
+        document.getElementById("checkin").setAttribute("min", today);
+
         var checkinInput = document.getElementById("checkin");
         var checkoutInput = document.getElementById("checkout");
 
         checkinInput.addEventListener("change", function() {
-        var checkinDate = new Date(checkinInput.value);
-        var checkoutDate = new Date(checkoutInput.value);
+            var checkinDate = new Date(checkinInput.value);
+            var checkoutDate = new Date(checkoutInput.value);
 
-        if (checkoutDate < checkinDate) {
-            checkoutInput.value = ""; // Reset the checkout date if it's before the checkin date
-        }
+            if (checkoutDate < checkinDate) {
+                checkoutInput.value = ""; // Reset the checkout date if it's before the checkin date
+            }
 
-        checkoutInput.min = checkinInput.value;
+            checkoutInput.min = checkinInput.value;
         });
     </script>
 
     <script>
-  // Array of values for auto-suggestion
-    var suggestions = [ "An Giang", "Bà Rịa – Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", 
-                        "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", 
-                        "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên",   "Khánh Hòa", "Kiên Giang", 
-                        "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", 
-                        "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", 
-                        "Thừa Thiên Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái", "An Giang", "Ba Ria - Vung Tau", 
-                        "Bac Giang", "Bac Kan", "Bac Lieu", "Bac Ninh", "Ben Tre", "Binh Dinh", "Binh Duong", "Binh Phuoc", "Binh Thuan", "Ca Mau", "Can Tho", "Cao Bang", 
-                        "Da Nang", "Dak Lak", "Dak Nong", "Dien Bien", "Dong Nai", "Dong Thap", "Gia Lai", "Ha Giang", "Ha Nam", "Ha Noi", "Ha Tinh", "Hai Duong", "Hai Phong", 
-                        "Hau Giang", "Hoa Binh", "Hung Yen", "Khanh Hoa", "Kien Giang", "Kon Tum", "Lai Chau", "Lam Dong", "Lang Son", "Lao Cai", "Long An", "Nam Dinh", "Nghe An", 
-                        "Ninh Binh", "Ninh Thuan", "Phu Tho", "Phu Yen", "Quang Binh", "Quang Nam", "Quang Ngai", "Quang Ninh", "Quang Tri", "Soc Trang", "Son La", "Tay Ninh", 
-                        "Thai Binh", "Thai Nguyen", "Thanh Hoa", "Thua Thien Hue", "Tien Giang", "Ho Chi Minh City", "Tra Vinh", "Tuyen Quang", "Vinh Long", "Vinh Phuc", "Yen Bai"];
-    function handleInput(inputValue) {
-        var suggestionsList = document.getElementById("suggestionsList");
-        suggestionsList.innerHTML = ""; // Clear the previous suggestions
+        // Array of values for auto-suggestion
+        var suggestions = ["An Giang", "Bà Rịa – Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước",
+            "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai",
+            "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang",
+            "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên",
+            "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa",
+            "Thừa Thiên Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái", "An Giang", "Ba Ria - Vung Tau",
+            "Bac Giang", "Bac Kan", "Bac Lieu", "Bac Ninh", "Ben Tre", "Binh Dinh", "Binh Duong", "Binh Phuoc", "Binh Thuan", "Ca Mau", "Can Tho", "Cao Bang",
+            "Da Nang", "Dak Lak", "Dak Nong", "Dien Bien", "Dong Nai", "Dong Thap", "Gia Lai", "Ha Giang", "Ha Nam", "Ha Noi", "Ha Tinh", "Hai Duong", "Hai Phong",
+            "Hau Giang", "Hoa Binh", "Hung Yen", "Khanh Hoa", "Kien Giang", "Kon Tum", "Lai Chau", "Lam Dong", "Lang Son", "Lao Cai", "Long An", "Nam Dinh", "Nghe An",
+            "Ninh Binh", "Ninh Thuan", "Phu Tho", "Phu Yen", "Quang Binh", "Quang Nam", "Quang Ngai", "Quang Ninh", "Quang Tri", "Soc Trang", "Son La", "Tay Ninh",
+            "Thai Binh", "Thai Nguyen", "Thanh Hoa", "Thua Thien Hue", "Tien Giang", "Ho Chi Minh City", "Tra Vinh", "Tuyen Quang", "Vinh Long", "Vinh Phuc", "Yen Bai"
+        ];
 
-        // Filter the suggestions based on the input value
-        var filteredSuggestions = suggestions.filter(function(suggestion) {
-            return suggestion.toLowerCase().startsWith(inputValue.toLowerCase());
-        });
+        function handleInput(inputValue) {
+            var suggestionsList = document.getElementById("suggestionsList");
+            suggestionsList.innerHTML = ""; // Clear the previous suggestions
 
-        // Display the filtered suggestions
-        filteredSuggestions.forEach(function(suggestion) {
-            var li = document.createElement("li");
-            li.textContent = suggestion;
-            suggestionsList.appendChild(li);
-            li.addEventListener("click", function() {
-            var selectedSuggestion = li.textContent;
-            var input = document.getElementById("searchInput");
-            input.value = selectedSuggestion;
-            suggestionsList.innerHTML = ""; // Clear the suggestions after selection
+            // Filter the suggestions based on the input value
+            var filteredSuggestions = suggestions.filter(function(suggestion) {
+                return suggestion.toLowerCase().startsWith(inputValue.toLowerCase());
             });
-        });
-        document.addEventListener("click", function(event) {
-            var target = event.target;
-            if (!target.closest("#suggestionsList") && !target.closest("#searchInput")) {
-            suggestionsList.innerHTML = ""; // Clear the suggestions
-            }
-        });
-    }
+
+            // Display the filtered suggestions
+            filteredSuggestions.forEach(function(suggestion) {
+                var li = document.createElement("li");
+                li.textContent = suggestion;
+                suggestionsList.appendChild(li);
+                li.addEventListener("click", function() {
+                    var selectedSuggestion = li.textContent;
+                    var input = document.getElementById("searchInput");
+                    input.value = selectedSuggestion;
+                    suggestionsList.innerHTML = ""; // Clear the suggestions after selection
+                });
+            });
+            document.addEventListener("click", function(event) {
+                var target = event.target;
+                if (!target.closest("#suggestionsList") && !target.closest("#searchInput")) {
+                    suggestionsList.innerHTML = ""; // Clear the suggestions
+                }
+            });
+        }
     </script>
 </body>
+
 </html>
