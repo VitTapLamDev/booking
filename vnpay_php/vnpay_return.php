@@ -16,6 +16,10 @@
     </head>
     <body>
         <?php
+        $conn = mysqli_connect("localhost", 'root', '');
+        $db = mysqli_select_db($conn, 'booking_web');
+        session_start();    
+        $billcode = $_SESSION['bill_id'];
         require_once("./config.php");
         $vnp_SecureHash = $_GET['vnp_SecureHash'];
         $inputData = array();
@@ -84,14 +88,13 @@
                         if ($secureHash == $vnp_SecureHash) {
                             if ($_GET['vnp_ResponseCode'] == '00') {
                                 echo "<span style='color:blue'>GD Thanh cong</span>";
-                                $conn = mysqli_connect("localhost", 'root', '');
-                                $db = mysqli_select_db($conn, 'booking_web');
-                                session_start();    
-                                $billcode = $_SESSION['bill_id'];
+                                
                                 $updatebill = "UPDATE `booking_bill` SET `status`='payed' WHERE `bill_code` = '$billcode'";
                                 mysqli_query($conn, $updatebill);
                             } else {
                                 echo "<span style='color:red'>GD Khong thanh cong</span>";
+                                $updatebill = "UPDATE `booking_bill` SET `status`='cancel' WHERE `bill_code` = '$billcode'";
+                                mysqli_query($conn, $updatebill);
                             }
                         } else {
                             echo "<span style='color:red'>Chu ky khong hop le</span>";
@@ -101,7 +104,7 @@
                     </label>
                 </div> 
             </div>
-            <a href="http://hotelbooking.cdcs/">
+            <a href="http://hotelbooking.cdcs/user.php">
                 <button>Quay lại trang chủ</button>
             </a>
 

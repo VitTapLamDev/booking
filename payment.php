@@ -1,42 +1,4 @@
-<?php
-    require('inc/db_config.php');
-    session_start();
-    $email_log = $_SESSION['account'];
-    $query_user = "SELECT * FROM `user_cred` WHERE `email`='$email_log'";     
-    $result_user = mysqli_query($conn, $query_user);
-
-    $id_hotel = $_SESSION['id_hotel'];
-    $query_hotel = "SELECT * FROM `hotel_cred` WHERE `id_hotel`='$id_hotel'";     
-    $result_hotel = mysqli_query($conn, $query_hotel);
-
-    $checkin = $_SESSION['checkin'];
-    $checkout = $_SESSION['checkout'];
-    $price = $_SESSION['price'];
-    $numofroom = $_SESSION['numofroom'];
-
-    $startDate = new DateTime($checkin);
-    $endDate = new DateTime($checkout);
-    $interval = $startDate->diff($endDate);
-    $days = $interval->d;
-
-    $total = $days * $price * $numofroom;
-    $_SESSION['total'] = $total;
-    
-    function generateBillCode($length = 8) {
-        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $code = '';
-    
-        for ($i = 0; $i < $length; $i++) {
-            $index = mt_rand(0, strlen($characters) - 1);
-            $code .= $characters[$index];
-        }
-    
-        return $code;
-    }
-
-    $billcode = generateBillCode();
-    $_SESSION['bill_id'] = $billcode;
-?>
+<?php require('inc/payment_crud.php') ?>
 
 <!DOCTYPE html>
 <html>
@@ -46,12 +8,115 @@
     <title>Hotel Booking - KHÁCH SẠN</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <?php require('inc/links.php')?>
+    <link rel="stylesheet" href="assets/style/payment.css">
 </head>
 <body class="bg-light">
     <?php require('inc/header_login.php');?>
-    <button class="btn btn-secondary" onclick="goBack()">< Quay lại</button>
+    <button class="btn btn-secondary mt-3" onclick="goBack()">< Quay lại</button>
+    <hr>
     <!-- Thông tin khách sạn -->
-
+    
+    <section class="section about-section gray-bg" id="about">
+        <div class="container">
+            <div class="row align-items-center flex-row-reverse">
+                <div class="col-lg-6">
+                    <div class="about-text go-to">
+                        <h3 class="dark-color"><?php echo $hotel_name ?></h3>
+                        <p style="text-align:justify"><?php echo $intro ?></p>
+                        <div class="row about-list">
+                            <div class="col-md-6">
+                                <div class="media">
+                                    <label>Địa chỉ</label>
+                                    <p>C<?php echo $address ?></p>
+                                </div>
+                                <div class="media">
+                                    <label>Email</label>
+                                    <p><?php echo $hotel_email ?></p>
+                                </div>
+                                <div class="media">
+                                    <label>Hotline</label>
+                                    <p><?php echo $hotline ?></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="media">
+                                    <label>Facebook</label>
+                                    <p><?php echo $fb_link ?></p>
+                                </div>
+                                <div class="media">
+                                    <label>Instagram</label>
+                                    <p><?php echo $insta_link ?></p>
+                                </div>
+                                <div class="media">
+                                    <label>Twitter</label>
+                                    <p><?php echo $tw_link ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-avatar">
+                        <img src="<?php echo $hotel_img ?>" title="" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="counter">
+                <?php while($row = mysqli_fetch_assoc($result_bill)){ ?>
+                <div class="row">
+                    <div class="col-6 col-lg-4">
+                        <div class="count-data text-center">
+                            <h6 class="count h2" data-to="500" data-speed="500"><?php echo $row['sl'] ?></h6>
+                            <p class="m-0px font-w-600">Tổng đơn đã đặt</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-4">
+                        <div class="count-data text-center">
+                            <h6 class="count h2" data-to="150" data-speed="150"><?php echo $num_of_order ?></h6>
+                            <p class="m-0px font-w-600">Đánh giá</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-4">
+                        <div class="count-data text-center">
+                            <h6 class="count h2" data-to="850" data-speed="850"><?php echo $avg_score ?></h6>
+                            <p class="m-0px font-w-600">Xếp hạng</p>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+            <div class="mt-3">
+                <p style="text-align:justify"><?php echo $about ?></p>
+            </div>
+            <div class="mt-5">
+                <div class="container">
+                    <div class="swiper swiper-rating">
+                        <div class="swiper-wrapper mb-5">
+                            <?php while($row = mysqli_fetch_assoc($ratings)): ?>
+                            <div class="swiper-slide bg-white p-4">
+                                <div class="profile d-flex align-items-center mb-3">
+                                    <img src="/assets/images/profile.png" class="custom-rating">
+                                    <h6 class="m-0 ms-2"><?php echo $row['user_name'] ?></h6>
+                                </div>
+                                <h5><?php echo $row['subject'] ?></h5>
+                                <p style="text-align:justify"><?php echo $row['message'] ?></p>
+                                <div class="rating">
+                                    <?php 
+                                        $score = $row['score'];
+                                        for($i = 1; $i <= $score; $i++):
+                                    ?>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <?php endfor; ?>
+                                </div>
+                            </div>
+                            <?php endwhile;?>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <!-- Đặt phòng -->
@@ -68,15 +133,14 @@
                         <div class="card-body">
                             <div class="invoice-title">
                                 <h4 class="float-end font-size-15">Hóa đơn số:  <?php echo '#'.$billcode; ?></h4>
-                                <?php while($row = mysqli_fetch_assoc($result_hotel)): ?>
+                                
                                 <div class="mb-4">
-                                    <h2 class="mb-1 text-muted"><?php echo $row['hotel_name'] ?></h2>
+                                    <h2 class="mb-1 text-muted"><?php echo $hotel_name ?></h2>
                                 </div>
                                 <div class="text-muted">
-                                    <p class="mb-1"><i class="bi bi-geo-fill me-1"></i><?php echo $row['details'] ?></p>
-                                    <p class="mb-1"><i class="bi bi-envelope-fill me-1"></i><?php echo $row['hotel_email'] ?></p>
-                                    <p class="mb-1"><i class="bi bi-telephone-fill me-1"></i><?php echo $row['hotline'] ?></p>
-                                <?php endwhile; ?>
+                                    <p class="mb-1"><i class="bi bi-geo-fill me-1"></i><?php echo $address ?></p>
+                                    <p class="mb-1"><i class="bi bi-envelope-fill me-1"></i><?php echo $hotel_email ?></p>
+                                    <p class="mb-1"><i class="bi bi-telephone-fill me-1"></i><?php echo $hotline ?></p>
                                 </div>
                             </div>
                             <hr class="my-4">
@@ -148,5 +212,42 @@
             window.history.back();
         }
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <Script>
+        var swiper = new Swiper(".swiper-rating", {
+            watchSlidesProgress: true,
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            // slidesPerView: "auto",
+            loop: true,
+            slidesPerView: 3,
+    
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+            breakpoints:{
+                320: {
+                    slidesPerView: 1,
+                },
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            }
+        });
+    </Script>
+    
 </html>

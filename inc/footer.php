@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-4 p-4">
             <h3 class="h-font fw-bold fs-3 mb-2">Hotel Booking</h3>
-            <p>Nơi bạn có thể dễ dàng tìm kiếm và đặt phòng khách sạn một cách thuận tiện, tận hưởng dịch vụ chất lượng và khám phá những điểm đến tuyệt vời trên khắp thế giới.</p>
+            <p>Nơi bạn có thể dễ dàng tìm kiếm và đặt phòng khách sạn một cách thuận tiện, tận hưởng dịch vụ chất lượng và khám phá những điểm đến tuyệt vời trên khắp Việt Nam.</p>
         </div>
         <div class="col-lg-4 p-4">
             <h5 class="mb-3">Liên Kết</h5>

@@ -15,7 +15,7 @@
             FROM
                 booking_bill
             WHERE booking_bill.hotel_id = '$hotel_id'";
-                $result_bill = mysqli_query($conn, $query_bill);
+    $result_bill = mysqli_query($conn, $query_bill);
     if(!$_SESSION['hotel_account']){
         header('Location: login.php');
     }

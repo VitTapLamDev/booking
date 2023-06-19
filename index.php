@@ -1,3 +1,5 @@
+<? require('inc/db_config.php') ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +9,26 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <?php require('inc/links.php')?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <style>
+        #suggestionsList{
+            position: absolute;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        #suggestionsList >li{
+            position: relative;
+            background-color: white;
+            padding: 10px;
+            border: solid 0.5px #dddddd;
+            z-index: 99;
+            min-width: 300px;
+        }
+        #suggestionsList >li:hover{
+            background-color: #dddddd;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body class="bg-light">
     
@@ -56,7 +78,8 @@
                     <div class="row align-items-end">
                         <div class="col-lg-3 mb-3">
                             <label for="" class="form-label check-in">Điểm đến:</label>
-                            <input name="index_location" type="text" class="form-control shadow-none" required>
+                            <input name="index_location" id="searchInput" type="text" class="form-control shadow-none" onkeyup="handleInput(this.value)" autocomplete="off" placeholder="Bạn muốn đi đâu ..." required>
+                            <ul id="suggestionsList"></ul>
                         </div>
                         <div class="col-lg-2 mb-3">
                             <label for="" class="form-label check-in">Check-in</label>
@@ -467,9 +490,9 @@
         </div>
     </div>
     <?php require('inc/footer.php')?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
-        
         var swiper = new Swiper(".swiper-container", {
             spaceBetween: 30,
             effect: "fade",
@@ -519,23 +542,62 @@
             }
         });
 
-        var checkInInput = document.getElementById("checkin");
-        var checkOutInput = document.getElementById("checkout");
+        var checkinInput = document.getElementById("checkin");
+        var checkoutInput = document.getElementById("checkout");
 
-        // Add event listener for check-in date change
-        checkInInput.addEventListener("change", function() {
-        // Get the selected check-in and check-out dates
-        var checkInDate = new Date(checkInInput.value);
-        var checkOutDate = new Date(checkOutInput.value);
+        checkinInput.addEventListener("change", function() {
+        var checkinDate = new Date(checkinInput.value);
+        var checkoutDate = new Date(checkoutInput.value);
 
-        // Disable days prior to check-in date in the check-out date picker
-        checkOutInput.min = checkInInput.value;
-
-        // If check-out date is before check-in date, reset the check-out date
-        if (checkOutDate < checkInDate) {
-            checkOutInput.value = "";
+        if (checkoutDate < checkinDate) {
+            checkoutInput.value = ""; // Reset the checkout date if it's before the checkin date
         }
+
+        checkoutInput.min = checkinInput.value;
         });
-      </script>
+    </script>
+
+    <script>
+  // Array of values for auto-suggestion
+    var suggestions = [ "An Giang", "Bà Rịa – Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", 
+                        "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", 
+                        "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên",   "Khánh Hòa", "Kiên Giang", 
+                        "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", 
+                        "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", 
+                        "Thừa Thiên Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái", "An Giang", "Ba Ria - Vung Tau", 
+                        "Bac Giang", "Bac Kan", "Bac Lieu", "Bac Ninh", "Ben Tre", "Binh Dinh", "Binh Duong", "Binh Phuoc", "Binh Thuan", "Ca Mau", "Can Tho", "Cao Bang", 
+                        "Da Nang", "Dak Lak", "Dak Nong", "Dien Bien", "Dong Nai", "Dong Thap", "Gia Lai", "Ha Giang", "Ha Nam", "Ha Noi", "Ha Tinh", "Hai Duong", "Hai Phong", 
+                        "Hau Giang", "Hoa Binh", "Hung Yen", "Khanh Hoa", "Kien Giang", "Kon Tum", "Lai Chau", "Lam Dong", "Lang Son", "Lao Cai", "Long An", "Nam Dinh", "Nghe An", 
+                        "Ninh Binh", "Ninh Thuan", "Phu Tho", "Phu Yen", "Quang Binh", "Quang Nam", "Quang Ngai", "Quang Ninh", "Quang Tri", "Soc Trang", "Son La", "Tay Ninh", 
+                        "Thai Binh", "Thai Nguyen", "Thanh Hoa", "Thua Thien Hue", "Tien Giang", "Ho Chi Minh City", "Tra Vinh", "Tuyen Quang", "Vinh Long", "Vinh Phuc", "Yen Bai"];
+    function handleInput(inputValue) {
+        var suggestionsList = document.getElementById("suggestionsList");
+        suggestionsList.innerHTML = ""; // Clear the previous suggestions
+
+        // Filter the suggestions based on the input value
+        var filteredSuggestions = suggestions.filter(function(suggestion) {
+            return suggestion.toLowerCase().startsWith(inputValue.toLowerCase());
+        });
+
+        // Display the filtered suggestions
+        filteredSuggestions.forEach(function(suggestion) {
+            var li = document.createElement("li");
+            li.textContent = suggestion;
+            suggestionsList.appendChild(li);
+            li.addEventListener("click", function() {
+            var selectedSuggestion = li.textContent;
+            var input = document.getElementById("searchInput");
+            input.value = selectedSuggestion;
+            suggestionsList.innerHTML = ""; // Clear the suggestions after selection
+            });
+        });
+        document.addEventListener("click", function(event) {
+            var target = event.target;
+            if (!target.closest("#suggestionsList") && !target.closest("#searchInput")) {
+            suggestionsList.innerHTML = ""; // Clear the suggestions
+            }
+        });
+    }
+    </script>
 </body>
 </html>

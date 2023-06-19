@@ -79,31 +79,24 @@
         }
     }
 
-
     if(!$conn){
         die("Connection failed: " + mysqli_connect_errno());
     }else{
-        if(isset($_POST['payed'])){
-            session_start();
-            $hotel_id = $_SESSION['id_hotel'];
-            $bill_code = $_SESSION['bill_id'];
-            $check_in = $_SESSION['checkin'];
-            $check_out = $_SESSION['checkout'];
-            $number = $_SESSION['numofroom'];
-            $total = $_SESSION['total'];
-            $room_code = $_SESSION['roomtype'];
-            $user_email = $_SESSION['account'];
-
-
-            $booking = "INSERT INTO `booking_bill`(`bill_code`, `hotel_id`, `room_code`, `email_user`, `number`, `check_in`, `check_out`, `price`) 
-                        VALUES ('$bill_code','$hotel_id','$room_code','$user_email','$number','$check_in','$check_out','$total')";
-            if (!mysqli_query($conn, $booking)){
-                die('Error: ' . mysqli_error($conn));
-            }else{
-                header('Location: vnpay_php/vnpay_pay.php');
-                exit();
+        if(isset($_POST['send_feedbackBtn'])){
+            $billcode = $_POST['bill_code'];
+            $hotel_id = $_POST['hotel_id'];
+            $subject = $_POST['subject'];
+            $message = $_POST['message'];
+            $score = $_POST['rating'];
+            
+            $feedback = "INSERT INTO `rating_bill`( `hotel_id`, `bill_code`, `sore`, `subject`, `message`) 
+                        VALUES ('$hotel_id','$billcode','$score','$subject','$message')";
+            if(mysqli_query($conn, $feedback)){
+                header("Location: success.php");
+            exit();
             }
         }
     }
+    
 
 ?>
