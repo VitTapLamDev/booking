@@ -11,8 +11,14 @@
     <link rel="stylesheet" href="assets/style/payment.css">
 </head>
 <body class="bg-light">
-    <?php require('inc/header_login.php');?>
-    <button class="btn btn-secondary mt-3" onclick="goBack()">< Quay lại</button>
+    <?php
+    if($_SESSION['account']) {
+        require('inc/header_login.php');
+    } else {
+        require('inc/header.php');
+    }
+    ?>
+    <button class="btn btn-secondary mt-3 sticky-top" onclick="goBack()" style="top: 68px;">< Quay lại</button>
     <hr>
     <!-- Thông tin khách sạn -->
     <section class="section about-section gray-bg" id="about">
@@ -72,7 +78,7 @@
                     <div class="col-6 col-lg-4">
                         <div class="count-data text-center">
                             <h6 class="count h2" data-to="150" data-speed="150"><?php echo $num_of_order ?></h6>
-                            <p class="m-0px font-w-600">Đánh giá</p>
+                            <p class="m-0px font-w-600">Phản hồi</p>
                         </div>
                     </div>
                     <div class="col-6 col-lg-4">
@@ -119,6 +125,7 @@
 
 
     <!-- Đặt phòng -->
+    
     <div>
         <form id="booking-form" method="POST">
             <div class="modal-header">
@@ -143,6 +150,7 @@
                                 </div>
                             </div>
                             <hr class="my-4">
+                            <?php if($_SESSION['account']){ ?>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="text-muted">
@@ -156,6 +164,7 @@
                                     </div>
                                 </div>  
                             </div>
+                            <?php } ?>
                             <div class="py-2">
                                 <form method="post">
                                     <h5 class="font-size-15">Chi tiết hóa đơn:</h5>
@@ -194,7 +203,7 @@
                         </div>
                     </div>
                 </div>
-                      
+                <?php if($_SESSION['account']){ ?>     
                 <div class="text-center mt-2">
                     <a href="vnpay_php/vnpay_pay.php" target="_blank">
                         <button name="payed" class="btn btn-dark shadow-none">
@@ -202,9 +211,32 @@
                         </button>
                     </a>
                 </div>
+                <?php }else{ ?>
+                    <div class="text-center mt-2">
+                        <button class="btn btn-dark shadow-none" type="button" data-bs-toggle="modal" data-bs-target="#login_require">
+                            <i class="bi bi-cash me-2" style="color: chartreuse;"></i>THANH TOÁN NGAY
+                        </button>
+                    </div>
+                <?php } ?>
             </div>
         </form>
     </div>
+
+    <div class="modal fade" id="login_require" tabindex="-1" aria-labelledby="login_require" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" >Bạn cần đăng nhập để thực hiện chức năng này!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng nhập ngay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <?php require('inc/footer.php')?> 
     <script>
         function goBack() {

@@ -1,4 +1,4 @@
-<?php require('ajax/hotel_crud.php'); ?>
+<?php require('ajax/request.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +18,6 @@
             <?php echo isset($alert) ? $alert : ''; ?>
                 <div class="d-flex justify-content-between align-items-lg-center flex-column flex-lg-row mb-3">
                     <h4>HOTEL MANAGEMENT</h4>
-                    <div class="hstack gap-3">
-                        <button name="new_hotel" type="button" class="btn btn-primary btn-sm btn-icon-text btn-sm " data-bs-toggle="modal" data-bs-target="#addHotel"><i class="bi bi-building-add me-1"></i>New Hotel</button>
-                    </div>
                 </div>
                 <div class="container">
                     <div class="row">
@@ -28,39 +25,48 @@
                             <div class="col-12 mb-3 mb-lg-5">
                                 <div class="overflow-hidden card table-nowrap table-card">
                                     <div class="card-header d-flex justify-content-between align-items-center text-nowrap">
-                                        <h5 class="mb-0">Hotel List:    </h5>
-                                        <div class="input-group mb-3" style="margin-left: 20px; margin-top: 5px;">
-                                            <input name="email_bill" type="email" class="form-control" placeholder="Hotel Email/Hotel ID" required>
-                                            <button name="search_bill" class="btn btn-outline-secondary" type="submit">Tìm kiếm</button>
-                                        </div>
+                                        <h5 class="mb-0">Hotel Request:    </h5>
                                     </div>
                                     <div class="table-responsive">
                                         <table class="table mb-0">
                                             <thead class="small text-uppercase bg-body text-muted">
                                                 <tr>
-                                                    <th>ID</th>
                                                     <th>Hotel name</th>
+                                                    <th>Hotel email</th>
                                                     <th>Location</th>
                                                     <th>Hotline</th>
+                                                    <th>status</th>
                                                     <th class="text-end">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php while($row = mysqli_fetch_assoc($result)): ?>
                                                 <tr class="align-middle">
-                                                    <td><span class="h6 mb-0 lh-1"><?php echo $row['id_hotel'] ?></div></td>
                                                     <td><span class="d-inline-block align-middle"><?php echo $row['hotel_name'] ?></span></td>
-                                                    <td><span class="d-inline-block align-middle"><?php echo $row['location'] ?></span></td>
-                                                    <td><span class="d-inline-block align-middle"><?php echo $row['hotline'] ?></span></td>
+                                                    <td><span class="d-inline-block align-middle"><?php echo $row['hotel_email'] ?></span></td>
+                                                    <td><span class="d-inline-block align-middle"><?php echo $row['hotel_address'] ?></span></td>
+                                                    <td><span class="d-inline-block align-middle"><?php echo $row['hotel_hotline'] ?></span></td>
+                                                    <td> 
+                                                        <?php if($row['status']=='cancel'){ ?>
+                                                            <h5><span class="badge text-bg-danger">Cancel</span></h5>
+                                                        <?php }else if($row['status']=='success'){ ?>
+                                                            <h5><span class="badge text-bg-success">Created</span></h5>
+                                                        <?php }else if($row['status']=='process'){ ?>
+                                                            <h5><span class="badge text-bg-secondary">Process</span></h5>
+                                                        <?php } ?>
+                                                    </td>
                                                     <td class="text-end">
+                                                        <?php if($row['status']=='sucess'){ ?>
                                                         <div class="drodown">
                                                             <a data-bs-toggle="dropdown" href="#" class="btn p-1" aria-expanded="false">
                                                                 <i class="fa fa-bars" aria-hidden="true"></i>
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                                                                <a class="dropdown-item" onclick="getData(this); window.location.href ='hotel_detail.php'">Details</a>
+                                                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addHotel">Add</a>
+                                                                <a class="dropdown-item" data-bs-toggle="modal" onclick="getData(this)" data-bs-target="#cancelRequest">Cancel</a>
                                                             </div>
                                                         </div>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <?php endwhile; ?>
@@ -74,9 +80,6 @@
                 </div>
             </div>
         </div>
-
-
-
 
         <div class="modal fade" id="addHotel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -138,6 +141,23 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="cancelRequest" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <form action="" method="post">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm cancel request?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" name="cancel_request">Confirm</button>
+                </div>
+                </form>
+            </div>    
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
     <script>
@@ -145,12 +165,12 @@
             var row = element.closest('tr');
             var rowData = row.getElementsByTagName('td');
             
-            var hotel_code = rowData[0].textContent;
-            console.log(hotel_code);
-            saveDataInSession(hotel_code);
+            var hotel_name = rowData[0].textContent;
+            console.log(hotel_name);
+            saveDataInSession(hotel_name);
         }
 
-        function saveDataInSession(hotel_code) {
+        function saveDataInSession(hotel_name) {
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'inc/hotel_code.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -159,7 +179,7 @@
                 console.log('Data saved in session successfully.');
                 }
             };
-            xhr.send('hotel_code=' + encodeURIComponent(hotel_code));
+            xhr.send('hotel_name_request=' + encodeURIComponent(hotel_name));
         }
 
     </script>

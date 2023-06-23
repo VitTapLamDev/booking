@@ -41,15 +41,19 @@
     }
 
     if(isset($_POST['login_account'])){
-        // session_start();
         $email_log = $_POST['email_log'];
-        
         $pass_log = md5($_POST['pass_log']);
         $query = "SELECT * FROM `user_cred` WHERE `email`='$email_log' and `password`='$pass_log'";     
         $result_user = mysqli_query($conn, $query);
         if(mysqli_num_rows($result_user)==1){
             $_SESSION['account'] = $email_log;
-            header('Location: index.php');
+            if($_SESSION['total']){
+                header('Location: payment.php');
+            }elseif($_SESSION['location']){
+                header('Location: booking.php');
+            }else{
+                header('Location: index.php');
+            }
             $alert = '<div class="alert alert-success" role="alert">Đăng nhập thành công!</div>';
         }else{
             $alert = '<div class="alert alert-danger" role="alert">Tài khoản hoặc mật khẩu không đúng. Vui lòng thử lại!</div>';

@@ -1,3 +1,4 @@
+<?php require('inc_hotel/db_config.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +9,8 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
-
-
 <!------ Include the above in your HEAD tag ---------->
-
-<div class="container register">
+    <div class="container register">
         <div class="row">
             <div class="col-md-3 register-left">
                 <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
@@ -25,31 +23,31 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <h3 class="register-heading">Đăng ký tài khoản khách sạn</h3>
-                        <h4 class="register-heading">Hệ thống phản hồi qua email bạn đã đăng ký, vui lòng xác nhận email và </h4>
-                        <div class="row register-form">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder=" Name *" value="" required/>
+                        <form action="" method="post">
+                            <div class="row register-form">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="hotel_name" placeholder=" Name *" value="" required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="hotel_add" placeholder="Address *" value="" required />
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Address *" value="" required />
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="hotel_email" placeholder="Email *" value="" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" minlength="10" maxlength="20" name="hotel_hotline" class="form-control" placeholder="Hotline *" value="" required />
+                                    </div>
+                                    <input type="submit" name="register_hotel" class="btnRegister" value="Register"/>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email *" value="" required />
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Hotline *" value="" required />
-                                </div>
-                                <input type="submit" class="btnRegister"  value="Register"/>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>

@@ -21,6 +21,14 @@
                         <a class="nav-link text-light" href="users.php">USERS</a>
                     </li>
                     <li class="nav-item">
+                        <button type="button" class="btn position-relative" style="color: white;" onclick="window.location.href='hotel_request.php'">
+                            REQUEST
+                            <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                <span class="visually-hidden">New alerts</span>
+                            </span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-light" href="queries.php">USER QUERIES</a>
                     </li>
                     <li class="nav-item">

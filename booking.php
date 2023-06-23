@@ -131,7 +131,7 @@
                         <td class="text-center"><?php echo ($row['room_code'] == 'double') ? "Phòng đôi" : (($row['room_code']) == 'standard' ? "Cơ bản" : "Vip"); ?></td>
                         <td class="text-center"><?php echo $row['price'] ?></td>
                         <td class="text-center"><iframe width="200" height="120" src="<?php echo $row['gmap']; ?>" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
-                        <?php if ($_SESSION['account']) { ?><td class="text-center"><button name="booking_room" type="button" class='btn btn-dark shadow-none mybtn text-nowrap' onclick="getData(this); window.location.href='payment.php'">Chi Tiết</button></td> <?php } else { ?> <td class="text-center"><button type="button" class='btn btn-dark shadow-none mybtn' data-bs-toggle="modal" data-bs-target="#Loginrequied">ĐẶT PHÒNG NGAY</button></td> <?php } ?>
+                        <td class="text-center"><button name="booking_room" type="button" class='btn btn-dark shadow-none mybtn text-nowrap' onclick="getData(this); window.location.href='payment.php'">Chi Tiết</button></td> 
                     </tr>
                 </tbody>
             <?php endwhile;  ?>

@@ -22,8 +22,23 @@
         }
     }
 
-
-    
+    if(!$conn){
+        die("Connection failed: " + mysqli_connect_errno());
+    }else{
+        if(isset($_POST['register_hotel'])){
+            $hotel_name = $_POST['hotel_name'];
+            $hotel_email = $_POST['hotel_email'];
+            $hotel_address = $_POST['hotel_add'];
+            $hotel_hotline = $_POST['hotel_hotline'];
+            $request_hotel = "INSERT INTO `hotel_queries`(`hotel_name`, `hotel_email`, `hotel_hotline`, `hotel_address`) 
+                                VALUES ('$hotel_name','$hotel_email','$hotel_hotline','$hotel_address')";
+            if(mysqli_query($conn, $request_hotel)){
+                header('Location: success.php');
+            }else{
+                $alert = '<div class="alert alert-danger" role="alert">Hệ thống đang bận. Vui lòng thử lại sau ít phút!</div>';
+            }
+        }
+    }
 
     if(!$conn){
         die("Connection failed: " + mysqli_connect_errno());
