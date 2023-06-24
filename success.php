@@ -30,6 +30,9 @@
             </div>
         </div>
     </section>
-    <?php require('inc/footer.php') ?>
+    <div class="fixed-bottom">
+        <?php require('inc/footer.php') ?>
+    </div>
+    
 </body>
 </html>

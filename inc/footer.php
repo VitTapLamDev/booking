@@ -6,7 +6,7 @@
 
 <!-- Footer -->
 <?php while($row = mysqli_fetch_assoc($result_detail)): ?>
-<div class="container-fluid bg-white mt-5">
+<div class="container-fluid bg-white mt-5 ">
     <div class="row">
         <div class="col-lg-4 p-4">
             <h3 class="h-font fw-bold fs-3 mb-2">Hotel Booking</h3>
@@ -32,8 +32,9 @@
             </a><br>
         </div>
     </div>
+    <h6 class="text-center bg-dark text-white p-3 m-0">Chuyen De Co So - Hoc Vien Ky Thuat Mat Ma</h6>
 </div>
 <?php endwhile; ?>
-<h6 class="text-center bg-dark text-white p-3 m-0">Chuyen De Co So - Hoc Vien Ky Thuat Mat Ma</h6>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
