@@ -125,9 +125,9 @@
                 <tbody>
                     <tr>
                         <td class="text-center"><?php echo $row['id_hotel'] ?></td>
-                        <td class="text-center"><?php echo $row['hotel_name']; ?></td>
+                        <td><?php echo $row['hotel_name']; ?></td>
                         <td class="text-center"><?php echo $row['hotline'] ?></td>
-                        <td class="text-center"><?php echo $row['details']; ?></td>
+                        <td><?php echo $row['details']; ?></td>
                         <td class="text-center"><?php echo ($row['room_code'] == 'double') ? "Phòng đôi" : (($row['room_code']) == 'standard' ? "Cơ bản" : "Vip"); ?></td>
                         <td class="text-center"><?php echo $row['price'] ?></td>
                         <td class="text-center"><iframe width="200" height="120" src="<?php echo $row['gmap']; ?>" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>

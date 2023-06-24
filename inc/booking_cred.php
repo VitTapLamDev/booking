@@ -20,17 +20,16 @@
         }else{
             $alert = '<div class="alert alert-danger" role="alert">Không tìm thấy khách sạn phù hợp. Vui lòng thử lại!</div>';
             $total_room = 0;
-            $query = "SELECT * FROM `hotel_room` WHERE `room_code` LIKE '$room_code' LIMIT 5";     
+            $query = "SELECT * FROM `hotel_room` WHERE `location` LIKE '$location' AND `room_code` NOT LIKE '$room_code' ";     
             $result = mysqli_query($conn, $query);
             $status = 1;
         }
     }
 
     if($total_room < $number){
-        $alert = '<div class="alert alert-danger" role="alert">Không tìm thấy khách sạn phù hợp. Vui lòng thử lại!</div>';
-        $query = "SELECT * FROM `hotel_room` WHERE `room_code` LIKE '$room_code' LIMIT 5";     
+        $alert = '<div class="alert alert-danger" role="alert">Không tìm thấy khách sạn phù hợp với số lượng phòng bạn yêu cầu. Vui lòng thử lại!</div>';
+        $query = "SELECT * FROM `hotel_room` WHERE `location` LIKE 'null'";     
         $result = mysqli_query($conn, $query);
-        $status = 1;
     }else{
         $sql2 = "SELECT SUM(number) FROM `booking` 
                         WHERE `location` LIKE '$location' AND `room_code` LIKE '$room_code' 
@@ -91,17 +90,16 @@
                     $total_room = $row1["number"];
                 }else{
                     $alert = '<div class="alert alert-danger sticky-top" style="top:68px;" role="alert">Không tìm thấy khách sạn phù hợp. Vui lòng thử lại!</div>';
-                    $query = "SELECT * FROM `hotel_room` WHERE `room_code` LIKE '$room_code' LIMIT 5";     
+                    $query = "SELECT * FROM `hotel_room` WHERE `location` LIKE '$location' AND `room_code` NOT LIKE '$room_code' ";     
                     $result = mysqli_query($conn, $query);
                     $total_room = 0;
                     $status = 1;
                 }
             }
             if($total_room < $number){
-                $alert = '<div class="alert alert-danger sticky-top" style="top:68px;" role="alert">Không tìm thấy khách sạn phù hợp. Vui lòng thử lại!</div>';
-                $query = "SELECT * FROM `hotel_room` WHERE `room_code` LIKE '$room_code' LIMIT 5";     
+                $alert = '<div class="alert alert-danger" role="alert">Không tìm thấy khách sạn phù hợp với số lượng phòng bạn yêu cầu. Vui lòng thử lại!</div>';
+                $query = "SELECT * FROM `hotel_room` WHERE `location` LIKE 'null'";     
                 $result = mysqli_query($conn, $query);
-                $status = 1;
             }else{
                 $sql2 = "SELECT SUM(number) FROM `booking` 
                             WHERE `location` LIKE '$location' AND `room_code` LIKE '$room_code' 
