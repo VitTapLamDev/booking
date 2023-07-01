@@ -105,9 +105,11 @@
             </div>
         </div>
     </div>
+    <?php if(mysqli_num_rows($result) != 0){
+        if ($status == 1) { ?> <div class="alert alert-info fs-5 text-center" role="alert">Có thể bạn quan tâm</div> <?php };
+    ?>
     <div class="col-lg-12 px-4">
         <table class="table shadow table-bordered" id="hotel_room">
-
             <thead>
                 <tr class="text-nowrap">
                     <th class="text-center">ID</th>
@@ -120,9 +122,7 @@
                     <th class="text-center"></th>
                 </tr>
             </thead>
-            <?php if ($status == 1) { ?> <div class="alert alert-info fs-5 text-center" role="alert">Có thể bạn quan tâm</div> <?php }
-                                                                                                                        while ($row = mysqli_fetch_assoc($result)) : ?>
-
+            <?php while ($row = mysqli_fetch_assoc($result)): ?>
                 <tbody>
                     <tr>
                         <td class="text-center"><?php echo $row['id_hotel'] ?></td>
@@ -130,7 +130,7 @@
                         <td class="text-center"><?php echo $row['hotline'] ?></td>
                         <td><?php echo $row['details']; ?></td>
                         <td class="text-center"><?php echo ($row['room_code'] == 'double') ? "Phòng đôi" : (($row['room_code']) == 'standard' ? "Cơ bản" : "Vip"); ?></td>
-                        <td class="text-center"><?php echo $row['price'] ?></td>
+                        <td class="text-center"><?php $number = $row['price'];echo $number . "<br>"; ?></td>
                         <td class="text-center"><iframe width="200" height="120" src="<?php echo $row['gmap']; ?>" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
                         <td class="text-center"><button name="booking_room" type="button" class='btn btn-dark shadow-none mybtn text-nowrap' onclick="getData(this); window.location.href='payment.php'">Chi Tiết</button></td> 
                     </tr>
@@ -138,6 +138,7 @@
             <?php endwhile;  ?>
         </table>
     </div>
+    <?php } ?>
     <div class="modal fade" id="Loginrequied" tabindex="-1" aria-labelledby="LoginrequiedLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
