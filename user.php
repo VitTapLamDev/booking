@@ -18,10 +18,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 </head>
 <body>
-    <?php 
-        require('inc/header_login.php')
-    ?>
-
+    <?php require('inc/header_login.php') ?>
     <section class="bg-light">
         <div class="container">
             <div class="col-lg-12 mb-4 mb-sm-5">
@@ -153,48 +150,36 @@
         <div class="col-lg-12 px-4">
             <span class="section-title text-success">Lịch sử đánh giá</span>
         </div>
-        <div class="container-fluid" id="main-content">
-        <div class="row">
-            <div class="col-lg-12 ms-auto p-4 overflow-hidden">
-                <div class="container">
-                    <div class="row">
-                        <!-- Main content -->
-                        <div class="col-lg-12 mb-3">
-                            <div class="row text-left mb-5">
+        <div class="col-lg-12 px-4">
+            <?php while($row = mysqli_fetch_assoc($result_history)): ?>
+            <div class="card row-hover pos-relative py-3 px-3 mb-3 border-secondary-subtle rounded">
+                <div class="align-items-center">
+                    <div class="col-md-12 mb-3 mb-sm-0">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h4><?php echo '#'.$row['bill_code'].': '.$row['subject'] ?></h4>
                             </div>
-                                <?php while($row = mysqli_fetch_assoc($result_history)): ?>
-                                <div class="card row-hover pos-relative py-3 px-3 mb-3 border-secondary-subtle rounded">
-                                    <div class="align-items-center">
-                                        <div class="col-md-12 mb-3 mb-sm-0">
-                                            <div class="row">
-                                                <div class="col-md-8">
-                                                <h4><?php echo '#'.$row['bill_code'].': '.$row['subject'] ?></h4>
-                                                </div>
-                                                <div class="col-md-4 op-7">
-                                                    <div class="row text-left op-7" style="white-space: nowrap;">
-                                                        <div class="rating">
-                                                        <span class="badge text-bg-primary me-2 fs-6">Đánh giá: </span>
-                                                            <?php 
-                                                                $score = $row['score'];
-                                                                for($i =1; $i <= $score; $i++){
-                                                                    ?> <i class="bi bi-star-fill text-warning" style="white-space: nowrap;"></i> <?php
-                                                                }
-                                                            ?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p class="text-sm"><span class="op-6">Rating at: <?php echo $row['date'] ?> </span>  </p>
-                                            <hr>
-                                            <h5><?php echo $row['message'] ?></h5>
-                                        </div>
+                            <div class="col-md-2 op-7">
+                                <div class="row text-left op-7" style="white-space: nowrap;">
+                                    <div class="rating">
+                                        <span class="badge text-bg-primary me-2 fs-6">Đánh giá: </span>
+                                            <?php 
+                                                $score = $row['score'];
+                                                for($i =1; $i <= $score; $i++){
+                                                    ?> <i class="bi bi-star-fill text-warning" style="white-space: nowrap;"></i> <?php
+                                                }
+                                            ?>
                                     </div>
                                 </div>
-                                <?php endwhile; ?>
                             </div>
+                        </div>
+                        <p class="text-sm"><span class="op-6">Rating at: <?php echo $row['date'] ?> </span>  </p>
+                        <hr>
+                        <h5><?php echo $row['message'] ?></h5>
                     </div>
                 </div>
             </div>
+            <?php endwhile; ?>
         </div>
 
         <div class="modal fade" id="change_pass" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -275,7 +260,6 @@
                 </div>  
             </div>
         </div>
-    </div>
     </section>   
     <script>
         function getData(button) {

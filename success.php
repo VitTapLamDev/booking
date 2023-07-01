@@ -24,7 +24,7 @@
                     <div class="success-inner">
                         <h1><i class="fa fa-envelope"></i><span>Phản hồi của bạn đã được gửi thành công!</span></h1>
                         <p>Chúng tôi xin chân thành cảm ơn quý khách về sự góp ý và phản hồi quý giá về khách sạn và dịch vụ của chúng tôi. Ý kiến của quý khách giúp chúng tôi không ngừng cải thiện và mang đến trải nghiệm tốt hơn cho mọi khách hàng.</p>
-                        <a href="index.php" class="btn btn-primary btn-lg">Quay về trang chủ</a>
+                        <a href="index.php" onclick="window.location.href='index.php'" class="btn btn-primary btn-lg">Quay về trang chủ</a>
                     </div>
                     <!--/ End Error Inner -->
                 </div>

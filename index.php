@@ -117,7 +117,7 @@
     </div>
 
     <!-- Rooms -->
-    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">HỆ THỐNG KHÁCH SẠN</h2>
+    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">MỌI NGƯỜI CÙNG TỚI</h2>
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6 my-3">
