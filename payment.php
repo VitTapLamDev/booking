@@ -124,7 +124,7 @@
         </div>
     </section>
 
-    <section class="section about-section gray-bg" id="about">
+
         <div class="container">
             <div class="row align-items-center justify-content-around flex-row-reverse">
             <?php while($row = mysqli_fetch_assoc($result_room)){ ?>
@@ -145,7 +145,8 @@
             </div>
             <?php } ?>
         </div>
-    </section>
+        <hr>
+
 
     <!-- Đặt phòng -->
     
@@ -162,7 +163,6 @@
                         <div class="card-body">
                             <div class="invoice-title">
                                 <h4 class="float-end font-size-15">Hóa đơn số:  <?php echo '#'.$billcode; ?></h4>
-                                
                                 <div class="mb-4">
                                     <h2 class="mb-1 text-muted"><?php echo $hotel_name ?></h2>
                                 </div>
@@ -228,9 +228,12 @@
                 </div>
                 <?php if($_SESSION['account']){ ?>     
                 <div class="text-center mt-2">
+                    <button name="" class="btn btn-dark shadow-none" data-bs-toggle="modal" data-bs-target="#confirmcashpayed" type="button">
+                        <i class="bi bi-cash me-2" style="color: chartreuse;" ></i>THANH TOÁN KHI NHẬN PHÒNG
+                    </button>
                     <a href="vnpay_php/vnpay_pay.php" target="_blank">
-                        <button name="payed" class="btn btn-dark shadow-none">
-                            <i class="bi bi-cash me-2" style="color: chartreuse;"></i>THANH TOÁN NGAY
+                        <button name="payed" class="btn btn-light shadow-none border border-dark">
+                            <img src="https://i.gyazo.com/670d31f2848cdafa000beb2085747a15.png" alt="" width="50px" class="me-2" >THANH TOÁN VNPAY
                         </button>
                     </a>
                 </div>
@@ -243,6 +246,42 @@
                 <?php } ?>
             </div>
         </form>
+    </div>
+
+    <div class="modal fade" id="confirmcashpayed" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Xác nhận thanh toán khi nhận phòng</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5>Hệ thống sẽ sớm liên hệ với bạn để xác nhận đặt phòng</h5>
+                    <p class="font-italic">Lưu ý: Để đảm bảo rằng thông tin đặt phòng của quý khách đã được ghi nhận, chúng tôi mong quý khách vui lòng xác nhận với chúng tôi thông qua cuộc gọi xác nhận.</p>
+                </div>
+                <div class="modal-footer">
+                    <form action="" method="post">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ĐÓNG</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cashpayed" type="button" data-bs-dismiss="modal">TÔI ĐÃ HIỂU</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cashpayed" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">ĐẶT PHÒNG THÀNH CÔNG</h1>
+                </div>
+                <div class="modal-footer">
+                    <form action="" method="post">
+                        <button type="submit" name="cashpayed" class="btn btn-primary">ĐÓNG</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="modal fade" id="login_require" tabindex="-1" aria-labelledby="login_require" aria-hidden="true">

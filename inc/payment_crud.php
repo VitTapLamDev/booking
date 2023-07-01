@@ -77,6 +77,31 @@
     if(!$conn){
         die("Connection failed: " + mysqli_connect_errno());
     }else{
+        if(isset($_POST['cashpayed'])){
+            $hotel_id = $_SESSION['id_hotel'];
+            $bill_code = $_SESSION['bill_id'];
+            $check_in = $_SESSION['checkin'];
+            $check_out = $_SESSION['checkout'];
+            $number = $_SESSION['numofroom'];
+            $total = $_SESSION['total'];
+            $room_code = $_SESSION['roomtype'];
+            $user_email = $_SESSION['account'];
+
+
+            $booking = "INSERT INTO `booking_bill`(`bill_code`, `hotel_id`, `room_code`, `email_user`, `number`, `check_in`, `check_out`, `price`) 
+                        VALUES ('$bill_code','$hotel_id','$room_code','$user_email','$number','$check_in','$check_out','$total')";
+            if (!mysqli_query($conn, $booking)){
+                die('Error: ' . mysqli_error($conn));
+            }else{
+                header('Location: user.php');
+                exit();
+            }
+        }
+    }
+
+    if(!$conn){
+        die("Connection failed: " + mysqli_connect_errno());
+    }else{
         if(isset($_POST['payed'])){
             session_start();
             $hotel_id = $_SESSION['id_hotel'];
