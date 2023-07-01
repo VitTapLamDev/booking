@@ -7,6 +7,7 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Hotel Booking - TRANG CHỦ</title>
+    <link rel="icon" type="image/gif" href="https://www.freepnglogos.com/uploads/hotel-logo-png/download-building-hotel-clipart-png-33.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <?php require('inc/links.php') ?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
@@ -363,9 +364,9 @@
                 <div class="swiper-slide bg-white p-4">
                     <div class="profile d-flex align-items-center mb-3">
                         <img src="/assets/images/profile.png" class="custom-rating">
-                        <h6 class="m-0 ms-2">User 1</h6>
+                        <h6 class="m-0 ms-2">Hoàng Tuấn SInh</h6>
                     </div>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis tempore explicabo voluptatem quisquam,
+                    <p>Giao diện dễ dùng, nhiều tiện ích, ưu đãi hấp dẫn dành cho khách hàng.
                     </p>
                     <div class="rating">
                         <i class="bi bi-star-fill text-warning"></i>

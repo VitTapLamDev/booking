@@ -31,8 +31,8 @@
                 if(mysqli_num_rows($result2) > 0) {                
                     $row2 = mysqli_fetch_assoc($result2);
                     $booked_room = $row2["SUM(number)"];
-                    }else{
-                        $booked_room = 0;
+                }else{
+                    $booked_room = 0;
                 }     
                 if ($number + $booked_room >= $total_room){
                     $alert = '<div class="alert alert-danger" role="alert">Không tìm thấy khách sạn phù hợp. Vui lòng thử lại!</div>';
@@ -57,10 +57,8 @@
             $total_room = 0;
             $query = "SELECT * FROM `hotel_room` WHERE `location` LIKE '$location' AND `room_code` NOT LIKE '$room_code' ";     
             $result = mysqli_query($conn, $query);
+        }
     }
-    
-}
-    
 
     if(!$conn){
         die("Connection failed: " + mysqli_connect_errno());
@@ -85,7 +83,7 @@
                 if (mysqli_num_rows($result1) > 0) {
                     $row1 = mysqli_fetch_assoc($result1);
                     $total_room = $row1["number"];
-                    
+
                     if($total_room < $number){
                         $alert = '<div class="alert alert-danger" role="alert">Không tìm thấy khách sạn phù hợp với số lượng phòng bạn yêu cầu. Vui lòng thử lại!</div>';
                         $query = "SELECT * FROM `hotel_room` WHERE `location` LIKE 'null'";     
@@ -101,10 +99,8 @@
                             $row2 = mysqli_fetch_assoc($result2);
                             $booked_room = $row2["SUM(number)"];
                         }else{
-                                $booked_room = 0;
+                            $booked_room = 0;
                         }     
-                        
-    
                         if ($number + $booked_room >= $total_room){
                             $alert = '<div class="alert alert-danger sticky-top" style="top:68px;" role="alert">Không tìm thấy khách sạn phù hợp. Vui lòng thử lại!</div>';
                         } else {

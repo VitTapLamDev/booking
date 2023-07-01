@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMIN PANEL</title>
     <link rel="stylesheet" href="style/hotel_detail.css">
+    <link rel="icon" type="image/gif" href="https://www.freepnglogos.com/uploads/hotel-logo-png/download-building-hotel-clipart-png-33.png">
     <?php require('inc/links.php'); ?>
 </head>
 <body class="bg-light">

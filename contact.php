@@ -12,6 +12,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Hotel Booking - HỖ TRỢ</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" type="image/gif" href="https://www.freepnglogos.com/uploads/hotel-logo-png/download-building-hotel-clipart-png-33.png">
     <?php require('inc/links.php')?>
 </head>
 <body class="bg-light">

@@ -96,6 +96,8 @@
             $feedback = "INSERT INTO `rating_bill`( `hotel_id`, `bill_code`, `sore`, `subject`, `message`) 
                         VALUES ('$hotel_id','$billcode','$score','$subject','$message')";
             if(mysqli_query($conn, $feedback)){
+                $update_status = "UPDATE `booking_bill` SET `status`='rated' WHERE `bill_code` = '$billcode'";
+                mysqli_query($conn, $update_status);
                 header("Location: success.php");
             exit();
             }

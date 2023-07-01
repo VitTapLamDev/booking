@@ -8,6 +8,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Hotel Booking - KHÁCH SẠN</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" type="image/gif" href="https://www.freepnglogos.com/uploads/hotel-logo-png/download-building-hotel-clipart-png-33.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <style>
         #suggestionsList {

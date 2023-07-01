@@ -9,9 +9,9 @@
 
     $query_bill = "SELECT
                 COUNT(bill_code) AS sl ,
-                COUNT(CASE WHEN (Status = 'success' OR Status = 'payed') THEN bill_code END) AS sl_success,
+                COUNT(CASE WHEN (Status = 'success' OR Status = 'payed' OR Status = 'rated') THEN bill_code END) AS sl_success,
                 COUNT(CASE WHEN Status = 'cancel' THEN bill_code END) AS sl_cancel,
-                SUM(CASE WHEN (Status = 'success' OR Status = 'payed' OR Status = 'process') THEN Price END) AS total
+                SUM(CASE WHEN (Status = 'success' OR Status = 'payed' OR Status = 'process' OR Status = 'rated') THEN Price END) AS total
             FROM
                 booking_bill
             WHERE booking_bill.hotel_id = '$hotel_id'";

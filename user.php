@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/assets/style/user.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/gif" href="https://www.freepnglogos.com/uploads/hotel-logo-png/download-building-hotel-clipart-png-33.png">
     <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
@@ -55,9 +56,11 @@
             </div>
         </div>
 
+        
         <div class="col-lg-12 px-4">
             <span class="section-title text-primary mb-3 mb-sm-4">Đơn đặt phòng: </span>
         </div>
+        <?php if(mysqli_num_rows($result_booking) != 0){ ?>
         <div class="col-lg-12 px-4">
             <table class="table shadow table-bordered" id="hotel_room">
                 <thead>
@@ -92,11 +95,15 @@
                         <?php } ?>
                     </tr>
                     <?php endwhile; ?>
-
                 </tbody>
             </table>  
         </div>                            
-
+        <?php }else{ ?>
+        <div class="col-lg-12 px-4">
+            <span class="section-title text-danger mb-3 mb-sm-4">Bạn chưa có đơn đặt phòng nào tại thời điểm hiện tại</span>
+        </div>
+        
+        <?php }; if(mysqli_num_rows($result_hotel)!=0) { ?>
         <div class="col-lg-12 px-4">
             <span class="section-title text-primary mb-3 mb-sm-4">Lịch sử đặt phòng: </span>
         </div>
@@ -140,7 +147,56 @@
                 </table>  
             </form>
         </div>
-                                
+        <?php } ?>
+              
+        
+        <div class="col-lg-12 px-4">
+            <span class="section-title text-success">Lịch sử đánh giá</span>
+        </div>
+        <div class="container-fluid" id="main-content">
+        <div class="row">
+            <div class="col-lg-12 ms-auto p-4 overflow-hidden">
+                <div class="container">
+                    <div class="row">
+                        <!-- Main content -->
+                        <div class="col-lg-12 mb-3">
+                            <div class="row text-left mb-5">
+                            </div>
+                                <?php while($row = mysqli_fetch_assoc($result_history)): ?>
+                                <div class="card row-hover pos-relative py-3 px-3 mb-3 border-secondary-subtle rounded">
+                                    <div class="align-items-center">
+                                        <div class="col-md-12 mb-3 mb-sm-0">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                <h4><?php echo '#'.$row['bill_code'].': '.$row['subject'] ?></h4>
+                                                </div>
+                                                <div class="col-md-4 op-7">
+                                                    <div class="row text-left op-7" style="white-space: nowrap;">
+                                                        <div class="rating">
+                                                        <span class="badge text-bg-primary me-2 fs-6">Đánh giá: </span>
+                                                            <?php 
+                                                                $score = $row['score'];
+                                                                for($i =1; $i <= $score; $i++){
+                                                                    ?> <i class="bi bi-star-fill text-warning" style="white-space: nowrap;"></i> <?php
+                                                                }
+                                                            ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="text-sm"><span class="op-6">Rating at: <?php echo $row['date'] ?> </span>  </p>
+                                            <hr>
+                                            <h5><?php echo $row['message'] ?></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php endwhile; ?>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="modal fade" id="change_pass" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">

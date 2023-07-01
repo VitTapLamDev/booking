@@ -3,10 +3,12 @@
     require('inc/db_config.php');
     session_start();
     $email_log = $_SESSION['account'];
+    
     $query_user = "SELECT * FROM `user_cred` WHERE `email`='$email_log'";     
     $result_user = mysqli_query($conn, $query_user);
 
     $id_hotel = $_SESSION['id_hotel'];
+    $room_code = $_SESSION['roomtype'];
     $query_hotel = "SELECT * FROM `hotel_cred` WHERE `id_hotel`='$id_hotel'";     
     $result_hotel = mysqli_query($conn, $query_hotel);
 
@@ -23,9 +25,12 @@
         $tw_link = $row['twitter_link'];
     }
 
-    $sql = "SELECT * FROM `user_rating` WHERE `hotel_id` LIKE '$id_hotel'";
-    $ratings = mysqli_query($conn, $sql);
     
+    $sql_rating = "SELECT * FROM `user_rating` WHERE `hotel_id` LIKE '$id_hotel'";
+    $ratings = mysqli_query($conn, $sql_rating);
+    
+    $sql_room = "SELECT * FROM `rooms` WHERE `hotel_id` LIKE '$id_hotel' AND `room_code` LIKE '$room_code'";
+    $result_room = mysqli_query($conn, $sql_room);
 
     $query_rating = "SELECT COUNT(bill_code) AS 'number', AVG(sore) AS 'avgscore' FROM `rating_bill` WHERE `hotel_id` = '$id_hotel'";
     $result_rating =  mysqli_query($conn, $query_rating);

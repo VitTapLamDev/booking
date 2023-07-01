@@ -14,6 +14,9 @@
     $query_history = "SELECT * FROM `booking` WHERE `email_user`= '$email_log' AND (`status` = 'success' OR `status` = 'cancel')";
     $result_hotel = mysqli_query($conn, $query_history);
 
+    $sql_history = "SELECT * FROM `user_rating` WHERE `email_user` = '$email_log'";
+    $result_history = mysqli_query($conn, $sql_history);
+
 
     while ($row = mysqli_fetch_assoc($result_user)){
         $dob = $row['dob']; 

@@ -12,7 +12,6 @@
         $result = mysqli_query($con, $sql);
     }
 
-    
     if(isset($_POST['add_newhotel'])){
         $hotel_id = $_POST['hotel_id'];
         $hotel_email = $_POST['hotel_email'];

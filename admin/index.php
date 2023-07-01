@@ -15,6 +15,7 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>ADMIN LOGIN PANEL</title>
+    <link rel="icon" type="image/gif" href="https://www.freepnglogos.com/uploads/hotel-logo-png/download-building-hotel-clipart-png-33.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <?php require('inc/links.php'); ?>
 </head>
