@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -34,9 +33,7 @@
         }
     </style>
 </head>
-
 <body class="bg-light">
-
     <?php
     session_start();
     if (isset($_SESSION['account'])) {
@@ -117,7 +114,7 @@
     </div>
 
     <!-- Rooms -->
-    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">MỌI NGƯỜI CÙNG TỚI</h2>
+    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">MỌI NGƯỜI CŨNG TÌM</h2>
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6 my-3">
@@ -366,8 +363,7 @@
                         <img src="/assets/images/profile.png" class="custom-rating">
                         <h6 class="m-0 ms-2">Hoàng Tuấn SInh</h6>
                     </div>
-                    <p>Giao diện dễ dùng, nhiều tiện ích, ưu đãi hấp dẫn dành cho khách hàng.
-                    </p>
+                    <p>Giao diện dễ dùng, nhiều tiện ích, ưu đãi hấp dẫn dành cho khách hàng.</p>
                     <div class="rating">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -378,25 +374,9 @@
                 <div class="swiper-slide bg-white p-4">
                     <div class="profile d-flex align-items-center mb-3">
                         <img src="/assets/images/profile.png" class="custom-rating">
-                        <h6 class="m-0 ms-2">User 2</h6>
+                        <h6 class="m-0 ms-2">Tran Thu Phuong</h6>
                     </div>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis tempore explicabo voluptatem quisquam,
-                    </p>
-                    <div class="rating">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                    </div>
-                </div>
-                <div class="swiper-slide bg-white p-4">
-                    <div class="profile d-flex align-items-center mb-3">
-                        <img src="/assets/images/profile.png" class="custom-rating">
-                        <h6 class="m-0 ms-2">User 3</h6>
-                    </div>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis tempore explicabo voluptatem quisquam,
-                    </p>
+                    <p>Nhiều ưu đãi hấp dẫn, giá cả hợp lý. Khách sạn và dịch vụ chuyên nghiệp</p>
                     <div class="rating">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -408,10 +388,23 @@
                 <div class="swiper-slide bg-white p-4">
                     <div class="profile d-flex align-items-center mb-3">
                         <img src="/assets/images/profile.png" class="custom-rating">
-                        <h6 class="m-0 ms-2">User 4</h6>
+                        <h6 class="m-0 ms-2">Nguyen Duc Viet</h6>
                     </div>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis tempore explicabo voluptatem quisquam,
-                    </p>
+                    <p>Nhân viên hỗ trợ nhiệt tình, nhanh chóng. Nhiều chương trình ưu đãi hấp dẫn</p>
+                    <div class="rating">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                    </div>
+                </div>
+                <div class="swiper-slide bg-white p-4">
+                    <div class="profile d-flex align-items-center mb-3">
+                        <img src="/assets/images/profile.png" class="custom-rating">
+                        <h6 class="m-0 ms-2">Nguyen Ly Minh Vu</h6>
+                    </div>
+                    <p>Giao diện dễ dùng, đơn giản với người mới. Nhiều chương trình ưu đãi hấp dẫn</p>
                     <div class="rating">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -542,7 +535,6 @@
     </script>
 
     <script>
-        // Array of values for auto-suggestion
         var suggestions = ["An Giang", "Bà Rịa – Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước",
             "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai",
             "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang",
@@ -558,14 +550,11 @@
 
         function handleInput(inputValue) {
             var suggestionsList = document.getElementById("suggestionsList");
-            suggestionsList.innerHTML = ""; // Clear the previous suggestions
-
-            // Filter the suggestions based on the input value
+            suggestionsList.innerHTML = ""; 
             var filteredSuggestions = suggestions.filter(function(suggestion) {
                 return suggestion.toLowerCase().startsWith(inputValue.toLowerCase());
             });
 
-            // Display the filtered suggestions
             filteredSuggestions.forEach(function(suggestion) {
                 var li = document.createElement("li");
                 li.textContent = suggestion;
@@ -574,17 +563,16 @@
                     var selectedSuggestion = li.textContent;
                     var input = document.getElementById("searchInput");
                     input.value = selectedSuggestion;
-                    suggestionsList.innerHTML = ""; // Clear the suggestions after selection
+                    suggestionsList.innerHTML = "";
                 });
             });
             document.addEventListener("click", function(event) {
                 var target = event.target;
                 if (!target.closest("#suggestionsList") && !target.closest("#searchInput")) {
-                    suggestionsList.innerHTML = ""; // Clear the suggestions
+                    suggestionsList.innerHTML = ""; 
                 }
             });
         }
     </script>
 </body>
-
 </html>

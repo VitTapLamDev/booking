@@ -40,16 +40,22 @@
                         <form method="post">
                             <div class="col-12 mb-3 mb-lg-5">
                                 <div class="overflow-hidden card table-nowrap table-card">
-                                    <div class="card-header d-flex justify-content-between align-items-center text-nowrap">
-                                        <h5 class="mb-0">Danh sách đơn:    </h5>
-                                        <div class="row justify-content-end">
+                                    <div class="card-header justify-content-between align-items-center text-nowrap">
+                                        <h5 class="mb-2">Danh sách đơn:    </h5>
+                                        <div class="row">
                                             <div class="col-sm-2">
                                                 <input name="hotel_id" type="text" class="form-control text-center" value="<?php echo $_SESSION['hotel_account'] ?>" readonly>
                                             </div>
-                                            <div class="col-sm-7">
-                                                <input name="email_bill" type="email" class="form-control" placeholder="Email đặt phòng" required>
+                                            <div class="col-sm-2">
+                                                <input name="day_start" id="day_start" type="text" class="form-control text-center" placeholder="Day Start" onfocus="(this.type='date')" onblur="(this.type='text')">
                                             </div>
-                                            <div class="col-auto">
+                                            <div class="col-sm-2">
+                                                <input name="day_end" id="day_end" type="text" class="form-control text-center" placeholder="Day End" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input name="email_bill" type="email" class="form-control" placeholder="Email đặt phòng">
+                                            </div>
+                                            <div class="col-sm-2 justify-content-end d-flex">
                                                 <button name="search_bill" class="btn btn-outline-secondary" type="submit">Tìm kiếm</button>
                                             </div>
                                         </div> 
@@ -84,7 +90,7 @@
                                                     <td class="text-center">
                                                         <?php if($row['status']=='cancel'){ ?>
                                                             <p><span class="badge text-bg-danger">Đã hủy</span></p>
-                                                        <?php }else if($row['status']=='success'){ ?>
+                                                        <?php }else if($row['status']=='success' || $row['status'] == 'rated'){ ?>
                                                             <p><span class="badge text-bg-success">Đã trả phòng</span></p>
                                                         <?php }else if($row['status']=='process'){ ?>
                                                             <p><span class="badge text-bg-secondary">Đang xử lý</span></p>
@@ -140,6 +146,18 @@
             xhr.send('bill_code=' + encodeURIComponent(bill_code));
         }
 
+        var checkinInput = document.getElementById("day_start");
+        var checkoutInput = document.getElementById("day_end");
+
+        checkinInput.addEventListener("change", function() {
+            var checkinDate = new Date(checkinInput.value);
+            var checkoutDate = new Date(checkoutInput.value);
+
+            if (checkoutDate < checkinDate) {
+                checkoutInput.value = "";
+            }
+            checkoutInput.min = checkinInput.value;
+        });
     </script>
 
 </body>

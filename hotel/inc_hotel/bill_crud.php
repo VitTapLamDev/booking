@@ -26,9 +26,33 @@
         if(isset($_POST['search_bill'])){
             $hotel_id = $_POST['hotel_id'];
             $email = $_POST['email_bill'];
+            $day_start = $_POST['day_start'];
+            $day_end = $_POST['day_end'];
+
+            if(!$day_start || !$day_end || $email){
+                $sql = "SELECT * FROM `booking` WHERE `hotel_id` = '$hotel_id' AND `email_user` = '$email' ";     
+                $result = mysqli_query($conn, $sql);
+                unset($_SESSION['$email']);
+                unset($_SESSION['day_start']);
+                unset($_SESSION['$day_end']);
+            }elseif($day_end && $day_start && $email){
+                $sql = "SELECT * FROM `booking` WHERE `hotel_id` = '$hotel_id' AND `email_user` = '$email' AND `time_booked` BETWEEN '$day_start' AND '$day_end' ";     
+                $result = mysqli_query($conn, $sql);
+                unset($_SESSION['$email']);
+                unset($_SESSION['day_start']);
+                unset($_SESSION['$day_end']);
+            }elseif($day_end && $day_start && !$email){
+                $sql = "SELECT * FROM `booking` WHERE `hotel_id` = '$hotel_id' AND `time_booked` BETWEEN '$day_start' AND '$day_end'";     
+                $result = mysqli_query($conn, $sql);
+                unset($_SESSION['$email']);
+                unset($_SESSION['day_start']);
+                unset($_SESSION['$day_end']);
+            }elseif(!$day_start && !$day_end && !$email){
+                $sql = "SELECT * FROM `booking` WHERE `hotel_id` = '$hotel_id'";     
+                $result = mysqli_query($conn, $sql);
+            }
  
-            $sql = "SELECT * FROM `booking` WHERE `hotel_id` = '$hotel_id' AND `email_user` = '$email' ";     
-            $result = mysqli_query($conn, $sql);
+            
         }
     }
 ?>

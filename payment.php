@@ -124,30 +124,26 @@
         </div>
     </section>
 
-
-        <div class="container">
-            <div class="row align-items-center justify-content-around flex-row-reverse">
-            <?php while($row = mysqli_fetch_assoc($result_room)){ ?>
-                <div class="col-lg-6">
-                    
-                    <div class="about-text">
-                        <h3 class="dark-color">Giới thiệu phòng.</h3>
-                        <h4 class="theme-color">Hạng phòng: <?php echo ($row['room_code'] == 'double') ? "Phòng đôi" : (($row['room_code']) == 'standard' ? "Cơ bản" : "Vip"); ?></h4>
-                        <p>Tiện nghi:</p>
-                        <p><?php echo $row['convenient'] ?></p>
-                    </div>
-                </div>
-                <div class="col-lg-5 text-center">
-                    <div class="about-img">
-                        <img src="<?php echo $row['img_room'] ?>">
-                    </div>
+    <div class="container">
+        <div class="row align-items-center justify-content-around flex-row-reverse">
+        <?php while($row = mysqli_fetch_assoc($result_room)){ ?>
+            <div class="col-lg-6">
+                <div class="about-text">
+                    <h3 class="dark-color">Giới thiệu phòng.</h3>
+                    <h4 class="theme-color">Hạng phòng: <?php echo ($row['room_code'] == 'double') ? "Phòng đôi" : (($row['room_code']) == 'standard' ? "Cơ bản" : "Vip"); ?></h4>
+                    <p>Tiện nghi:</p>
+                    <p><?php echo $row['convenient'] ?></p>
                 </div>
             </div>
-            <?php } ?>
+            <div class="col-lg-5 text-center">
+                <div class="about-img">
+                    <img src="<?php echo $row['img_room'] ?>">
+                </div>
+            </div>
         </div>
-        <hr>
-
-
+        <?php } ?>
+    </div>
+    <hr>
     <!-- Đặt phòng -->
     
     <div>

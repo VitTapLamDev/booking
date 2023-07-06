@@ -46,7 +46,7 @@
                         $alert= '<div class="alert alert-success mx-auto sticky-top text-center" role="alert" style="top: 68px;">   Điểm đến: '.$_SESSION['location'].
                                                                                 ' <i class="bi bi-diamond-fill p-3"></i> Ngày nhận phòng: '.$_SESSION['checkin'].
                                                                                 ' <i class="bi bi-diamond-fill p-3"></i> Ngày trả phòng: '.$_SESSION['checkout'].
-                                                                                ' <i class="bi bi-diamond-fill p-3"></i> Loại phòng: '.$_SESSION['roomtype'].
+                                                                                ' <i class="bi bi-diamond-fill p-3"></i> Hạng phòng phòng: '.$_SESSION['roomtype'].
                                                                                 ' <i class="bi bi-diamond-fill p-3"></i> Số lượng phòng: '.$_SESSION['numofroom'].
                                 '</div>';
                     }
@@ -112,7 +112,7 @@
                                 $alert= '<div class="alert alert-success mx-auto sticky-top text-center" role="alert" style="top: 68px;">   Điểm đến: '.$_SESSION['location'].
                                                                                         ' <i class="bi bi-diamond-fill p-3"></i> Ngày nhận phòng: '.$_SESSION['checkin'].
                                                                                         ' <i class="bi bi-diamond-fill p-3"></i> Ngày trả phòng: '.$_SESSION['checkout'].
-                                                                                        ' <i class="bi bi-diamond-fill p-3"></i> Loại phòng: '.$_SESSION['roomtype'].
+                                                                                        ' <i class="bi bi-diamond-fill p-3"></i> Hạng phòng: '.$_SESSION['roomtype'].
                                                                                         ' <i class="bi bi-diamond-fill p-3"></i> Số lượng phòng: '.$_SESSION['numofroom'].
                                         '</div>';
                             }

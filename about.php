@@ -77,8 +77,8 @@
                     Chuyên ngành An toàn thông tin - Học viện Kỹ thuật Mật Mã
                 </p>
             </div>
-            <div class="col-lg-5 col-md-5 mb-4">
-                <img src="/assets/images/profile.png" class="w-100">
+            <div class="col-lg-5 col-md-5 mb-4 justify-content-center">
+                <img class="justify-content-between justify-content-center" src="/assets/images/profile.png" height="350px">
             </div>
             <div class="col-lg-6 col-md-5 mb-4">
                 <h3 class="mb-3">Nguyễn Lý Minh Vũ</h3>
@@ -86,8 +86,8 @@
                     Chuyên ngành An toàn thông tin - Học viện Kỹ thuật Mật Mã
                 </p>
             </div>
-            <div class="col-lg-5 col-md-5 mb-4">
-                <img src="/assets/images/profile.png" class="w-100">
+            <div class="col-lg-5 col-md-5 mb-4 justify-content-center">
+                <img class="justify-content-between justify-content-center" src="/assets/images/profile.png" height="350px">
             </div>
             <div class="col-lg-6 col-md-5 mb-4">
                 <h3 class="mb-3">Nguyễn Đức Việt</h3>
@@ -95,8 +95,8 @@
                     Chuyên ngành An toàn thông tin - Học viện Kỹ thuật Mật Mã  
                 </p>
             </div>
-            <div class="col-lg-5 col-md-5 mb-4">
-                <img src="/assets/images/profile.png" class="w-100">
+            <div class="col-lg-5 col-md-5 mb-4 justify-content-center">
+                <img class="justify-content-between justify-content-center" src="/assets/images/profile.png" height="350px">
             </div>
         </div>
     </div>

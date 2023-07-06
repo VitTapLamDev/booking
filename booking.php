@@ -192,9 +192,8 @@
             var checkoutDate = new Date(checkoutInput.value);
 
             if (checkoutDate < checkinDate) {
-                checkoutInput.value = ""; // Reset the checkout date if it's before the checkin date
+                checkoutInput.value = "";
             }
-
             checkoutInput.min = checkinInput.value;
         });
     </script>

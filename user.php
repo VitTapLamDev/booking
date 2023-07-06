@@ -54,8 +54,8 @@
         </div>
 
         
-        <div class="col-lg-12 px-4">
-            <span class="section-title text-primary mb-3 mb-sm-4">Đơn đặt phòng: </span>
+        <div class="col-lg-12 px-4 d-flex justify-content-center">
+            <span class="section-title text-primary mb-3 mb-sm-4 fs-3">Đơn đặt phòng: </span>
         </div>
         <?php if(mysqli_num_rows($result_booking) != 0){ ?>
         <div class="col-lg-12 px-4">
@@ -101,8 +101,8 @@
         </div>
         
         <?php }; if(mysqli_num_rows($result_hotel)!=0) { ?>
-        <div class="col-lg-12 px-4">
-            <span class="section-title text-primary mb-3 mb-sm-4">Lịch sử đặt phòng: </span>
+        <div class="col-lg-12 px-4 justify-content-center d-flex">
+            <span class="section-title text-success mb-3 mb-sm-4 fs-3">Lịch sử đặt phòng: </span>
         </div>
         <div class="col-lg-12 px-4">
             <form action="" method="POST">
@@ -147,8 +147,8 @@
         <?php } ?>
               
         
-        <div class="col-lg-12 px-4">
-            <span class="section-title text-success">Lịch sử đánh giá</span>
+        <div class="col-lg-12 px-4 d-flex justify-content-center">
+            <span class="section-title text-warning fs-3">Lịch sử đánh giá</span>
         </div>
         <div class="col-lg-12 px-4">
             <?php while($row = mysqli_fetch_assoc($result_history)): ?>
