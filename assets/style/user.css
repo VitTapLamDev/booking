@@ -15,7 +15,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-
 body{margin-top:20px;}
 .card-style1 {
     box-shadow: 0px 0px 10px 0px rgb(89 75 128 / 9%);
@@ -33,6 +32,7 @@ body{margin-top:20px;}
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: 0.25rem;
+    
 }
 
 section {
@@ -120,3 +120,4 @@ section {
 .rounded {
     border-radius: 0.25rem!important;
 }
+

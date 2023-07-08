@@ -20,7 +20,7 @@
 <body>
     <?php require('inc/header_login.php') ?>
     <section class="bg-light">
-        <div class="container">
+        <div class="container mt-5">
             <div class="col-lg-12 mb-4 mb-sm-5">
                 <div class="card card-style1 border-0">
                     <div class="card-body ">
@@ -64,12 +64,13 @@
                     <tr>
                         <th>ID</th>
                         <th>Khách sạn</th>
-                        <th>Hotline</th>
+                        <th>Mã đơn</th>
                         <th>Check-in</th>
                         <th>Check-out</th>
                         <th class="text-nowrap">Hạng phòng</th>
                         <th class="text-end">Thanh toán</th>
                         <th class="text-end">Trạng thái đơn hàng</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -79,7 +80,7 @@
                     <tr class="align-items-center justify-content-center">
                         <td><?php echo $row['hotel_id'] ?></td>
                         <td><?php echo $row['hotel_name']; ?></td>             
-                        <td><?php echo $row['hotline']?></td>
+                        <td><?php echo $row['bill_code'] ?></td>
                         <td><?php echo $row['check_in']; ?></td>
                         <td><?php echo $row['check_out'] ?></td>
                         <td><?php echo($row['room_code']=='double') ? "Phòng đôi":(($row['room_code'])=='standard'?"Cơ bản": "Vip"); ?></td>
@@ -90,6 +91,7 @@
                         <?php }else{ ?>
                             <td class="text-end"><span class="badge text-bg-success">Đã Thanh Toán</span></td>
                         <?php } ?>
+                        <td class="text-center"><button onclick="getData(this); window.location.href='bill.php'" name="rating_btn" type="button" class="btn btn-dark shadow-none mybtn" >Chi tiết</button>  </td>
                     </tr>
                     <?php endwhile; ?>
                 </tbody>
@@ -124,7 +126,7 @@
                             while ($row = mysqli_fetch_assoc($result_hotel)) : 
                         ?>
                         <tr>
-                            <td><?php echo $row['hotel_id'] ?></td>
+                            <td> <div style= "min-height:50px;"><?php echo $row['hotel_id'] ?> </div></td>
                             <td><?php echo $row['hotel_name']; ?></td>             
                             <td><?php echo $row['bill_code']?></td>
                             <td><?php echo $row['check_in']; ?></td>

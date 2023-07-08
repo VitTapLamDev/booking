@@ -361,7 +361,7 @@
                 <div class="swiper-slide bg-white p-4">
                     <div class="profile d-flex align-items-center mb-3">
                         <img src="/assets/images/profile.png" class="custom-rating">
-                        <h6 class="m-0 ms-2">Hoàng Tuấn SInh</h6>
+                        <h6 class="m-0 ms-2">Hoàng Tuấn Sinh</h6>
                     </div>
                     <p>Giao diện dễ dùng, nhiều tiện ích, ưu đãi hấp dẫn dành cho khách hàng.</p>
                     <div class="rating">

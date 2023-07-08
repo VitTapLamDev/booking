@@ -58,7 +58,7 @@
                                 <div class="border p-3 rounded mb-3" style="margin: 10px;">
                                     <h5 class="mb-3" style="font-size: 18px;">Bạn muốn đi đâu?</h5>
                                     <label for="" class="form-label">Điểm đến</label>
-                                    <input type="text" name="location_inp" id="searchInput" class="form-control shadow-none mb-3" onkeyup="handleInput(this.value)" autocomplete="off" value="<?php echo $_SESSION['location']; ?>" required>
+                                    <input type="text" name="location_inp" id="searchInput" class="form-control shadow-none " onkeyup="handleInput(this.value)" autocomplete="off" value="<?php echo $_SESSION['location']; ?>" required>
                                     <ul id="suggestionsList"></ul>
                                 </div>
                                 <div class="border p-3 rounded mb-3" style="margin: 10px;">
@@ -66,11 +66,11 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <label for="" class="form-label">Check-in</label>
-                                            <input name="check_in" id="checkin" type="date" class="form-control shadow-none mb-3" value="<?php echo $_SESSION['checkin']; ?>" required>
+                                            <input name="check_in" id="checkin" type="date" class="form-control shadow-none " value="<?php echo $_SESSION['checkin']; ?>" required>
                                         </div>
                                         <div class="col-lg-6">
                                             <label for="" class="form-label">Check-out</label>
-                                            <input name="check_out" id="checkout" min="" type="date" class="form-control shadow-none mb-3" value="<?php echo $_SESSION['checkout']; ?>" required>
+                                            <input name="check_out" id="checkout" min="" type="date" class="form-control shadow-none" value="<?php echo $_SESSION['checkout']; ?>" required>
                                         </div>
                                     </div>
                                 </div>
@@ -78,13 +78,13 @@
                                     <h5 class="mb-3" style="font-size: 18px;">Số lượng phòng</h5>
                                     <div class="col-lg-12">
                                         <label for="" class="form-label">Số lượng phòng: </label>
-                                        <input name="number" type="number" class="form-control shadow-none mb-3" min="1" value="<?php echo $_SESSION['numofroom'] ?>" required>
+                                        <input name="number" type="number" class="form-control shadow-none " min="1" value="<?php echo $_SESSION['numofroom'] ?>" required>
                                     </div>
                                 </div>
                                 <div class="border p-3 rounded mb-3" style="margin: 10px; white-space:nowrap;">
                                     <h5 class="mb-3" style="font-size: 18px;">Hạng phòng</h5>
                                     <label for="" class="form-label">Hạng phòng tìm kiếm: </label> <br>
-                                    <select name="room_code" class="form-control shadow-none mb-3" required>
+                                    <select name="room_code" class="form-control shadow-none " required>
                                         <option disabled selected value="">Bạn muốn ở đâu?</option>
                                         <option <?php if ($_SESSION['roomtype'] == "standard") { ?> selected <?php } ?> value="standard">Cơ bản</option>
                                         <option <?php if ($_SESSION['roomtype'] == "double") { ?> selected <?php } ?> value="double">Phòng đôi</option>
